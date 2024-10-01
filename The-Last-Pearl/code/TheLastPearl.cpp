@@ -115,6 +115,7 @@ int main() {
 
 			// Draw the background
 			window.draw(spriteBackground);
+			window.draw(spriteCursor);
 
 		}
 
