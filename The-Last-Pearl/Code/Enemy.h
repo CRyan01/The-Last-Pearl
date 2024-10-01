@@ -23,7 +23,7 @@ public:
     virtual void spawn(float startX, float startY, int seed);
 
     // Handle enemy taking damage / Virtual function so it can be overidden by specific enemy types
-    virtual void hit(int damage);
+    virtual bool hit(int damage);
 
     // Check if enemy is still alive
     bool isAlive();

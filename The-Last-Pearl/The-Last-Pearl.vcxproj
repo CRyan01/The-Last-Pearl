@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CaptainEnemy.cpp" />
     <ClCompile Include="Code\Enemy.cpp" />
+    <ClCompile Include="Code\Main.cpp" />
     <ClCompile Include="Code\PirateEnemy.cpp" />
-    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CaptainEnemy.h" />
     <ClInclude Include="Code\Enemy.h" />
     <ClInclude Include="Code\PirateEnemy.h" />
   </ItemGroup>
