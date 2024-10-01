@@ -19,7 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="TextureHolder.cpp" />
+    <ClCompile Include="TheLastPearl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TextureHolder.h" />
+    <ClInclude Include="TheLastPearl.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
