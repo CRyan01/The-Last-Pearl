@@ -1,5 +1,5 @@
 // BuccaneerEnemy.cpp
-#include "PirateEnemy.h"
+#include "BuccaneerEnemy.h"
 #include "TextureHolder.h"
 
 void BuccaneerEnemy::spawn(float startX, float startY, int seed)

@@ -15,27 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Enemy.cpp">
+    <ClCompile Include="code\BuccaneerEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\PirateEnemy.cpp">
+    <ClCompile Include="code\CaptainEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CaptainEnemy.cpp">
+    <ClCompile Include="code\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Main.cpp">
+    <ClCompile Include="code\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\PirateEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\Enemy.h">
+    <ClInclude Include="code\BuccaneerEnemy.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\PirateEnemy.h">
+    <ClInclude Include="code\CaptainEnemy.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CaptainEnemy.h">
+    <ClInclude Include="code\Enemy.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\PirateEnemy.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

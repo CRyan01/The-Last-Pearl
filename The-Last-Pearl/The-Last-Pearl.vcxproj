@@ -19,15 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CaptainEnemy.cpp" />
-    <ClCompile Include="Code\Enemy.cpp" />
-    <ClCompile Include="Code\Main.cpp" />
-    <ClCompile Include="Code\PirateEnemy.cpp" />
+    <ClCompile Include="code\BuccaneerEnemy.cpp" />
+    <ClCompile Include="code\CaptainEnemy.cpp" />
+    <ClCompile Include="code\Enemy.cpp" />
+    <ClCompile Include="code\Main.cpp" />
+    <ClCompile Include="code\PirateEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CaptainEnemy.h" />
-    <ClInclude Include="Code\Enemy.h" />
-    <ClInclude Include="Code\PirateEnemy.h" />
+    <ClInclude Include="code\BuccaneerEnemy.h" />
+    <ClInclude Include="code\CaptainEnemy.h" />
+    <ClInclude Include="code\Enemy.h" />
+    <ClInclude Include="code\PirateEnemy.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
