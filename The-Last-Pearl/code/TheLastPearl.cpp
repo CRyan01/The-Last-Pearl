@@ -57,7 +57,7 @@ int main() {
 
 	// Create the background sprite
 	Sprite spriteBackground;
-	Texture textureBackground = TextureHolder::GetTexture("graphics/background_sheet.png");
+	Texture textureBackground = TextureHolder::GetTexture("graphics/background.png");
 	spriteBackground.setTexture(textureBackground);
 	spriteBackground.setPosition(0,0);
 
@@ -84,38 +84,48 @@ int main() {
 		if (state == State::MAINMENU) {
 
 		} // End the main menu state
-	}
 
 	/* Update the frame */
-	if (state == State::PLAYING) {
+		if (state == State::PLAYING) {
 
-		// Update delta time
-		Time dt = clock.restart();
-		// Update total game time
-		gameTimeTotal += dt;
-		// Get a decimal fraction of 1 from the delta time
-		float dtAsSeconds = dt.asSeconds();
+			// Update delta time
+			Time dt = clock.restart();
+			// Update total game time
+			gameTimeTotal += dt;
+			// Get a decimal fraction of 1 from the delta time
+			float dtAsSeconds = dt.asSeconds();
 
-		// Store the cursors position on the screen
-		mouseScreenPosition = Mouse::getPosition();
+			// Store the cursors position on the screen
+			mouseScreenPosition = Mouse::getPosition();
 
-		// Convert mouse position to world coordinates of mainView
-		mouseWorldPosition = window.mapPixelToCoords(
-			Mouse::getPosition(), mainView);
+			// Convert mouse position to world coordinates of mainView
+			mouseWorldPosition = window.mapPixelToCoords(
+				Mouse::getPosition(), mainView);
 
-		// Set the cursor to the mouse world location
-		spriteCursor.setPosition(mouseWorldPosition);
-	} // End updating the frame
+			// Set the cursor to the mouse world location
+			spriteCursor.setPosition(mouseWorldPosition);
+		} // End updating the frame
 
-	/* Draw the frame */
-	if (state == State::PLAYING) {
-		window.clear();
+		/* Draw the frame */
+		if (state == State::PLAYING) {
+			window.clear();
 
-		// Display the mainView in the window and draw everything related to it
-		window.setView(mainView);
+			// Display the mainView in the window and draw everything related to it
+			window.setView(mainView);
 
-		// Draw the background
-		window.draw(spriteBackground);
-	} // End the game loop
+			// Draw the background
+			window.draw(spriteBackground);
+
+		}
+
+		if (state == State::PAUSED) {
+
+		}
+
+		if (state == State::MAINMENU) {
+
+		}
+		window.display();
+	}
 	return 0;
 }
