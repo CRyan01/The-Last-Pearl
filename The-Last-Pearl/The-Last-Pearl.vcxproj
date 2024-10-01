@@ -25,6 +25,7 @@
     <ClCompile Include="code\PirateEnemy.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
     <ClCompile Include="code\TheLastPearl.cpp" />
+    <ClCompile Include="code\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="code\PirateEnemy.h" />
     <ClInclude Include="code\TextureHolder.h" />
     <ClInclude Include="code\TheLastPearl.h" />
+    <ClInclude Include="code\Tower.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
