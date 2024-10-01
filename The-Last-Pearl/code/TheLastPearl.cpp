@@ -19,7 +19,7 @@ int main() {
 	enum class State {PAUSED, PLAYING, MAINMENU};
 
 	// The game will start in the main menu state
-	State state = State::MAINMENU;
+	State state = State::PLAYING;
 
 	// Get the screen resolution and create an SFML window
 	Vector2f resolution;
@@ -54,6 +54,12 @@ int main() {
 	Texture textureCursor = TextureHolder::GetTexture("graphics/cursor.png");
 	spriteCursor.setTexture(textureCursor);
 	spriteCursor.setOrigin(25, 25);
+
+	// Create the background sprite
+	Sprite spriteBackground;
+	Texture textureBackground = TextureHolder::GetTexture("graphics/background_sheet.png");
+	spriteBackground.setTexture(textureBackground);
+	spriteBackground.setPosition(0,0);
 
 	// The main game loop
 	while (window.isOpen()) {
@@ -99,5 +105,17 @@ int main() {
 
 		// Set the cursor to the mouse world location
 		spriteCursor.setPosition(mouseWorldPosition);
-	}
+	} // End updating the frame
+
+	/* Draw the frame */
+	if (state == State::PLAYING) {
+		window.clear();
+
+		// Display the mainView in the window and draw everything related to it
+		window.setView(mainView);
+
+		// Draw the background
+		window.draw(spriteBackground);
+	} // End the game loop
+	return 0;
 }
