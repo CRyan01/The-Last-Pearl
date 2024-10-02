@@ -1,4 +1,6 @@
 // CaptainEnemy.cpp
+// Jakub Nowak | K00285355
+// CaptainEnemy class, a type of enemy derived from the base Enemy class
 #include "CaptainEnemy.h"
 #include "TextureHolder.h"
 

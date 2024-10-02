@@ -1,4 +1,6 @@
-//Enemy.cpp
+// Enemy.cpp
+// Jakub Nowak | K00285355
+// Base Enemy class to be inherited by enemy types
 #include "Enemy.h"
 #include "TextureHolder.h"
 #include <cstdlib>
@@ -6,10 +8,13 @@
 
 using namespace std;
 
+// Handles enemy taking damage
+// Returns true when the enemy dies and false if it's still alive
 bool Enemy::hit(int damage) {
     m_Health -= damage;
 
     if (m_Health <= 0) {
+        // Set the enemy as dead and change the sprite to destroyed
         m_Alive = false;
         m_Sprite.setTexture(TextureHolder::GetTexture("graphics/destroyed.png"));
         // Enemy is dead
@@ -18,22 +23,23 @@ bool Enemy::hit(int damage) {
     // Enemy is still alive
     return false;
 }
-
+// Returns if the enemy is still alive
 bool Enemy::isAlive() 
 {
     return m_Alive;
 }
-
+// Returns the postition of enemy, used in collision detection
 FloatRect Enemy::getPosition() 
 {
     return m_Sprite.getGlobalBounds();
 }
-
+// Returns enemy sprite for rendering
 Sprite Enemy::getSprite() 
 {
     return m_Sprite;
 }
 
+//
 // Code from zombie to face a target ie. Guards
 void Enemy::update(float elapsedTime, Vector2f targetLocation)
 {

@@ -1,4 +1,6 @@
 // Enemy.h
+// Jakub Nowak | K00285355
+// Base Enemy class to be inherited by enemy types
 #pragma once
 #include <SFML/Graphics.hpp>
 
@@ -19,10 +21,10 @@ protected:
     const int OFFSET = 70;        // Minimum speed multiplier (70%)
 
 public:
-    // Functions to handle enemy spawning
+    // Virtual function to handle enemy's spawning (to be implemented by derived classes)
     virtual void spawn(float startX, float startY, int seed);
 
-    // Handle enemy taking damage / Virtual function so it can be overidden by specific enemy types
+    // Handle enemy taking damage (Virtual function so it can be overidden by specific enemy types)
     virtual bool hit(int damage);
 
     // Check if enemy is still alive
