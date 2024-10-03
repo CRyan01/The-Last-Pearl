@@ -9,124 +9,135 @@
 
 using namespace sf;
 
-// Main
-int main() {
-	
-	// Create an instance of TextureHolder
-	TextureHolder holder;
+//by John All methods starting off
+TheLastPearl::TheLastPearl()
+{
 
-	// The game will be in one of three states
-	enum class State {PAUSED, PLAYING, MAINMENU};
-
-	// The game will start in the main menu state
-	State state = State::PLAYING;
-
-	// Get the screen resolution and create an SFML window
-	Vector2f resolution;
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
+
+
 
 	// Calculate ScaleX and ScaleY
 	const Vector2f defaultResolution(1920.0f, 1080.0f);
 	float scaleX = resolution.x / defaultResolution.x;
 	float scaleY = resolution.y / defaultResolution.y;
 
-	RenderWindow window(VideoMode(resolution.x, resolution.y), 
-		"TheLastPearl", Style::Fullscreen);
 
-	// Create the main SFML View
-	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
-	// Create a cock for timing
-	Clock clock;
-
-	// How long has the playing state been active
-	Time gameTimeTotal;
-
-	// Where is the mouse in relation to world coordinates
-	Vector2f mouseWorldPosition;
-	// Where is the mouse in relation to screen coordinates
-	Vector2i mouseScreenPosition;
-
+	 window.create(VideoMode(resolution.x, resolution.y),"TheLastPearl", Style::Fullscreen);
 	// Hide the mouse pointer and replace it with crosshair
 	window.setMouseCursorVisible(false);
-	Sprite spriteCursor;
-	Texture textureCursor = TextureHolder::GetTexture("graphics/cursor.png");
+	textureCursor.loadFromFile("graphics/cursor.png");
 	spriteCursor.setTexture(textureCursor);
 	spriteCursor.setOrigin(25, 25);
 
 	// Create the background sprite
-	Sprite spriteBackground;
-	Texture textureBackground = TextureHolder::GetTexture("graphics/background.png");
+	 textureBackground.loadFromFile("graphics/background.png");
 	spriteBackground.setTexture(textureBackground);
-	spriteBackground.setPosition(0,0);
+	spriteBackground.setPosition(0, 0);
 
-	// The main game loop
-	while (window.isOpen()) {
 
-		/* Handle inputs & events */
-		Event event;
-		while (window.pollEvent(event)) {
-
-		} // End event polling
-
-		// Handle the player quitting
-		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-			window.close();
-		}
-
-		// Handle controls while playing
-		if (state == State::PLAYING) {
-
-		} // End controls while playing
-
-		// Handle the main menu state
-		if (state == State::MAINMENU) {
-
-		} // End the main menu state
+}
+void TheLastPearl::update()
+{
+	//handle all update movemetn collisions, projectiles
 
 	/* Update the frame */
-		if (state == State::PLAYING) {
+	if (state == State::InLevel) {
 
-			// Update delta time
-			Time dt = clock.restart();
-			// Update total game time
-			gameTimeTotal += dt;
-			// Get a decimal fraction of 1 from the delta time
-			float dtAsSeconds = dt.asSeconds();
+		// Update delta time
+		Time dt = clock.restart();
+		// Update total game time
+		gameTimeTotal += dt;
+		// Get a decimal fraction of 1 from the delta time
+		float dtAsSeconds = dt.asSeconds();
 
-			// Store the cursors position on the screen
-			mouseScreenPosition = Mouse::getPosition();
+		// Store the cursors position on the screen
+		mouseScreenPosition = Mouse::getPosition();
 
-			// Convert mouse position to world coordinates of mainView
-			mouseWorldPosition = window.mapPixelToCoords(
-				Mouse::getPosition(), mainView);
+		// Convert mouse position to world coordinates of mainView
+		mouseWorldPosition = window.mapPixelToCoords(
+			Mouse::getPosition(), GameView);
 
-			// Set the cursor to the mouse world location
-			spriteCursor.setPosition(mouseWorldPosition);
-		} // End updating the frame
+		// Set the cursor to the mouse world location
+		spriteCursor.setPosition(mouseWorldPosition);
+	} // End updating the frame
 
-		/* Draw the frame */
-		if (state == State::PLAYING) {
-			window.clear();
+		
+		
+	
+}
+void TheLastPearl::draw()
+{
+	
+	/* Draw the frame */
+	if (state == State::InLevel) {
+		window.clear();
 
-			// Display the mainView in the window and draw everything related to it
-			window.setView(mainView);
+		// Display the mainView in the window and draw everything related to it
+		window.setView(GameView);
 
-			// Draw the background
-			window.draw(spriteBackground);
-			window.draw(spriteCursor);
+		// Draw the background
+		window.draw(spriteBackground);
+		window.draw(spriteCursor);
 
-		}
-
-		if (state == State::PAUSED) {
-
-		}
-
-		if (state == State::MAINMENU) {
-
-		}
-		window.display();
 	}
+
+	if (state == State::PAUSED) {
+
+	}
+
+	if (state == State::MAIN_MENU) {
+
+	}
+
+	window.display();
+
+
+
+
+}
+void TheLastPearl::CheckInputs()
+{
+	/* Handle inputs & events */
+	Event event;
+	while (window.pollEvent(event)) {
+
+	} // End event polling
+
+	// Handle the player quitting
+	if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+		window.close();
+	}
+
+}
+
+
+
+void TheLastPearl::run()
+{
+	// The main game loop
+	//we can add more as we need
+	while (window.isOpen()) {
+
+
+		CheckInputs();
+		update();
+		draw();
+	}
+}
+
+
+// Main
+int main() {
+
+	TheLastPearl Game;
+	Game.run();
+	
+
+
+
+	
 	return 0;
 }
