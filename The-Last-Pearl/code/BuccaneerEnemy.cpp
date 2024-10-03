@@ -1,4 +1,6 @@
 // BuccaneerEnemy.cpp
+// Jakub Nowak | K00285355
+// BuccaneerEnemy class, a type of enemy derived from the base Enemy class
 #include "BuccaneerEnemy.h"
 #include "TextureHolder.h"
 

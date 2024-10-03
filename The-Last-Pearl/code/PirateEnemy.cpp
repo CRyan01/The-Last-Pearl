@@ -1,4 +1,6 @@
 // PirateEnemy.cpp
+// Jakub Nowak | K00285355
+// PirateEnemy class, a type of enemy derived from the base Enemy class
 #include "PirateEnemy.h"
 #include "TextureHolder.h"
 
