@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "TextureHolder.h"
+#include "LevelManager.h"
 using namespace sf;
 using namespace std;
 class TheLastPearl
