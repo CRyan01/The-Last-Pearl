@@ -7,9 +7,9 @@ class LevelManager
 {//this file is for towers placement and background for levels. 
 public :
 	//this sets position of everything for levellike tower map ect.
-	void SetLevel(int levelNumber);
 	LevelManager();
-	
+	void SetLevel(int levelNumber);
+	std::vector<Vector2f> getWaypoints() const;
 	
 	int TowerPosXY[15][15];
     std::ifstream inFile;
@@ -21,5 +21,7 @@ public :
 
 
 private:
+
+	std::vector<Vector2f> waypoints; // Store waypoints for the level
 
 };
