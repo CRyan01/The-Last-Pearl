@@ -8,7 +8,7 @@ class LevelManager
 public :
 	//this sets position of everything for levellike tower map ect.
 	LevelManager();
-	void SetLevel(int levelNumber);
+	//void SetLevel(int levelNumber);
 	std::vector<Vector2f> getWaypoints() const;
 	
 	int TowerPosXY[15][15];

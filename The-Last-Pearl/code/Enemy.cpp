@@ -5,6 +5,7 @@
 #include "TextureHolder.h"
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 using namespace std;
 
@@ -52,6 +53,8 @@ void Enemy::setWaypoints(const std::vector<Vector2f> & waypoints)
 // to waypoint until they reach the end
 void Enemy::update(float elapsedTime, Vector2f targetLocation)
 {
+
+    cout << "Enemy Health: " << m_Health << ", Alive: " << m_Alive << endl;
     if (currentWaypointIndex < waypoints.size())
     {
         // Get the current waypoint
@@ -63,8 +66,8 @@ void Enemy::update(float elapsedTime, Vector2f targetLocation)
         if (m_Position.y < waypoint.y) m_Position.y += m_Speed * elapsedTime;
         if (m_Position.y > waypoint.y) m_Position.y -= m_Speed * elapsedTime;
 
-        // Check if the enemy has reached the current waypoint
-        if (m_Position == waypoint)
+        const float threshold = 1.0f;
+        if (abs(m_Position.x - waypoint.x) < threshold && abs(m_Position.y - waypoint.y) < threshold)
         {
             currentWaypointIndex++;  // Move to the next waypoint
         }

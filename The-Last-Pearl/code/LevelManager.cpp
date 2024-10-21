@@ -1,7 +1,23 @@
 #include "LevelManager.h"
-//gonna start with some definitions
+#include <SFML/Graphics.hpp>
+#include <vector>
 
-void LevelManager::SetLevel(int LevelNumber)
+std::vector<Vector2f> LevelManager::getWaypoints() const {
+	// Vector to store waypoints
+	std::vector<Vector2f> waypoints;
+	// Set waypoints
+	waypoints.push_back(Vector2f(100, 500));
+	waypoints.push_back(Vector2f(150, 500));
+	waypoints.push_back(Vector2f(200, 550));
+	waypoints.push_back(Vector2f(250, 500));
+	waypoints.push_back(Vector2f(300, 550));
+	waypoints.push_back(Vector2f(350, 500));
+	waypoints.push_back(Vector2f(400, 550));
+	waypoints.push_back(Vector2f(450, 500));
+	return waypoints;
+}
+
+/*void LevelManager::SetLevel(int LevelNumber)
 {
 	switch(LevelNumber)
 	{
@@ -25,7 +41,7 @@ void LevelManager::SetLevel(int LevelNumber)
 	
 	
 	}
-}
+}*/
 
 LevelManager::LevelManager()
 {
