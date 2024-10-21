@@ -62,6 +62,9 @@
     <ClInclude Include="code\Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="code\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="code\LevelManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

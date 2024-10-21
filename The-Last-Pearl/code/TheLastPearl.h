@@ -23,6 +23,8 @@ private:
 	// A regular RenderWindow //what people see
 	RenderWindow window;
 
+
+	TextureHolder holder;
 	// The main Views
 	View GameView;
 	View MainMenuview;
@@ -56,5 +58,11 @@ private:
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };
 	State state = State::InLevel;
+	LevelManager Levels;
+
+	//for the levels
+	// Texture for the background and the level tiles
+	Texture m_TextureTiles;
+
 
 };

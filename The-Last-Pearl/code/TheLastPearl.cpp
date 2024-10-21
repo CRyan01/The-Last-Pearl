@@ -37,6 +37,11 @@ TheLastPearl::TheLastPearl()
 	spriteBackground.setTexture(textureBackground);
 	spriteBackground.setPosition(0, 0);
 
+	// Load the texture for the background vertex array
+	m_TextureTiles = TextureHolder::GetTexture(
+		"graphics/tiles_sheet.png");
+	Levels.SetLevel(1);
+
 
 }
 void TheLastPearl::update()
@@ -45,7 +50,7 @@ void TheLastPearl::update()
 
 	/* Update the frame */
 	if (state == State::InLevel) {
-
+		
 		// Update delta time
 		Time dt = clock.restart();
 		// Update total game time
@@ -74,14 +79,15 @@ void TheLastPearl::draw()
 	/* Draw the frame */
 	if (state == State::InLevel) {
 		window.clear();
-
+		
 		// Display the mainView in the window and draw everything related to it
 		window.setView(GameView);
 
 		// Draw the background
 		window.draw(spriteBackground);
+		
+		window.draw(Levels.rVaLevel, &m_TextureTiles);
 		window.draw(spriteCursor);
-
 	}
 
 	if (state == State::PAUSED) {

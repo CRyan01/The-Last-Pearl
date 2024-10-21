@@ -39,32 +39,42 @@ Sprite Enemy::getSprite()
     return m_Sprite;
 }
 
-//
-// Code from zombie to face a target ie. Guards
+void Enemy::setWaypoints(const std::vector<Vector2f> & waypoints)
+{
+    this-> waypoints = waypoints; // store waypoints
+    currentWaypointIndex = 0;  // Start at the first waypoint
+    m_Position = waypoints[currentWaypointIndex];  // Set initial position
+    m_Sprite.setPosition(m_Position);
+}
+
+
+// Update method for all dervied enemy classes, which moves the enemy from waypoint
+// to waypoint until they reach the end
 void Enemy::update(float elapsedTime, Vector2f targetLocation)
 {
-    float targetX = targetLocation.x;
-    float targetY = targetLocation.y;
+    if (currentWaypointIndex < waypoints.size())
+    {
+        // Get the current waypoint
+        Vector2f waypoint = waypoints[currentWaypointIndex];
 
-    if (targetX > m_Position.x)
-    {
-        m_Position.x += m_Speed * elapsedTime;
+        // Move towards the waypoint
+        if (m_Position.x < waypoint.x) m_Position.x += m_Speed * elapsedTime;
+        if (m_Position.x > waypoint.x) m_Position.x -= m_Speed * elapsedTime;
+        if (m_Position.y < waypoint.y) m_Position.y += m_Speed * elapsedTime;
+        if (m_Position.y > waypoint.y) m_Position.y -= m_Speed * elapsedTime;
+
+        // Check if the enemy has reached the current waypoint
+        if (m_Position == waypoint)
+        {
+            currentWaypointIndex++;  // Move to the next waypoint
+        }
     }
-    if (targetY > m_Position.y)
+    else
     {
-        m_Position.y += m_Speed * elapsedTime;
+        //This is where the logic for taking health away form the pearl
+        // will go but for now it will just mark the enemies as dead
+        m_Alive = false; // Mark enemy as dead
     }
-    if (targetX < m_Position.x)
-    {
-        m_Position.x -= m_Speed * elapsedTime;
-    }
-    if (targetY < m_Position.y)
-    {
-        m_Position.y -= m_Speed * elapsedTime;
-    }
-    // if we're going with the idea of using a spawn tower which spawns guards we can make the enemies fight the guards
-    // Move the sprite and rotate towards target
+    // Update sprite position
     m_Sprite.setPosition(m_Position);
-    float angle = (atan2(targetY - m_Position.y, targetX - m_Position.x) * 180) / 3.141;
-    m_Sprite.setRotation(angle);
 }
