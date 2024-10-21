@@ -45,7 +45,7 @@ TheLastPearl::TheLastPearl()
 	// Load the texture for the background vertex array
 	m_TextureTiles = TextureHolder::GetTexture(
 		"graphics/tiles_sheet.png");
-	Levels.SetLevel(2);
+	Levels.SetLevel(1);
 
 
 

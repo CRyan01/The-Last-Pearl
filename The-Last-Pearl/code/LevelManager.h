@@ -20,10 +20,17 @@ public :
 
 	
 
-	
+	int towerIndex = 0;
+	//const int maxTower = 30;
 	void SetLevel(int levelNumber);
 	//std::vector<Vector2f> getWaypoints() const;
-	int TowerPosXY[15][15];
+	Vector2f TowerPos[30];
+
+	
+	
+
+
+	
     std::ifstream inFile;
 	//may be useful for later this allows reading from a file meaning we can just put the tower positions in a file
 

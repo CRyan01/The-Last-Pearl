@@ -67,6 +67,8 @@ void LevelManager::SetLevel(int LevelNumber)
     int ScreenYHeight = VideoMode::getDesktopMode().height;
     Tile_SizeX = (ScreenxWidth / m_LevelSize.x) / 2;
     Tile_SizeY = (ScreenYHeight / m_LevelSize.y);
+    //this is done since the towers will be restarted
+    towerIndex = 0;
 
     //std::cout << "hey " << ScreenxWidth << " / " << m_LevelSize.x << " = " << Tile_SizeX << " \n";
     //::cout << "hey " << ScreenYHeight << " / " << m_LevelSize.y << " = " << Tile_SizeY << " \n";
@@ -78,13 +80,21 @@ void LevelManager::SetLevel(int LevelNumber)
     {
         for (int y = 0; y < m_LevelSize.y; y++)
         {
-            if (arrayLevel[y][x] != 0)
+            if ((arrayLevel[y][x] != 0)||(arrayLevel[y][x]==9))
             {
                 // Position each vertex in the current quad
                 rVaLevel[currentVertex + 0].position = Vector2f(x * Tile_SizeX, y * Tile_SizeY);
                 rVaLevel[currentVertex + 1].position = Vector2f((x * Tile_SizeX) + Tile_SizeX, y * Tile_SizeY);
                 rVaLevel[currentVertex + 2].position = Vector2f((x * Tile_SizeX) + Tile_SizeX, (y * Tile_SizeY) + Tile_SizeY);
                 rVaLevel[currentVertex + 3].position = Vector2f((x * Tile_SizeX), (y * Tile_SizeY) + Tile_SizeY);
+
+                if (arrayLevel[y][x] == 9)
+                {
+                    TowerPos[towerIndex].x = x;
+                    TowerPos[towerIndex].y = y;
+                    arrayLevel[y][x] = 4;
+                    towerIndex++;
+                }
 
                 // Which tile from the sprite sheet should we use
                 //tile size times 1,2,3 this make the tile go down
