@@ -7,12 +7,13 @@
 #include "TheLastPearl.h"
 #include "TextureHolder.h"
 
+
 using namespace sf;
 
 //by John All methods starting off
 TheLastPearl::TheLastPearl()
 {
-
+	// Get Desktop resolution for window size
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
@@ -23,9 +24,12 @@ TheLastPearl::TheLastPearl()
 	float scaleX = resolution.x / defaultResolution.x;
 	float scaleY = resolution.y / defaultResolution.y;
 
+	
+	buccaneerEnemy.setWaypoints(levelManager.getWaypoints()); // Use the waypoints from LevelManager
+	buccaneerEnemy.spawn(100.f, 500.f, 1); // Spawn the enemy at the starting point 
 
-
-	 window.create(VideoMode(resolution.x, resolution.y),"TheLastPearl", Style::Fullscreen);
+	// Create Game window
+	window.create(VideoMode(resolution.x, resolution.y),"TheLastPearl", Style::Fullscreen);
 	// Hide the mouse pointer and replace it with crosshair
 	window.setMouseCursorVisible(false);
 	textureCursor.loadFromFile("graphics/cursor.png");
@@ -41,6 +45,8 @@ TheLastPearl::TheLastPearl()
 	m_TextureTiles = TextureHolder::GetTexture(
 		"graphics/tiles_sheet.png");
 	Levels.SetLevel(1);
+
+
 
 
 }
@@ -60,6 +66,9 @@ void TheLastPearl::update()
 
 		// Store the cursors position on the screen
 		mouseScreenPosition = Mouse::getPosition();
+
+		//Update Buccaneer Enemy
+		buccaneerEnemy.update(dtAsSeconds, Vector2f(0, 0));
 
 		// Convert mouse position to world coordinates of mainView
 		mouseWorldPosition = window.mapPixelToCoords(
@@ -88,6 +97,19 @@ void TheLastPearl::draw()
 		
 		window.draw(Levels.rVaLevel, &m_TextureTiles);
 		window.draw(spriteCursor);
+<<<<<<< HEAD
+=======
+
+		// Draw the BuccaneerEnemy
+		if (buccaneerEnemy.isAlive()) {
+			window.draw(buccaneerEnemy.getSprite());
+			cout << "BuccaneerEnemy is alive and drawn." << endl; // Debug output
+		}
+		else {
+			cout << "BuccaneerEnemy is not alive." << endl; // Debug output
+		}
+
+>>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a
 	}
 
 	if (state == State::PAUSED) {

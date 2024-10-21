@@ -1,8 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <memory>
 #include "TextureHolder.h"
 #include "LevelManager.h"
+#include "BuccaneerEnemy.h"
 using namespace sf;
 using namespace std;
 class TheLastPearl
@@ -41,6 +43,10 @@ private:
 	Vector2i mouseScreenPosition;
 
 	Vector2f resolution;
+
+	LevelManager levelManager;
+	BuccaneerEnemy buccaneerEnemy;
+	TextureHolder textureHolder;
 
 	//textures
 

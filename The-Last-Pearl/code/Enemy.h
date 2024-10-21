@@ -26,7 +26,7 @@ protected:
 
 public:
     // Virtual function to handle enemy's spawning (to be implemented by derived classes)
-    virtual void spawn(float startX, float startY, int seed);
+    virtual void spawn(float startX, float startY, int seed) = 0;
 
     // Handle enemy taking damage (Virtual function so it can be overridden by specific enemy types)
     virtual bool hit(int damage);

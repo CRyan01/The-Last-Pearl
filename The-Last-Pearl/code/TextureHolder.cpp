@@ -39,6 +39,9 @@ sf::Texture& TextureHolder::GetTexture(std::string const& filename)
 		auto& texture = m[filename];
 		// Load the texture from file in the usual way
 		texture.loadFromFile(filename);
+		if (!texture.loadFromFile(filename)) {
+			throw std::runtime_error("Failed to load texture: " + filename); // Debug output
+		}
 
 		// Return the texture to the calling code
 		return texture;

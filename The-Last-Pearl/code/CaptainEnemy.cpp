@@ -1,6 +1,8 @@
 // CaptainEnemy.cpp
 // Jakub Nowak | K00285355
 // CaptainEnemy class, a type of enemy derived from the base Enemy class
+// Spawns a Captain Enemy at specified coordinates it initial variables
+
 #include "CaptainEnemy.h"
 #include "TextureHolder.h"
 
@@ -19,3 +21,8 @@ bool CaptainEnemy::hit(int damage)
     damage /= 2;  // Takes reduced damage
     return Enemy::hit(damage);
 }
+
+/*void CaptainEnemy::update(float elapsedTime, Vector2f targetLocation)
+{
+    Enemy::update(elapsedTime, targetLocation); // Call the base class update
+}*/
