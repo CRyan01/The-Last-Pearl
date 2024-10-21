@@ -7,7 +7,7 @@
 
 using namespace sf;
 using namespace std;
-
+//BY Jacub
 std::vector<Vector2f> LevelManager::getWaypoints() const {
     // Vector to store waypoints
     std::vector<Vector2f> waypoints;
@@ -23,6 +23,8 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
     return waypoints;
 }
 
+
+//By John
 void LevelManager::SetLevel(int LevelNumber)
 {
     // Load the level only if not already loaded / Preventing lag when trying to load the file over and over again
