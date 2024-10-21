@@ -53,34 +53,22 @@ void Enemy::setWaypoints(const std::vector<Vector2f> & waypoints)
 // to waypoint until they reach the end
 void Enemy::update(float elapsedTime, Vector2f targetLocation)
 {
-<<<<<<< HEAD
+
+    //cout << "Enemy Health: " << m_Health << ", Alive: " << m_Alive << endl;
+
     if (currentWaypointIndex < waypoints.size())
     {
         // Get the current waypoint
         Vector2f waypoint = waypoints[currentWaypointIndex];
 
-=======
-
-    cout << "Enemy Health: " << m_Health << ", Alive: " << m_Alive << endl;
-    if (currentWaypointIndex < waypoints.size())
-    {
-        // Get the current waypoint
-        Vector2f waypoint = waypoints[currentWaypointIndex];
-
->>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a
         // Move towards the waypoint
         if (m_Position.x < waypoint.x) m_Position.x += m_Speed * elapsedTime;
         if (m_Position.x > waypoint.x) m_Position.x -= m_Speed * elapsedTime;
         if (m_Position.y < waypoint.y) m_Position.y += m_Speed * elapsedTime;
         if (m_Position.y > waypoint.y) m_Position.y -= m_Speed * elapsedTime;
 
-<<<<<<< HEAD
-        // Check if the enemy has reached the current waypoint
-        if (m_Position == waypoint)
-=======
         const float threshold = 1.0f;
         if (abs(m_Position.x - waypoint.x) < threshold && abs(m_Position.y - waypoint.y) < threshold)
->>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a
         {
             currentWaypointIndex++;  // Move to the next waypoint
         }

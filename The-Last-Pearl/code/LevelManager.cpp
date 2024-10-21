@@ -17,7 +17,7 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
 	return waypoints;
 }
 
-/*void LevelManager::SetLevel(int LevelNumber)
+void LevelManager::SetLevel(int LevelNumber)
 {
 	
 	m_LevelSize.x = 0;
@@ -32,10 +32,9 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
 	// Count the number of rows in the file
 	while (getline(inputFile, s))
 	{
-<<<<<<< HEAD
 		++m_LevelSize.y;
 	}
-	std :: cout << m_LevelSize.y<<"\n";
+	//std :: cout << m_LevelSize.y<<"\n";
 	// Store the length of the rows
 	m_LevelSize.x = s.length();
 
@@ -59,13 +58,15 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
 		for (int x = 0; x < row.length(); x++) {
 
 			const char val = row[x];
-			std:cout << val;
+			//std:cout << val;
 			arrayLevel[y][x] = atoi(&val);
 
 		}
-		std::cout << "\n";
+		//std::cout << "\n";
 		y++;
 	}
+	
+
 
 	// close the file
 	inputFile.close();
@@ -85,8 +86,8 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
 	Tile_SizeX = (ScreenxWidth / m_LevelSize.x)/2;
 	Tile_SizeY = (ScreenYHeight/m_LevelSize.y );
 
-	std::cout << "hey " << ScreenxWidth << " / " << m_LevelSize.x << " = " << Tile_SizeX << " \n";
-	std::cout << "hey " << ScreenYHeight << " / " << m_LevelSize.y << " = " << Tile_SizeY << " \n";
+	//std::cout << "hey " << ScreenxWidth << " / " << m_LevelSize.x << " = " << Tile_SizeX << " \n";
+	//::cout << "hey " << ScreenYHeight << " / " << m_LevelSize.y << " = " << Tile_SizeY << " \n";
 	// Start at the beginning of the vertex array
 	int currentVertex = 0;
 
@@ -119,11 +120,11 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
 				//}
 				int verticalOffset = arrayLevel[y][x] * PixelSize;
 			
-				std::cout << "hey thingy " << arrayLevel[y][x]<<" && \n ";
-				cout << " 1 x= " << x * Tile_SizeX << " y= " << y * Tile_SizeY;
-				cout << "\n 2 x= " << (x * Tile_SizeX) + Tile_SizeX << " y= " << y * Tile_SizeY;
-				cout << " \n3 x= " << (x * Tile_SizeX) + Tile_SizeX << " y= " << (y * Tile_SizeY) + Tile_SizeY;
-				cout << " \n4 x= " << (x * Tile_SizeX) << " y= " << (y * Tile_SizeY) + Tile_SizeY;
+				//std::cout << "hey thingy " << arrayLevel[y][x]<<" && \n ";
+				//cout << " 1 x= " << x * Tile_SizeX << " y= " << y * Tile_SizeY;
+				//cout << "\n 2 x= " << (x * Tile_SizeX) + Tile_SizeX << " y= " << y * Tile_SizeY;
+				//cout << " \n3 x= " << (x * Tile_SizeX) + Tile_SizeX << " y= " << (y * Tile_SizeY) + Tile_SizeY;
+				// << " \n4 x= " << (x * Tile_SizeX) << " y= " << (y * Tile_SizeY) + Tile_SizeY;
 				rVaLevel[currentVertex + 0].texCoords =
 					Vector2f(0, 0 + verticalOffset);
 
@@ -144,34 +145,3 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
 
 
 }
-=======
-	case 1:
-		// Define waypoints for the first level
-		waypoints =
-		{
-			{100.f, 500.f}, // Start point
-			{200.f, 500.f}, // Move right
-			{300.f, 400.f}, // Move up
-			{400.f, 400.f}, // Move right
-			{500.f, 500.f}, // Move down
-			{600.f, 500.f}, // Move right
-			{700.f, 400.f}, // Move up
-			{800.f, 400.f}, // Move right to the end point
-		};
-		//background sprite tower positions starting money
-		break;
-	case 2:
-		break;
-	
-	
-	}
-}*/
-
-LevelManager::LevelManager()
-{
-	//maybe levels classes like level 1=   Level FameLevel=Level(1);
-
-
-
-}
->>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a

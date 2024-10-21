@@ -44,9 +44,9 @@ private:
 
 	Vector2f resolution;
 
-	LevelManager levelManager;
+	
 	BuccaneerEnemy buccaneerEnemy;
-	TextureHolder textureHolder;
+	
 
 	//textures
 

@@ -11,20 +11,18 @@ using namespace std;
 class LevelManager
 {//this file is for towers placement and background for levels. 
 public :
-<<<<<<< HEAD
+	//this sets position of everything for levellike tower map ect.
+	
+
+	//void SetLevel(int levelNumber);
+	std::vector<Vector2f> getWaypoints() const;
+	
 
 	
 
 	
 	void SetLevel(int levelNumber);
 	//std::vector<Vector2f> getWaypoints() const;
-=======
-	//this sets position of everything for levellike tower map ect.
-	LevelManager();
-	//void SetLevel(int levelNumber);
-	std::vector<Vector2f> getWaypoints() const;
->>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a
-	
 	int TowerPosXY[15][15];
     std::ifstream inFile;
 	//may be useful for later this allows reading from a file meaning we can just put the tower positions in a file
@@ -48,20 +46,18 @@ public :
 
 private:
 
+
 	std::vector<Vector2f> waypoints; // Store waypoints for the level
-<<<<<<< HEAD
 	Vector2i m_LevelSize;
 	Vector2f m_StartPosition;
 	float m_TimeModifier = 1;
 	float m_BaseTimeLimit = 0;
 	int m_CurrentLevel = 0;
 	const int NUM_LEVELS = 4;
-};
-
-
-
-
-=======
 
 };
->>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a
+
+
+
+
+

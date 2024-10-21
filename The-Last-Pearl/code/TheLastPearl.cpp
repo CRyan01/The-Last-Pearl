@@ -13,6 +13,7 @@ using namespace sf;
 //by John All methods starting off
 TheLastPearl::TheLastPearl()
 {
+
 	// Get Desktop resolution for window size
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
@@ -25,7 +26,7 @@ TheLastPearl::TheLastPearl()
 	float scaleY = resolution.y / defaultResolution.y;
 
 	
-	buccaneerEnemy.setWaypoints(levelManager.getWaypoints()); // Use the waypoints from LevelManager
+	buccaneerEnemy.setWaypoints(Levels.getWaypoints()); // Use the waypoints from LevelManager
 	buccaneerEnemy.spawn(100.f, 500.f, 1); // Spawn the enemy at the starting point 
 
 	// Create Game window
@@ -96,20 +97,8 @@ void TheLastPearl::draw()
 		window.draw(spriteBackground);
 		
 		window.draw(Levels.rVaLevel, &m_TextureTiles);
+		window.draw(buccaneerEnemy.getSprite());
 		window.draw(spriteCursor);
-<<<<<<< HEAD
-=======
-
-		// Draw the BuccaneerEnemy
-		if (buccaneerEnemy.isAlive()) {
-			window.draw(buccaneerEnemy.getSprite());
-			cout << "BuccaneerEnemy is alive and drawn." << endl; // Debug output
-		}
-		else {
-			cout << "BuccaneerEnemy is not alive." << endl; // Debug output
-		}
-
->>>>>>> 5991f763582995dad5ce3a2ca3eb1a976887861a
 	}
 
 	if (state == State::PAUSED) {
