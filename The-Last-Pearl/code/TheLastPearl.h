@@ -19,7 +19,7 @@ public:
 	//updating wha is happennning
 	void Initialize();
 	//may or may not be used more for just level start up extra
-	void CheckInputs();
+	void checkInputs();
 private:
 
 	// A regular RenderWindow //what people see
@@ -60,10 +60,13 @@ private:
 	//Sprites
 	Sprite MainMenuSprite;
 
-
+	// Text
+	Font font;
+	Text pausedText;
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };
-	State state = State::InLevel;
+	//State state = State::InLevel;
+	State state;
 	LevelManager Levels;
 
 	//for the levels
