@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\BuccaneerEnemy.cpp" />
+    <ClCompile Include="code\CannonTower.cpp" />
     <ClCompile Include="code\CaptainEnemy.cpp" />
     <ClCompile Include="code\Enemy.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />
+    <ClCompile Include="code\MusketTower.cpp" />
     <ClCompile Include="code\PirateEnemy.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
     <ClCompile Include="code\TheLastPearl.cpp" />
@@ -30,10 +32,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h" />
+    <ClInclude Include="code\CannonTower.h" />
     <ClInclude Include="code\CaptainEnemy.h" />
     <ClInclude Include="code\Enemy.h" />
     <ClInclude Include="code\Level.h" />
     <ClInclude Include="code\LevelManager.h" />
+    <ClInclude Include="code\MusketTower.h" />
     <ClInclude Include="code\PirateEnemy.h" />
     <ClInclude Include="code\TextureHolder.h" />
     <ClInclude Include="code\TheLastPearl.h" />

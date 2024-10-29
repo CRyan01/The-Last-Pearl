@@ -6,6 +6,8 @@
 #include <SFML/Audio.hpp>
 #include "TheLastPearl.h"
 #include "TextureHolder.h"
+#include "MusketTower.h"
+#include "CannonTower.h"
 
 
 using namespace sf;
@@ -56,9 +58,19 @@ TheLastPearl::TheLastPearl()
 
 	// Load texture for the selected tower - CR
 	spriteSelectedTower.setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
-	spriteSelectedTower.setScale(0.8f, 0.8f);
+	//spriteSelectedTower.setScale(0.8f, 0.8f);
 	spriteSelectedTower.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
 	spriteSelectedTower.setPosition(-50, -60);
+
+	spriteMusketTowerIcon.setTexture(TextureHolder::GetTexture("graphics/musketTower.png"));
+	//spriteMusketTowerIcon.setScale(0.4f, 0.4f);
+	spriteMusketTowerIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
+	spriteMusketTowerIcon.setPosition(70, 1030);
+
+	spriteCannonTowerIcon.setTexture(TextureHolder::GetTexture("graphics/cannonTower.png"));
+	//spriteCannonTowerIcon.setScale(0.4f, 0.4f);
+	spriteCannonTowerIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
+	spriteCannonTowerIcon.setPosition(210, 1030);
 
 	// Create Game window
 	window.create(VideoMode(resolution.x, resolution.y),"TheLastPearl", Style::Fullscreen);
@@ -164,6 +176,10 @@ void TheLastPearl::draw()
 		// Draw the selected tower sprite
 		window.draw(spriteSelectedTower);
 
+		// Draw the tower icons
+		window.draw(spriteMusketTowerIcon);
+		window.draw(spriteCannonTowerIcon);
+
 		// Draw the cursor
 		window.draw(spriteCursor);
 	}
@@ -201,8 +217,8 @@ void TheLastPearl::checkInputs()
 		}
 		// When left mouse button is pressed - CR
 		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
-			std::cout << "Mouse Position (World): " << mouseWorldPosition.x << ", " << mouseWorldPosition.y << std::endl;
 			// Check if a selection box was clicked
+			bool boxSelected = false;
 			for (int i = 0; i < towerSelectionBoxSprites.size(); ++i) {
 				if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
 					// Change the color of the unselected boxes
@@ -211,8 +227,49 @@ void TheLastPearl::checkInputs()
 					}
 					// Change the color of the selected box to green
 					towerSelectionBoxSprites[i].setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
+
+					// Update the currently selected towers position
+					selectedTowerPosition = towerPositions[i];
+					boxSelected = true;
+					break; // break when found
 				}
 			}
+
+			// Reset the selected position if no box was clicked
+			if (!boxSelected) {
+				selectedTowerPosition = Vector2f(-1, -1);
+			}
+
+			// Check if a tower icon was clicked - CR
+			if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+				// Spawn the musket tower
+				selectedTowerType = TowerType::MusketTower;
+			} else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+				// Spawn the cannon tower
+				selectedTowerType = TowerType::CannonTower;
+			}
+
+			// Spawn the selected tower type at the selected position
+			if (selectedTowerType != TowerType::None && selectedTowerPosition.x >= 0) {
+				Tower* tower = nullptr;
+
+				// Spawn the correct type of tower
+				//if (selectedTowerType == TowerType::MusketTower) {
+				//	tower = new MusketTower(selectedTowerPosition.x, selectedTowerPosition.y);
+				//} else if (selectedTowerType == TowerType::CannonTower) {
+				//	tower = new CannonTower(selectedTowerPosition.x, selectedTowerPosition.y);
+				//}
+
+				// Add the newly created tower to the list of towers
+				//if (tower) {
+				//	towers.push_back(std::move(tower)); // Move the unique_ptr to the vector
+				//}
+
+				// Reset selected type & position after spawning
+				//selectedTowerType = TowerType::None;
+				//selectedTowerPosition = Vector2f(-1, -1);
+			}
+
 		}
 		// Handle the player quitting - CR
 		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
