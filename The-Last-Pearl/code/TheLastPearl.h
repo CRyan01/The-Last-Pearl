@@ -29,7 +29,7 @@ private:
 	TextureHolder holder;
 	// The main Views
 	View GameView;
-	View MainMenuview;
+	View MainMenuView;
 
 	// Create a cock for timing
 	Clock clock;

@@ -5,6 +5,7 @@
 
 #include "CaptainEnemy.h"
 #include "TextureHolder.h"
+#include <iostream>
 
 void CaptainEnemy::spawn(float startX, float startY, int seed) 
 {
@@ -13,6 +14,8 @@ void CaptainEnemy::spawn(float startX, float startY, int seed)
     m_Health = 100;
     m_Position.x = startX;
     m_Position.y = startY;
+    m_Size = m_Sprite.getTexture()->getSize();
+    m_Sprite.setOrigin(m_Size.x / 2.0f, m_Size.y / 2.0f);
     m_Sprite.setPosition(m_Position);
 }
 
