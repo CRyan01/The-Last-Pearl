@@ -1,7 +1,6 @@
 // Libraries
 #include <sstream>
 #include <fstream>
-#include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -14,16 +13,52 @@ using namespace sf;
 //by John All methods starting off
 TheLastPearl::TheLastPearl()
 {
-
-	// Get Desktop resolution for window size
-	//resolution.x = VideoMode::getDesktopMode().width;
-	//resolution.y = VideoMode::getDesktopMode().height;
-
+	// Set the default resolution to scale to - CR
 	resolution.x = 1920;
 	resolution.y = 1080;
 	
 	buccaneerEnemy.setWaypoints(Levels.getWaypoints()); // Use the waypoints from LevelManager
-	buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point 
+	buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
+
+	// Preset positions for towers - CR
+	towerPositions.push_back(Vector2f(200, 60));
+	towerPositions.push_back(Vector2f(600, 60));
+	towerPositions.push_back(Vector2f(1000, 60));
+	towerPositions.push_back(Vector2f(1400, 60));
+	towerPositions.push_back(Vector2f(1800, 60));
+
+	towerPositions.push_back(Vector2f(400, 330));
+	towerPositions.push_back(Vector2f(800, 330));
+	towerPositions.push_back(Vector2f(1200, 330));
+	towerPositions.push_back(Vector2f(1600, 330));
+
+	towerPositions.push_back(Vector2f(400, 600));
+	towerPositions.push_back(Vector2f(800, 600));
+	towerPositions.push_back(Vector2f(1200, 600));
+	towerPositions.push_back(Vector2f(1600, 600));
+
+	towerPositions.push_back(Vector2f(200, 870));
+	towerPositions.push_back(Vector2f(600, 870));
+	towerPositions.push_back(Vector2f(1000, 870));
+	towerPositions.push_back(Vector2f(1400, 870));
+	towerPositions.push_back(Vector2f(1800, 870));
+
+	// Initialize unselected tower boxes - CR
+	for (const auto& position : towerPositions) {
+		// Create the sprite and load the selection box texture, center its point of origin, set its position
+		Sprite selectionBox(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
+		selectionBox.setScale(0.8f, 0.8f);
+		selectionBox.setOrigin(selectionBox.getTexture()->getSize().x / 2.0f, selectionBox.getTexture()->getSize().y / 2.0f);
+		selectionBox.setPosition(position);
+		selectionBox.setColor(Color(255, 255, 255, 128));
+		towerSelectionBoxSprites.push_back(selectionBox);
+	}
+
+	// Load texture for the selected tower - CR
+	spriteSelectedTower.setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
+	spriteSelectedTower.setScale(0.8f, 0.8f);
+	spriteSelectedTower.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
+	spriteSelectedTower.setPosition(-50, -60);
 
 	// Create Game window
 	window.create(VideoMode(resolution.x, resolution.y),"TheLastPearl", Style::Fullscreen);
@@ -120,6 +155,16 @@ void TheLastPearl::draw()
 		
 		//window.draw(Levels.rVaLevel, &m_TextureTiles);
 		window.draw(buccaneerEnemy.getSprite());
+
+		// Draw selection boxes for tower positions
+		for (const auto& box : towerSelectionBoxSprites) {
+			window.draw(box);
+		}
+
+		// Draw the selected tower sprite
+		window.draw(spriteSelectedTower);
+
+		// Draw the cursor
 		window.draw(spriteCursor);
 	}
 
@@ -135,9 +180,6 @@ void TheLastPearl::draw()
 
 	window.display();
 
-
-
-
 }
 void TheLastPearl::checkInputs()
 {
@@ -145,6 +187,7 @@ void TheLastPearl::checkInputs()
 	Event event;
 	while (window.pollEvent(event)) {
 		if (event.type == Event::KeyPressed) {
+
 			// Toggle pause when P is pressed - CR
 			if (event.key.code == Keyboard::P) {
 				// Switch between PAUSED and InLevel states
@@ -153,6 +196,21 @@ void TheLastPearl::checkInputs()
 					clock.restart(); // Reset delta time to avoid frame jump
 				} else if (state == State::InLevel) {
 					state = State::PAUSED;
+				}
+			}
+		}
+		// When left mouse button is pressed - CR
+		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+			std::cout << "Mouse Position (World): " << mouseWorldPosition.x << ", " << mouseWorldPosition.y << std::endl;
+			// Check if a selection box was clicked
+			for (int i = 0; i < towerSelectionBoxSprites.size(); ++i) {
+				if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
+					// Change the color of the unselected boxes
+					for (auto& selectionBox : towerSelectionBoxSprites) {
+						selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
+					}
+					// Change the color of the selected box to green
+					towerSelectionBoxSprites[i].setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
 				}
 			}
 		}
