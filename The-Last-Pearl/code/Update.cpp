@@ -27,7 +27,14 @@ void TheLastPearl::update()
 		mouseScreenPosition = Mouse::getPosition();
 
 		//Update Buccaneer Enemy
-		buccaneerEnemy.update(dtAsSeconds, Vector2f(0, 0));
+		buccaneerEnemy.update(dtAsSeconds);
+
+		if (buccaneerEnemy.ReachedPos())
+		{
+			buccaneerEnemy.SetNewTarget(MainPath.nextPos(buccaneerEnemy.currentPos));
+			buccaneerEnemy.currentPos++;
+		}
+
 
 		// Convert mouse position to world coordinates of mainView
 		mouseWorldPosition = window.mapPixelToCoords(

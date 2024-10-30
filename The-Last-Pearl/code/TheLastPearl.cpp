@@ -12,7 +12,7 @@ TheLastPearl::TheLastPearl()
 	resolution.x = 1920;
 	resolution.y = 1080;
 	
-	buccaneerEnemy.setWaypoints(Levels.getWaypoints()); // Use the waypoints from LevelManager
+	
 	buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
 
 	// Preset positions for towers - CR
@@ -114,6 +114,9 @@ TheLastPearl::TheLastPearl()
 	pausedText.setOrigin(pausedText.getLocalBounds().width / 2, pausedText.getLocalBounds().height / 2);
 	pausedText.setPosition(resolution.x / 2, resolution.y / 2);
 
+
+	//pathing
+	MainPath.SetLevel(1);
 	// Start the game in a paused state - CR
 	state = State::PAUSED;
 }

@@ -9,6 +9,7 @@
 #include "CannonTower.h"
 #include "BuccaneerEnemy.h"
 #include "LevelManager.h"
+#include "Paths.h"
 
 using namespace sf;
 using namespace std;
@@ -104,4 +105,8 @@ private:
 	TowerType selectedTowerType = TowerType::None;
 	// Store the tower objects
 	vector<Tower> towers;
+
+	Paths MainPath;
+
+	
 };
