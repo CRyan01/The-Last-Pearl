@@ -10,17 +10,16 @@
 #include "CannonTower.h"
 
 
+
 using namespace sf;
 
 //by John All methods starting off
 TheLastPearl::TheLastPearl()
 {
+
 	// Set the default resolution to scale to - CR
 	resolution.x = 1920;
 	resolution.y = 1080;
-	
-	buccaneerEnemy.setWaypoints(Levels.getWaypoints()); // Use the waypoints from LevelManager
-	buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
 
 	// Preset positions for towers - CR
 	towerPositions.push_back(Vector2f(200, 60));
@@ -140,9 +139,6 @@ void TheLastPearl::update()
 		// Store the cursors position on the screen
 		mouseScreenPosition = Mouse::getPosition();
 
-		//Update Buccaneer Enemy
-		buccaneerEnemy.update(dtAsSeconds, Vector2f(0, 0));
-
 		// Convert mouse position to world coordinates of mainView
 		mouseWorldPosition = window.mapPixelToCoords(
 			Mouse::getPosition(), GameView);
@@ -164,9 +160,6 @@ void TheLastPearl::draw()
 
 		// Draw the background
 		window.draw(spriteBackground);
-		
-		//window.draw(Levels.rVaLevel, &m_TextureTiles);
-		window.draw(buccaneerEnemy.getSprite());
 
 		// Draw selection boxes for tower positions
 		for (const auto& box : towerSelectionBoxSprites) {

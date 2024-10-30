@@ -29,19 +29,22 @@
     <ClCompile Include="code\TextureHolder.cpp" />
     <ClCompile Include="code\TheLastPearl.cpp" />
     <ClCompile Include="code\Tower.cpp" />
+    <ClCompile Include="code\WaveManager.cpp" />
+    <ClCompile Include="code\Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h" />
     <ClInclude Include="code\CannonTower.h" />
     <ClInclude Include="code\CaptainEnemy.h" />
     <ClInclude Include="code\Enemy.h" />
-    <ClInclude Include="code\Level.h" />
     <ClInclude Include="code\LevelManager.h" />
     <ClInclude Include="code\MusketTower.h" />
     <ClInclude Include="code\PirateEnemy.h" />
     <ClInclude Include="code\TextureHolder.h" />
     <ClInclude Include="code\TheLastPearl.h" />
     <ClInclude Include="code\Tower.h" />
+    <ClInclude Include="code\WaveManager.h" />
+    <ClInclude Include="code\Wave.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

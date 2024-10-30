@@ -1,7 +1,7 @@
 // BuccaneerEnemy.cpp
 // Jakub Nowak | K00285355
 // BuccaneerEnemy class, a type of enemy derived from the base Enemy class
-// Spawns a Buccaneer Enemy at specified coordinates it initial variables
+// Spawns a Buccaneer Enemy at specified coordinates with initial variables
 #include "BuccaneerEnemy.h"
 #include "TextureHolder.h"
 

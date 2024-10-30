@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-
+#include "WaveManager.h"
 using namespace sf;
 using namespace std;
 //john by
@@ -13,8 +13,14 @@ class LevelManager
 public :
 	//this sets position of everything for levellike tower map ect.
 	
-
-	//void SetLevel(int levelNumber);
+	LevelManager() : waveManager(1) 
+	{  
+		SetLevel(1); // Default to level 1 
+	}
+	LevelManager(int levelNumber) : waveManager(levelNumber) 
+	{
+		SetLevel(levelNumber);
+	}
 	std::vector<Vector2f> getWaypoints() const;
 	
 
@@ -26,17 +32,13 @@ public :
 	//std::vector<Vector2f> getWaypoints() const;
 	Vector2f TowerPos[30];
 
-	
-	
-
-
+	WaveManager waveManager; // Manager for waves within the level
 	
     std::ifstream inFile;
 	//may be useful for later this allows reading from a file meaning we can just put the tower positions in a file
 
 	//im gonna start including some enmeies and towers since im pretty sure we want this file to control them but until im sure im just gonna do basic level stuff
-	
-	
+
 	//this is the map
 	VertexArray rVaLevel;
 
@@ -44,12 +46,6 @@ public :
 	 int Tile_SizeY;
 	 const int PixelSize = 50;
 	const int VERTS_IN_QUAD = 4;
-
-	
-
-
-	
-
 
 private:
 

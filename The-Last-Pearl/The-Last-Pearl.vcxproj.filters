@@ -45,6 +45,12 @@
     <ClCompile Include="code\MusketTower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\WaveManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Wave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h">
@@ -68,9 +74,6 @@
     <ClInclude Include="code\Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="code\Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="code\LevelManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\MusketTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\WaveManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Wave.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
