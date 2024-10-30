@@ -23,8 +23,10 @@ protected:
     const int OFFSET = 70;        // Minimum speed multiplier (70%)
 
     int currentWaypointIndex; // Track the current waypoint
-    std::vector<Vector2f> waypoints; // Store waypoints for the enemy
 
+    Vector2f CurrentTarget;
+
+    bool HasReachedPos;
 public:
     // Virtual function to handle enemy's spawning (to be implemented by derived classes)
     virtual void spawn(float startX, float startY, int seed) = 0;
@@ -44,6 +46,11 @@ public:
     // Update the enemy's movement based on target's location
     virtual void update(float elapsedTime, Vector2f targetLocation);
 
-    // Set waypoints for the enemy to follow
-    void setWaypoints(const std::vector<Vector2f>& waypoints);
+ 
+    //has it reached where it needs ot go
+    bool ReachedPos();
+    //setting its new palce to go
+    void SetNewTarget(Vector2f newPos);
+
+    int currentPos=0;
 };

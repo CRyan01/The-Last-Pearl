@@ -7,7 +7,7 @@
 
 using namespace sf;
 using namespace std;
-//BY Jacub
+//BY Jakub
 std::vector<Vector2f> LevelManager::getWaypoints() const {
     // Vector to store waypoints
     std::vector<Vector2f> waypoints;
@@ -32,6 +32,10 @@ void LevelManager::SetLevel(int LevelNumber)
     m_CurrentLevel = LevelNumber;
     m_LevelSize.x = 0;
     m_LevelSize.y = 0;
+
+
+    // Initialize WaveManager with the current level number
+    waveManager = WaveManager(LevelNumber);
 
     // Create the level filename based on the level number
     string levelToLoad = "Levels/Level" + std::to_string(LevelNumber) + ".txt";

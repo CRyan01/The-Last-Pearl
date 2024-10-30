@@ -1,14 +1,14 @@
 // BuccaneerEnemy.cpp
 // Jakub Nowak | K00285355
 // BuccaneerEnemy class, a type of enemy derived from the base Enemy class
-// Spawns a Buccaneer Enemy at specified coordinates it initial variables
+// Spawns a Buccaneer Enemy at specified coordinates with initial variables
 #include "BuccaneerEnemy.h"
 #include "TextureHolder.h"
 
 void BuccaneerEnemy::spawn(float startX, float startY, int seed)
 {
     m_Sprite.setTexture(TextureHolder::GetTexture("graphics/buccaneer.png")); 
-    m_Speed = 40;
+    m_Speed = 500;
     m_Health = 20;
     m_Position.x = startX;
     m_Position.y = startY;
@@ -18,7 +18,7 @@ void BuccaneerEnemy::spawn(float startX, float startY, int seed)
     m_Alive = true;
 }
 // Update the BuccaneerEnemy using the base class method
-void BuccaneerEnemy::update(float elapsedTime, Vector2f targetLocation)
+void BuccaneerEnemy::update(float elapsedTime)
 {
-    Enemy::update(elapsedTime, targetLocation); 
+    Enemy::update(elapsedTime, CurrentTarget); 
 }

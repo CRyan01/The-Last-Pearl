@@ -4,13 +4,25 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-
+#include "WaveManager.h"
 using namespace sf;
 using namespace std;
 //john by
 class LevelManager
 {//this file is for towers placement and background for levels. 
 public :
+
+	//this sets position of everything for levellike tower map ect.
+	
+	LevelManager() : waveManager(1) 
+	{  
+		SetLevel(1); // Default to level 1 
+	}
+	LevelManager(int levelNumber) : waveManager(levelNumber) 
+	{
+		SetLevel(levelNumber);
+	}
+
 	//void SetLevel(int levelNumber);
 	std::vector<Vector2f> getWaypoints() const;
 
@@ -21,6 +33,22 @@ public :
 
 	//these are all the positions for all object in the game
 	Vector2f TowerPos[30];
+
+	WaveManager waveManager; // Manager for waves within the level
+	
+    std::ifstream inFile;
+	//may be useful for later this allows reading from a file meaning we can just put the tower positions in a file
+
+	//im gonna start including some enmeies and towers since im pretty sure we want this file to control them but until im sure im just gonna do basic level stuff
+
+	//this is the map
+	VertexArray rVaLevel;
+
+	int Tile_SizeX;
+	 int Tile_SizeY;
+	 const int PixelSize = 50;
+	const int VERTS_IN_QUAD = 4;
+
 	Vector2f EnemySpawnPiont;
 	Vector2f JewelSpawnPiont;
  
