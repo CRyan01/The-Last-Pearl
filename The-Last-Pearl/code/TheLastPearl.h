@@ -33,7 +33,6 @@ public:
 	void Level1();
 
 	void MainMenu();
-	void checkInputs();
 	// A method to spawn a tower at a specified location
 	void spawnTower(float x, float y, TowerType type);
 private:
@@ -63,9 +62,7 @@ private:
 	
 	BuccaneerEnemy buccaneerEnemy;
 	
-	//textures
-
-	Sprite spriteCursor;
+	
 
 	// Textures
 	Texture textureCursor;

@@ -10,6 +10,7 @@
 #include "CannonTower.h"
 
 
+
 using namespace sf;
 
 //by John All methods starting off
@@ -128,9 +129,10 @@ TheLastPearl::TheLastPearl()
 void TheLastPearl::update()
 {
 	/* Update the frame */
-	if (state == State::InLevel) {
+	if (state == State::InLevel)
+	{
 		
-	//handle all update movemetn collisions, projectiles
+		//handle all update movemetn collisions, projectiles
 		// Update delta time
 		Time dt = clock.restart();
 
@@ -139,33 +141,30 @@ void TheLastPearl::update()
 
 		// Get a decimal fraction of 1 from the delta time
 		float dtAsSeconds = dt.asSeconds();
-	Time dt = clock.restart();
-	// Update total game time
-	gameTimeTotal += dt;
-	// Get a decimal fraction of 1 from the delta time
-	float dtAsSeconds = dt.asSeconds();
+	
+	
 
-	// Store the cursors position on the screen
-	mouseScreenPosition = Mouse::getPosition();
+		// Store the cursors position on the screen
+		mouseScreenPosition = Mouse::getPosition();
 
-	//Update Buccaneer Enemy
-	buccaneerEnemy.update(dtAsSeconds, Vector2f(0, 0));
+		//Update Buccaneer Enemy
+		buccaneerEnemy.update(dtAsSeconds, Vector2f(0, 0));
 
-	// Convert mouse position to world coordinates of mainView
-	mouseWorldPosition = window.mapPixelToCoords(
+		// Convert mouse position to world coordinates of mainView
+		mouseWorldPosition = window.mapPixelToCoords(
 		Mouse::getPosition(), GameView);
 
 		// Set the cursor to the mouse world location
 		spriteCursor.setPosition(mouseWorldPosition);
 	}		
-} // End updating the frame
+
 	// Set the cursor to the mouse world location
 	spriteCursor.setPosition(mouseWorldPosition);
 	/* Update the frame */
-	if (state == State::InLevel) {
-		Level1();
+	//if (state == State::InLevel) {
+	//	Level1();
 	
-	} // End updating the frame
+	//} // End updating the frame
 
 	if (state == State::MAIN_MENU)
 	{
@@ -228,11 +227,12 @@ void TheLastPearl::draw()
 	window.display();
 
 }
-void TheLastPearl::checkInputs()
+void TheLastPearl::CheckInputs()
 {
 	/* Handle events */
 	Event event;
-	while (window.pollEvent(event)) {
+	while (window.pollEvent(event))
+	{
 		if (event.type == Event::KeyPressed) {
 
 			// Toggle pause when P is pressed - CR
@@ -241,13 +241,15 @@ void TheLastPearl::checkInputs()
 				if (state == State::PAUSED) {
 					state = State::InLevel;
 					clock.restart(); // Reset delta time to avoid frame jump
-				} else if (state == State::InLevel) {
+				}
+				else if (state == State::InLevel) {
 					state = State::PAUSED;
 				}
 			}
 		}
 		// When left mouse button is pressed - CR
-		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
+		if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) 
+		{
 			// Check if a selection box was clicked
 			bool boxSelected = false;
 			for (int i = 0; i < towerSelectionBoxSprites.size(); ++i) {
@@ -275,7 +277,8 @@ void TheLastPearl::checkInputs()
 			if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
 				// Spawn the musket tower
 				selectedTowerType = TowerType::MusketTower;
-			} else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+			}
+			else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
 				// Spawn the cannon tower
 				selectedTowerType = TowerType::CannonTower;
 			}
@@ -300,28 +303,28 @@ void TheLastPearl::checkInputs()
 				//selectedTowerType = TowerType::None;
 				//selectedTowerPosition = Vector2f(-1, -1);
 			}
-		switch (state)
-		{
-		case State::MAIN_MENU:
-
-			if (Mouse::XButton1)
+			switch (state)
 			{
-				state=State::InLevel;
+			case State::MAIN_MENU:
+
+				if (Mouse::XButton1)
+				{
+					state = State::InLevel;
+				}
+
+
+
+			}
+
+			// Handle the player quitting - CR
+			if (Keyboard::isKeyPressed(Keyboard::Escape))
+			{
+				window.close();
 			}
 
 
-
 		}
-
-	} // End event polling
-
-		}
-		// Handle the player quitting - CR
-		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-			window.close();
-		}
-	} // End event polling
-
+	}
 }
 
 
@@ -332,7 +335,7 @@ void TheLastPearl::run()
 	//we can add more as we need
 	while (window.isOpen()) {
 
-		checkInputs();
+		CheckInputs();
 		update();
 		draw();
 	}
