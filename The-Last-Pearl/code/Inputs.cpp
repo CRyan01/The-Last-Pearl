@@ -1,89 +1,86 @@
-
 #include "TheLastPearl.h"
 
+void TheLastPearl::CheckInputs() {
+    /* Handle events */
+    Event event;
+    // Boolean to check if a plot is selected
+    bool isPlotSelected = (selectedTowerPosition.x >= 0);
 
-void TheLastPearl::CheckInputs()
-{
-	/* Handle events */
-	Event event;
-	while (window.pollEvent(event))
-	{
-		//mouse stuff
-		// When left mouse button is pressed - CR
-		if (event.type == Event::MouseButtonPressed)
-		{
-			
-			if (event.mouseButton.button == Mouse::Left)
-			{
-				// Check if a selection box was clicked
-				bool boxSelected = false;
-				for (int i = 0; i < towerSelectionBoxSprites.size(); ++i)
-				{
-					if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
-						// Change the color of the unselected boxes
-						for (auto& selectionBox : towerSelectionBoxSprites)
-						{
+    while (window.pollEvent(event)) {
+        // Check if lmb was pressed
+        if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
 
-							selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
-						}
-						// Change the color of the selected box to green
-						towerSelectionBoxSprites[i].setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
+            // Boolean to indicate if a tower build icon was clicked
+            bool iconClicked = false;
 
-						// Update the currently selected towers position
-						selectedTowerPosition = towerPositions[i];
-						boxSelected = true;
-						break; // break when found
-					}
-				}
+            // Check if a tower build icon was clicked if a valid plot is selected
+            if (isPlotSelected) {
+                if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+                    selectedTowerType = Tower::TowerType::MusketTower;
+                    iconClicked = true;
+                } else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+                    selectedTowerType = Tower::TowerType::CannonTower;
+                    iconClicked = true;
+                }
+            }
 
-				// Reset the selected position if no box was clicked
-				if (!boxSelected)
-				{
-					selectedTowerPosition = Vector2f(-1, -1);
-				}
-			}
-		}
+            // If a valid tower build icon is clicked
+            if (iconClicked && selectedTowerType != Tower::TowerType::None) {
+                // Create and place the tower
+                createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
 
+                // Mark the plot as occupied
+                occupiedTowerPositions.push_back(selectedTowerPosition);
 
-		// Check if a tower icon was clicked - CR
-		if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
-			// Spawn the musket tower
-			selectedTowerType = Tower::TowerType::MusketTower;
-		} else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
-			// Spawn the cannon tower
-			selectedTowerType = Tower::TowerType::CannonTower;
-		}
+                // Reset selection variables
+                selectedTowerType = Tower::TowerType::None;
+                selectedTowerPosition = Vector2f(-1, -1);
+                isPlotSelected = false;
+                continue; // Skip plot selection since an icon was clicked
+            }
 
-		// Spawn the selected tower type at the selected position
-		if (selectedTowerType != Tower::TowerType::None && selectedTowerPosition.x >= 0) {
-			createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
+            // If no icon was clicked check if a plot was selected
+            bool boxSelected = false;
+            for (int i = 0; i < towerSelectionBoxSprites.size(); ++i) {
+                if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
+                    // Reset all selection boxes to unselected texture
+                    for (auto& selectionBox : towerSelectionBoxSprites) {
+                        selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
+                    }
 
-			// Reset selected type & position after spawning
-			selectedTowerType = Tower::TowerType::None;
-			selectedTowerPosition = Vector2f(-1, -1);
-		}
+                    // Set the selected box to the highlighted texture
+                    towerSelectionBoxSprites[i].setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
 
-		if (event.type == Event::KeyPressed) {
+                    // Only set the position the plot is unoccupied
+                    if (!isPlotOccupied(towerPositions[i])) {
+                        selectedTowerPosition = towerPositions[i];
+                        isPlotSelected = true;
+                    } else {
+                        selectedTowerPosition = Vector2f(-1, -1);
+                        isPlotSelected = false;
+                    }
 
-			//exiting the game
-			if (Keyboard::isKeyPressed(Keyboard::Escape))
-			{
-				window.close();
-			}
+                    boxSelected = true;
+                    break;
+                }
+            }
 
+            // Reset selection if no plot box was clicked
+            if (!boxSelected) {
+                selectedTowerPosition = Vector2f(-1, -1);
+                isPlotSelected = false;
+            }
+        }
 
-			// Toggle pause when P is pressed - CR
-			if (event.key.code == Keyboard::P) {
-				// Switch between PAUSED and InLevel states
-				if (state == State::PAUSED) {
-					state = State::InLevel;
-					clock.restart(); // Reset delta time to avoid frame jump
-				}
-				else if (state == State::InLevel) 
-				{
-					state = State::PAUSED;
-				}
-			}
-		}
-	}
+        // Handle key events for exiting and pausing
+        if (event.type == Event::KeyPressed) {
+            if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+                window.close();
+            }
+            if (event.key.code == Keyboard::P) {
+                state = (state == State::PAUSED) ? State::InLevel : State::PAUSED;
+                if (state == State::InLevel) clock.restart(); // Reset delta time to avoid frame jump
+            }
+        }
+    }
 }

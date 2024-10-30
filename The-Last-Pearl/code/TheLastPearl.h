@@ -18,13 +18,6 @@ class TheLastPearl
 {
 	//cant really add much without enemies and what not but will stry m best
 public:
-	// The types of towers which can be selected - CR
-	enum TowerType {
-		None,
-		MusketTower,
-		CannonTower
-	};
-
 	TheLastPearl();
 	void run();
 	void draw();
@@ -35,11 +28,16 @@ public:
 	//may or may not be used more for just level start up extra
 	void CheckInputs();
 	void Level1();
-
 	void MainMenu();
 
 	// A method to spawn a tower at a specified location
 	Tower createTower(Tower::TowerType type, float x, float y);
+
+	// Returns true if a tower is already built in a plot
+	bool isPlotOccupied(Vector2f position);
+
+	// A function to detect collisions
+	void detectCollisions();
 private:
 
 	// A regular RenderWindow //what people see
@@ -106,6 +104,8 @@ private:
 	Tower::TowerType selectedTowerType = Tower::TowerType::None;
 	// Store the tower objects
 	vector<Tower> towers;
+	// Store tower positions which are occupied
+	vector<Vector2f> occupiedTowerPositions;
 
 	Paths MainPath;
 
