@@ -7,6 +7,8 @@
 #include "TextureHolder.h"
 #include "MusketTower.h"
 #include "CannonTower.h"
+#include "BuccaneerEnemy.h"
+#include "LevelManager.h"
 
 using namespace sf;
 using namespace std;
