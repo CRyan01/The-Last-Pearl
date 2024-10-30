@@ -44,24 +44,12 @@ public :
 	//this is the map
 	VertexArray rVaLevel;
 
-	int Tile_SizeX;
-	 int Tile_SizeY;
-	 const int PixelSize = 50;
-	const int VERTS_IN_QUAD = 4;
-
 	Vector2f EnemySpawnPiont;
 	Vector2f JewelSpawnPiont;
  
-	//may be useful for later this allows reading from a file meaning we can just put the tower positions in a file
-
-	//im gonna start including some enmeies and towers since im pretty sure we want this file to control them but until im sure im just gonna do basic level stuff
-	
-	//this is the map
-	VertexArray rVaLevel;
 
 private:
 
-	std::ifstream inFile;
 	std::vector<Vector2f> waypoints; // Store waypoints for the level enemy movemetn
 	Vector2i m_LevelSize;
 	float m_TimeModifier = 1;
