@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\CreateTower.cpp" />
+    <ClCompile Include="code\DetectCollisions.cpp" />
     <ClCompile Include="code\Draw.cpp" />
     <ClCompile Include="code\MainMenu.cpp" />
     <ClCompile Include="code\BuccaneerEnemy.cpp" />

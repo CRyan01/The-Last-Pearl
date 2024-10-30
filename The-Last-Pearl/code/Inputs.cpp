@@ -15,9 +15,8 @@ void TheLastPearl::CheckInputs()
 			
 			if (event.mouseButton.button == Mouse::Left)
 			{
-				bool boxSelected = false;
 				// Check if a selection box was clicked
-
+				bool boxSelected = false;
 				for (int i = 0; i < towerSelectionBoxSprites.size(); ++i)
 				{
 					if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
@@ -45,8 +44,24 @@ void TheLastPearl::CheckInputs()
 			}
 		}
 
-		
-		
+
+		// Check if a tower icon was clicked - CR
+		if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+			// Spawn the musket tower
+			selectedTowerType = Tower::TowerType::MusketTower;
+		} else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
+			// Spawn the cannon tower
+			selectedTowerType = Tower::TowerType::CannonTower;
+		}
+
+		// Spawn the selected tower type at the selected position
+		if (selectedTowerType != Tower::TowerType::None && selectedTowerPosition.x >= 0) {
+			createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
+
+			// Reset selected type & position after spawning
+			selectedTowerType = Tower::TowerType::None;
+			selectedTowerPosition = Vector2f(-1, -1);
+		}
 
 		if (event.type == Event::KeyPressed) {
 
@@ -68,39 +83,6 @@ void TheLastPearl::CheckInputs()
 				{
 					state = State::PAUSED;
 				}
-			}
-
-
-
-			// Check if a tower icon was clicked - CR
-			if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
-				// Spawn the musket tower
-				selectedTowerType = Tower::TowerType::MusketTower;
-			}
-			else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
-					// Spawn the cannon tower
-					selectedTowerType = Tower::TowerType::CannonTower;
-				}
-
-			// Spawn the selected tower type at the selected position
-			if (selectedTowerType != Tower::TowerType::None && selectedTowerPosition.x >= 0) {
-					//Tower tower;
-
-					// Spawn the correct type of tower
-					//if (selectedTowerType == TowerType::MusketTower) {
-					//	tower = createTower(Tower::TowerType::MusketTower, selectedTowerPosition.x, selectedTowerPosition.y);
-					//} else if (selectedTowerType == TowerType::CannonTower) {
-					//	tower = createTower(Tower::TowerType::CannonTower, selectedTowerPosition.x, selectedTowerPosition.y);
-					//}
-
-					// Add the newly created tower to the list of towers
-					//towers.push_back(tower);
-
-					createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
-
-					// Reset selected type & position after spawning
-					selectedTowerType = Tower::TowerType::None;
-					selectedTowerPosition = Vector2f(-1, -1);
 			}
 		}
 	}
