@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\Draw.cpp" />
     <ClCompile Include="code\MainMenu.cpp" />
     <ClCompile Include="code\BuccaneerEnemy.cpp" />
     <ClCompile Include="code\CannonTower.cpp" />
@@ -28,8 +29,10 @@
     <ClCompile Include="code\MusketTower.cpp" />
     <ClCompile Include="code\PirateEnemy.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
+    <ClCompile Include="code\Inputs.cpp" />
     <ClCompile Include="code\TheLastPearl.cpp" />
     <ClCompile Include="code\Tower.cpp" />
+    <ClCompile Include="code\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h" />

@@ -1,11 +1,12 @@
-#pragma once
-#include <SFML/Graphics.hpp>
+#include <sstream>
+#include <fstream>
 #include <iostream>
-#include <memory>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include "TextureHolder.h"
-#include "LevelManager.h"
-#include "BuccaneerEnemy.h"
+#include "MusketTower.h"
+#include "CannonTower.h"
 
 using namespace sf;
 using namespace std;
