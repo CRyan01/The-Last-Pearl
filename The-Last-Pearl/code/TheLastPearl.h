@@ -20,6 +20,9 @@ public:
 	void Initialize();
 	//may or may not be used more for just level start up extra
 	void CheckInputs();
+	void Level1();
+
+	void MainMenu();
 private:
 
 	// A regular RenderWindow //what people see
@@ -47,7 +50,6 @@ private:
 	
 	BuccaneerEnemy buccaneerEnemy;
 	
-
 	//textures
 
 	Sprite spriteCursor;

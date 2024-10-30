@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\MainMenu.cpp" />
     <ClCompile Include="code\BuccaneerEnemy.cpp" />
     <ClCompile Include="code\CaptainEnemy.cpp" />
     <ClCompile Include="code\Enemy.cpp" />
