@@ -9,7 +9,7 @@ Tower::Tower()
     m_FireRate = 0;
     m_TimeSinceLastShot = 0;
     m_Active = false;
-    m_Sprite.setTexture(TextureHolder::GetTexture("graphics/tower.png"));
+    m_Sprite.setTexture(TextureHolder::GetTexture("graphics/crossbowTower.png"));
     m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
 }
 

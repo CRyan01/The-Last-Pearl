@@ -1,5 +1,5 @@
 #include "TheLastPearl.h"
-
+// By Conor Ryan
 void TheLastPearl::CheckInputs() {
     /* Handle events */
     Event event;
@@ -31,11 +31,17 @@ void TheLastPearl::CheckInputs() {
 
                 // Mark the plot as occupied
                 occupiedTowerPositions.push_back(selectedTowerPosition);
-
+                
                 // Reset selection variables
                 selectedTowerType = Tower::TowerType::None;
                 selectedTowerPosition = Vector2f(-1, -1);
                 isPlotSelected = false;
+
+                // Reset selection box colors
+                for (auto& selectionBox : towerSelectionBoxSprites) {
+                    selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
+                }
+
                 continue; // Skip plot selection since an icon was clicked
             }
 
@@ -67,6 +73,10 @@ void TheLastPearl::CheckInputs() {
 
             // Reset selection if no plot box was clicked
             if (!boxSelected) {
+                // Reset selection box color
+                for (auto& selectionBox : towerSelectionBoxSprites) {
+                    selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
+                }
                 selectedTowerPosition = Vector2f(-1, -1);
                 isPlotSelected = false;
             }

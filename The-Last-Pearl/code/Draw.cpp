@@ -32,8 +32,12 @@ void TheLastPearl::draw()
 		}
 
 		// Draw the tower icons
+		window.draw(spriteBuildMenuBackground);
 		window.draw(spriteMusketTowerIcon);
 		window.draw(spriteCannonTowerIcon);
+		window.draw(spriteMortarTowerIcon);
+		window.draw(spriteCrossbowTowerIcon);
+		window.draw(spriteGoldIcon);
 
 		// Draw the cursor
 		window.draw(spriteCursor);

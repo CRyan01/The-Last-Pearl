@@ -78,6 +78,10 @@ private:
 	Sprite spriteBackground;
 	Sprite spriteMusketTowerIcon;
 	Sprite spriteCannonTowerIcon;
+	Sprite spriteMortarTowerIcon;
+	Sprite spriteCrossbowTowerIcon;
+	Sprite spriteGoldIcon;
+	Sprite spriteBuildMenuBackground;
 
 	// Text
 	Font font;
@@ -99,7 +103,7 @@ private:
 	// Sprite to display on the selected tower - CR
 	Sprite spriteSelectedTower;
 	// Position of the currently selected box - CR
-	Vector2f selectedTowerPosition;
+	Vector2f selectedTowerPosition = Vector2f(-1, -1);
 	// No tower selected by default
 	Tower::TowerType selectedTowerType = Tower::TowerType::None;
 	// Store the tower objects

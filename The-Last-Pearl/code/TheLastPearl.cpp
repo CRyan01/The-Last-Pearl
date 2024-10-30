@@ -52,19 +52,31 @@ TheLastPearl::TheLastPearl()
 
 	// Load texture for the selected tower - CR
 	spriteSelectedTower.setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
-	//spriteSelectedTower.setScale(0.8f, 0.8f);
 	spriteSelectedTower.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
 	spriteSelectedTower.setPosition(-50, -60);
 
 	spriteMusketTowerIcon.setTexture(TextureHolder::GetTexture("graphics/musketTower.png"));
-	//spriteMusketTowerIcon.setScale(0.4f, 0.4f);
 	spriteMusketTowerIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
-	spriteMusketTowerIcon.setPosition(70, 1030);
+	spriteMusketTowerIcon.setPosition(100, 1060);
 
 	spriteCannonTowerIcon.setTexture(TextureHolder::GetTexture("graphics/cannonTower.png"));
-	//spriteCannonTowerIcon.setScale(0.4f, 0.4f);
 	spriteCannonTowerIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
-	spriteCannonTowerIcon.setPosition(210, 1030);
+	spriteCannonTowerIcon.setPosition(200, 1060);
+
+	spriteMortarTowerIcon.setTexture(TextureHolder::GetTexture("graphics/mortarTower.png"));
+	spriteMortarTowerIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
+	spriteMortarTowerIcon.setPosition(300, 1060);
+
+	spriteCrossbowTowerIcon.setTexture(TextureHolder::GetTexture("graphics/crossbowTower.png"));
+	spriteCrossbowTowerIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
+	spriteCrossbowTowerIcon.setPosition(400, 1060);
+
+	spriteGoldIcon.setTexture(TextureHolder::GetTexture("graphics/gold.png"));
+	spriteGoldIcon.setOrigin(spriteSelectedTower.getTexture()->getSize().x / 2.0f, spriteSelectedTower.getTexture()->getSize().y / 2.0f);
+	spriteGoldIcon.setPosition(1800, 1080);
+
+	spriteBuildMenuBackground.setTexture(TextureHolder::GetTexture("graphics/buildMenuBackground.png"));
+	spriteBuildMenuBackground.setPosition(0, 970);
 
 	// Create Game window
 	window.create(VideoMode(resolution.x, resolution.y),"TheLastPearl", Style::Fullscreen);
