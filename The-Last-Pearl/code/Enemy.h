@@ -13,6 +13,7 @@ protected:
     // Enemy attributes
     Vector2f m_Position;
     Sprite m_Sprite;
+    Vector2u m_Size;
     float m_Speed;
     int m_Health;
     bool m_Alive = true;

@@ -2,15 +2,25 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
+#include <vector>
 #include "TextureHolder.h"
 #include "LevelManager.h"
 #include "BuccaneerEnemy.h"
+
 using namespace sf;
 using namespace std;
+
 class TheLastPearl
 {
 	//cant really add much without enemies and what not but will stry m best
 public:
+	// The types of towers which can be selected - CR
+	enum TowerType {
+		None,
+		MusketTower,
+		CannonTower
+	};
+
 	TheLastPearl();
 	void run();
 	void draw();
@@ -23,16 +33,18 @@ public:
 	void Level1();
 
 	void MainMenu();
+	void checkInputs();
+	// A method to spawn a tower at a specified location
+	void spawnTower(float x, float y, TowerType type);
 private:
 
 	// A regular RenderWindow //what people see
 	RenderWindow window;
-
-
 	TextureHolder holder;
+
 	// The main Views
 	View GameView;
-	View MainMenuview;
+	View MainMenuView;
 
 	// Create a cock for timing
 	Clock clock;
@@ -42,6 +54,7 @@ private:
 
 	// Where is the mouse in relation to world coordinates
 	Vector2f mouseWorldPosition;
+
 	// Where is the mouse in relation to screen coordinates
 	Vector2i mouseScreenPosition;
 
@@ -53,24 +66,42 @@ private:
 	//textures
 
 	Sprite spriteCursor;
+
+	// Textures
 	Texture textureCursor;
 	Texture MainMenuTexture;
-
-	Sprite spriteBackground;
 	Texture textureBackground;
 
-	//Sprites
+	// Sprites
 	Sprite MainMenuSprite;
+	Sprite spriteCursor;
+	Sprite spriteBackground;
+	Sprite spriteMusketTowerIcon;
+	Sprite spriteCannonTowerIcon;
 
-
+	// Text
+	Font font;
+	Text pausedText;
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };
-	State state = State::InLevel;
-	LevelManager Levels;
+	State state;
 
 	//for the levels
+	LevelManager Levels;
+
 	// Texture for the background and the level tiles
 	Texture m_TextureTiles;
-
-
+	
+	// Store the towers predefined positions - CR
+	vector<Vector2f> towerPositions;
+	// Store selection box sprite for tower positions - CR
+	vector<Sprite> towerSelectionBoxSprites;
+	// Sprite to display on the selected tower - CR
+	Sprite spriteSelectedTower;
+	// Position of the currently selected box - CR
+	Vector2f selectedTowerPosition;
+	// No tower selected by default
+	TowerType selectedTowerType = TowerType::None;
+	// Store the tower objects
+	vector<Tower> towers;
 };

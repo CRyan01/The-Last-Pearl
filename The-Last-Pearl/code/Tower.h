@@ -1,54 +1,52 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <string>
 
 using namespace sf;
 
+// By Conor Ryan
 class Tower {
-private:
+public:
+    enum class TowerType {
+        MusketTower,
+        CannonTower
+    };
+
+protected:
     // Tower attributes
-    const float BASIC_TOWER_DAMAGE = 10;
-    const float BASIC_TOWER_RANGE = 100;
-    const float BASIC_TOWER_FIRE_RATE = 1.0f;
-
-    // Position of the tower
-    Vector2f m_Position;
-
-    // Sprite for the tower
-    Sprite m_Sprite;
-
-    // Damage, range, and fire rate of the tower
     float m_Damage;
     float m_Range;
     float m_FireRate;
-
-    // Timer for tracking shooting
     float m_TimeSinceLastShot;
-
-    // Is the tower active?
     bool m_Active;
 
-public:
-    // Constructor
-    Tower();
+    // Position of the tower
+    Vector2f m_Position;
+    // The towers sprite
+    Sprite m_Sprite;
 
-    // Spawn a new tower
-    void spawn(float startX, float startY);
+public:
+    // Parameterized constructor for the tower
+    Tower(float damage, float range, float fireRate, const std::string& textureFile);
+
+    // Initialize the tower with position
+    void initialize(float startX, float startY);
 
     // Check if the tower can shoot
     bool canShoot();
 
-    // Handle when the tower shoots
-    void shoot();
+    // Virtual shoot method - to be defined in subclasses
+    virtual void shoot();
 
-    // Update the tower each frame
+    // Update the tower
     void update(float elapsedTime);
 
-    // Get the tower's sprite to draw
-    Sprite getSprite();
+    // Returns the towers sprite
+    Sprite getSprite() const;
 
-    // Get the tower's position
-    FloatRect getPosition();
+    // Returns the towers position
+    FloatRect getPosition() const;
 
-    // Check if the tower is active
-    bool isActive();
+    // Returns true if the tower is active
+    bool isActive() const;
 };

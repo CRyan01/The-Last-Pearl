@@ -1,16 +1,18 @@
 #include "Tower.h"
 #include "TextureHolder.h"
 
-Tower::Tower()
-    : m_Damage(BASIC_TOWER_DAMAGE), m_Range(BASIC_TOWER_RANGE),
-    m_FireRate(BASIC_TOWER_FIRE_RATE), m_TimeSinceLastShot(0),
-    m_Active(true) {}
+Tower::Tower(float damage, float range, float fireRate, const std::string& textureFile) {
+    m_Damage = damage;
+    m_Range = range;
+    m_FireRate = fireRate;
+    m_TimeSinceLastShot = 0;
+    m_Active = true;
+    m_Sprite.setTexture(TextureHolder::GetTexture(textureFile));
+    m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
+}
 
-void Tower::spawn(float startX, float startY) {
-    m_Sprite = Sprite(TextureHolder::GetTexture("graphics/tower.png"));
-    m_Position.x = startX;
-    m_Position.y = startY;
-    m_Sprite.setOrigin(25, 25);
+void Tower::initialize(float startX, float startY) {
+    m_Position = { startX, startY };
     m_Sprite.setPosition(m_Position);
 }
 
@@ -19,26 +21,23 @@ bool Tower::canShoot() {
 }
 
 void Tower::shoot() {
-    
     if (canShoot()) {
-        // Shooting logic
+        m_TimeSinceLastShot = 0;
     }
 }
 
 void Tower::update(float elapsedTime) {
     m_TimeSinceLastShot += elapsedTime;
-
-    // Targeting logic
 }
 
-Sprite Tower::getSprite() {
+Sprite Tower::getSprite() const {
     return m_Sprite;
 }
 
-FloatRect Tower::getPosition() {
+FloatRect Tower::getPosition() const {
     return m_Sprite.getGlobalBounds();
 }
 
-bool Tower::isActive() {
+bool Tower::isActive() const {
     return m_Active;
 }

@@ -39,6 +39,12 @@
     <ClCompile Include="code\LevelManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\CannonTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MusketTower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="code\MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,6 +75,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\LevelManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\CannonTower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\MusketTower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
