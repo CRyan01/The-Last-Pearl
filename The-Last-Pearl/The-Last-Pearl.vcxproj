@@ -19,14 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\CreateTower.cpp" />
     <ClCompile Include="code\Draw.cpp" />
     <ClCompile Include="code\MainMenu.cpp" />
     <ClCompile Include="code\BuccaneerEnemy.cpp" />
-    <ClCompile Include="code\CannonTower.cpp" />
     <ClCompile Include="code\CaptainEnemy.cpp" />
     <ClCompile Include="code\Enemy.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />
-    <ClCompile Include="code\MusketTower.cpp" />
     <ClCompile Include="code\Paths.cpp" />
     <ClCompile Include="code\PirateEnemy.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
@@ -37,11 +36,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h" />
-    <ClInclude Include="code\CannonTower.h" />
     <ClInclude Include="code\CaptainEnemy.h" />
     <ClInclude Include="code\Enemy.h" />
     <ClInclude Include="code\LevelManager.h" />
-    <ClInclude Include="code\MusketTower.h" />
     <ClInclude Include="code\Paths.h" />
     <ClInclude Include="code\PirateEnemy.h" />
     <ClInclude Include="code\TextureHolder.h" />

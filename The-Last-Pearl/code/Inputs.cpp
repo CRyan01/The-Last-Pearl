@@ -75,43 +75,33 @@ void TheLastPearl::CheckInputs()
 			// Check if a tower icon was clicked - CR
 			if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
 				// Spawn the musket tower
-				selectedTowerType = TowerType::MusketTower;
+				selectedTowerType = Tower::TowerType::MusketTower;
 			}
 			else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
 					// Spawn the cannon tower
-					selectedTowerType = TowerType::CannonTower;
+					selectedTowerType = Tower::TowerType::CannonTower;
 				}
 
 			// Spawn the selected tower type at the selected position
-			if (selectedTowerType != TowerType::None && selectedTowerPosition.x >= 0) {
-					Tower* tower = nullptr;
+			if (selectedTowerType != Tower::TowerType::None && selectedTowerPosition.x >= 0) {
+					//Tower tower;
 
 					// Spawn the correct type of tower
 					//if (selectedTowerType == TowerType::MusketTower) {
-					//	tower = new MusketTower(selectedTowerPosition.x, selectedTowerPosition.y);
+					//	tower = createTower(Tower::TowerType::MusketTower, selectedTowerPosition.x, selectedTowerPosition.y);
 					//} else if (selectedTowerType == TowerType::CannonTower) {
-					//	tower = new CannonTower(selectedTowerPosition.x, selectedTowerPosition.y);
+					//	tower = createTower(Tower::TowerType::CannonTower, selectedTowerPosition.x, selectedTowerPosition.y);
 					//}
 
 					// Add the newly created tower to the list of towers
-					//if (tower) {
-					//	towers.push_back(std::move(tower)); // Move the unique_ptr to the vector
-					//}
+					//towers.push_back(tower);
+
+					createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
 
 					// Reset selected type & position after spawning
-					//selectedTowerType = TowerType::None;
-					//selectedTowerPosition = Vector2f(-1, -1);
-				}
+					selectedTowerType = Tower::TowerType::None;
+					selectedTowerPosition = Vector2f(-1, -1);
+			}
 		}
-		
-			
-
-			
-
-
-		
 	}
 }
-
-
-

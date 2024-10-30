@@ -36,8 +36,9 @@ public:
 	void Level1();
 
 	void MainMenu();
+
 	// A method to spawn a tower at a specified location
-	void spawnTower(float x, float y, TowerType type);
+	Tower createTower(Tower::TowerType type, float x, float y);
 private:
 
 	// A regular RenderWindow //what people see
@@ -101,7 +102,7 @@ private:
 	// Position of the currently selected box - CR
 	Vector2f selectedTowerPosition;
 	// No tower selected by default
-	TowerType selectedTowerType = TowerType::None;
+	Tower::TowerType selectedTowerType = Tower::TowerType::None;
 	// Store the tower objects
 	vector<Tower> towers;
 };

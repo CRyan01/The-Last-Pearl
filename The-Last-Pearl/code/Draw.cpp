@@ -26,6 +26,11 @@ void TheLastPearl::draw()
 		// Draw the selected tower sprite
 		window.draw(spriteSelectedTower);
 
+		// Draw each tower
+		for (const Tower& tower : towers) {
+			window.draw(tower.getSprite());
+		}
+
 		// Draw the tower icons
 		window.draw(spriteMusketTowerIcon);
 		window.draw(spriteCannonTowerIcon);

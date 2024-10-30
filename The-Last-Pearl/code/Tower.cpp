@@ -1,7 +1,20 @@
 #include "Tower.h"
 #include "TextureHolder.h"
 
-Tower::Tower(float damage, float range, float fireRate, const std::string& textureFile) {
+Tower::Tower()
+{
+    m_Type = TowerType::None;
+    m_Damage = 0;
+    m_Range = 0;
+    m_FireRate = 0;
+    m_TimeSinceLastShot = 0;
+    m_Active = false;
+    m_Sprite.setTexture(TextureHolder::GetTexture("graphics/tower.png"));
+    m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
+}
+
+Tower::Tower(TowerType type, float damage, float range, float fireRate, const std::string& textureFile) {
+    m_Type = type;
     m_Damage = damage;
     m_Range = range;
     m_FireRate = fireRate;

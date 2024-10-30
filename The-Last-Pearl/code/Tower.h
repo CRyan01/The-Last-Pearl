@@ -8,26 +8,27 @@ using namespace sf;
 class Tower {
 public:
     enum class TowerType {
+        None,
         MusketTower,
         CannonTower
     };
 
-protected:
+private:
     // Tower attributes
+    TowerType m_Type;
     float m_Damage;
     float m_Range;
     float m_FireRate;
     float m_TimeSinceLastShot;
     bool m_Active;
-
-    // Position of the tower
     Vector2f m_Position;
-    // The towers sprite
     Sprite m_Sprite;
 
 public:
+    Tower();
+
     // Parameterized constructor for the tower
-    Tower(float damage, float range, float fireRate, const std::string& textureFile);
+    Tower(TowerType type, float damage, float range, float fireRate, const std::string& textureFile);
 
     // Initialize the tower with position
     void initialize(float startX, float startY);
