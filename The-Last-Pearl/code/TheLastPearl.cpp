@@ -1,13 +1,6 @@
 // Libraries
-#include <sstream>
-#include <fstream>
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include "TheLastPearl.h"
-#include "TextureHolder.h"
-#include "MusketTower.h"
-#include "CannonTower.h"
+
 
 
 
@@ -20,6 +13,8 @@ TheLastPearl::TheLastPearl()
 	// Set the default resolution to scale to - CR
 	resolution.x = 1920;
 	resolution.y = 1080;
+	
+	buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
 
 	// Preset positions for towers - CR
 	towerPositions.push_back(Vector2f(200, 60));
@@ -103,6 +98,8 @@ TheLastPearl::TheLastPearl()
 	// Load the texture for the background vertex array
 	m_TextureTiles = TextureHolder::GetTexture(
 		"graphics/tiles_sheet.png");
+	Levels.SetLevel(1);
+	state = State::MAIN_MENU;
 
 	// Set the level to level 1
 	//Levels.SetLevel(1);
@@ -118,6 +115,9 @@ TheLastPearl::TheLastPearl()
 	pausedText.setOrigin(pausedText.getLocalBounds().width / 2, pausedText.getLocalBounds().height / 2);
 	pausedText.setPosition(resolution.x / 2, resolution.y / 2);
 
+
+	//pathing
+	MainPath.SetLevel(1);
 	// Start the game in a paused state - CR
 	state = State::PAUSED;
 }
@@ -272,15 +272,13 @@ void TheLastPearl::checkInputs()
 
 }
 
-
-
 void TheLastPearl::run()
 {
 	// The main game loop
 	//we can add more as we need
 	while (window.isOpen()) {
 
-		checkInputs();
+		CheckInputs();
 		update();
 		draw();
 	}

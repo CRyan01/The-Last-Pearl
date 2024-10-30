@@ -1,11 +1,15 @@
-#pragma once
-#include <SFML/Graphics.hpp>
+#include <sstream>
+#include <fstream>
 #include <iostream>
-#include <memory>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include "TextureHolder.h"
-#include "LevelManager.h"
+#include "MusketTower.h"
+#include "CannonTower.h"
 #include "BuccaneerEnemy.h"
+#include "LevelManager.h"
+#include "Paths.h"
 
 using namespace sf;
 using namespace std;
@@ -29,7 +33,10 @@ public:
 	//updating wha is happennning
 	void Initialize();
 	//may or may not be used more for just level start up extra
-	void checkInputs();
+	void CheckInputs();
+	void Level1();
+
+	void MainMenu();
 	// A method to spawn a tower at a specified location
 	void spawnTower(float x, float y, TowerType type);
 private:
@@ -58,6 +65,7 @@ private:
 
 	
 	BuccaneerEnemy buccaneerEnemy;
+	
 	
 
 	// Textures
@@ -97,4 +105,8 @@ private:
 	TowerType selectedTowerType = TowerType::None;
 	// Store the tower objects
 	vector<Tower> towers;
+
+	Paths MainPath;
+
+	
 };

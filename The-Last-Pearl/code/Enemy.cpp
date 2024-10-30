@@ -40,45 +40,43 @@ Sprite Enemy::getSprite()
     return m_Sprite;
 }
 
-void Enemy::setWaypoints(const std::vector<Vector2f> & waypoints)
-{
-    this-> waypoints = waypoints; // store waypoints
-    currentWaypointIndex = 0;  // Start at the first waypoint
-    m_Position = waypoints[currentWaypointIndex];  // Set initial position
-    m_Sprite.setPosition(m_Position);
-}
 
 
-// Update method for all dervied enemy classes, which moves the enemy from waypoint
-// to waypoint until they reach the end
+
+//this is important for movement enemy will now move to the set Position
 void Enemy::update(float elapsedTime, Vector2f targetLocation)
 {
 
     //cout << "Enemy Health: " << m_Health << ", Alive: " << m_Alive << endl;
 
-    if (currentWaypointIndex < waypoints.size())
-    {
-        // Get the current waypoint
-        Vector2f waypoint = waypoints[currentWaypointIndex];
+    
+     
 
         // Move towards the waypoint
-        if (m_Position.x < waypoint.x) m_Position.x += m_Speed * elapsedTime;
-        if (m_Position.x > waypoint.x) m_Position.x -= m_Speed * elapsedTime;
-        if (m_Position.y < waypoint.y) m_Position.y += m_Speed * elapsedTime;
-        if (m_Position.y > waypoint.y) m_Position.y -= m_Speed * elapsedTime;
-
+        if (m_Position.x < CurrentTarget.x) m_Position.x += m_Speed * elapsedTime;
+        if (m_Position.x > CurrentTarget.x) m_Position.x -= m_Speed * elapsedTime;
+        if (m_Position.y < CurrentTarget.y) m_Position.y += m_Speed * elapsedTime;
+        if (m_Position.y > CurrentTarget.y) m_Position.y -= m_Speed * elapsedTime;
+        //problem tooo straight
         const float threshold = 1.0f;
-        if (abs(m_Position.x - waypoint.x) < threshold && abs(m_Position.y - waypoint.y) < threshold)
+        if (abs(m_Position.x - CurrentTarget.x) < threshold && abs(m_Position.y - CurrentTarget.y) < threshold)
         {
-            currentWaypointIndex++;  // Move to the next waypoint
+            HasReachedPos = true;  // tells game ot move to next piont
         }
-    }
-    else
-    {
-        //This is where the logic for taking health away form the pearl
-        // will go but for now it will just mark the enemies as dead
-        m_Alive = false; // Mark enemy as dead
-    }
+    
     // Update sprite position
     m_Sprite.setPosition(m_Position);
+}
+
+bool Enemy::ReachedPos()
+{
+    return HasReachedPos;
+
+}
+//this set the new target for enemy
+void Enemy::SetNewTarget(Vector2f newTarget)
+{
+    CurrentTarget = newTarget;
+
+
 }
