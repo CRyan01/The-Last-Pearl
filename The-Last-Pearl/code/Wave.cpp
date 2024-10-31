@@ -1,29 +1,102 @@
 // Wave.cpp
+// Jakub - K00285355
+// Manages Wave content and spawning of enemies
 #include "Wave.h"
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
 // Constructor that initializes enemies based on the wave number
-Wave::Wave(int waveNumber) 
+Wave::Wave(int waveNumber)
 {
-    if (waveNumber <= 5) 
-    {
-        // First 5 waves: only Buccaneers
-        enemies = std::vector<EnemyType>(waveNumber * 5, BUCCANEER);
-    }
-    else if (waveNumber <= 8) {
-        // Waves 6-8: introduce Pirates alongside Buccaneers
-        enemies = std::vector<EnemyType>(waveNumber * 3, BUCCANEER);
-        enemies.insert(enemies.end(), waveNumber * 2, PIRATE);
-    }
-    else {
-        // Last two waves (9-10): introduce Captains along with Buccaneers and Pirates
-        enemies = std::vector<EnemyType>(waveNumber * 2, BUCCANEER);
-        enemies.insert(enemies.end(), waveNumber * 2, PIRATE);
-        enemies.insert(enemies.end(), waveNumber, CAPTAIN);
-    }
+	enemies.clear(); // Clear any previous enemies.
+	if (waveNumber <= 5)
+	{
+		// First 5 waves: only Buccaneers
+		enemies = std::vector<EnemyType>(waveNumber * 5, BUCCANEER);
+	}
+	else if (waveNumber <= 8) {
+		// Waves 6-8: Pirates alongside Buccaneers
+		enemies = std::vector<EnemyType>(waveNumber * 3, BUCCANEER);
+		enemies.insert(enemies.end(), waveNumber * 2, PIRATE);
+	}
+	else {
+		// Last two waves (9-10):  Captains along with Buccaneers and Pirates
+		enemies = std::vector<EnemyType>(waveNumber * 2, BUCCANEER);
+		enemies.insert(enemies.end(), waveNumber * 2, PIRATE);
+		enemies.insert(enemies.end(), waveNumber, CAPTAIN);
+	}
 }
 
-// Returns the vector of enemies for this wave
-std::vector<EnemyType> Wave::getEnemies() const 
-{
-    return enemies;
+void Wave::initializeEnemies(float dtAsSeconds) {
+	elapsedTime += dtAsSeconds; 
+
+	// Check if there are enemies left to spawn
+	while (!enemies.empty() && elapsedTime >= spawnDelay) {
+		// Create the next enemy based on the type
+		EnemyType type = enemies.back();
+		std::unique_ptr<Enemy> enemy = nullptr;
+
+		switch (type) {
+		case BUCCANEER:
+			enemy = std::make_unique<BuccaneerEnemy>();
+			break;
+		case PIRATE:
+			enemy = std::make_unique<PirateEnemy>();
+			break;
+		case CAPTAIN:
+			enemy = std::make_unique<CaptainEnemy>();
+			break;
+		}
+
+		if (enemy) {
+			enemy->spawn(40, 200, 0); // Default spawn position 
+			activeEnemies.push_back(std::move(enemy)); // Move the enemy into the vector
+			cout << "Spawned enemy of type: " << type << endl; // Debugg
+			cout << "Total active enemies: " << activeEnemies.size() << endl; // Debug
+
+			enemies.pop_back(); // Remove the spawned enemy from the list
+		}
+
+		elapsedTime -= spawnDelay; 
+	}
+}
+
+void Wave::updateEnemies(float dtAsSeconds, const Paths& path) {
+	for (auto it = activeEnemies.begin(); it != activeEnemies.end(); ) {
+		Enemy* enemy = it->get();
+
+		// Get the next target position for this enemy
+		Vector2f targetLocation = path.nextPos(enemy->currentPos); // Replace with your actual method for getting the next position
+
+		// Call the enemy's update method with the elapsed time and target location
+		enemy->update(dtAsSeconds, targetLocation);
+
+		// Check if the enemy has reached the target
+		if (enemy->ReachedPos()) {
+			enemy->SetNewTarget(targetLocation); // Set a new target if reached
+			enemy->currentPos++; // Move to the next position in the path
+		}
+
+		// Remove the enemy if it is not alive anymore
+		if (!enemy->isAlive()) {
+			it = activeEnemies.erase(it); // Remove defeated enemy
+		}
+		else {
+			++it; // Move to the next enemy
+		}
+	}
+}
+
+bool Wave::isWaveComplete() const {
+	return activeEnemies.empty();
+}
+
+const vector<Enemy*>& Wave::getActiveEnemies() const {
+	static vector<Enemy*> rawEnemies; // Convert unique_ptr to raw pointer for access
+	rawEnemies.clear();
+	for (const auto& enemy : activeEnemies) {
+		rawEnemies.push_back(enemy.get());
+	}
+	return rawEnemies;
 }

@@ -15,8 +15,10 @@ void TheLastPearl::draw()
 
 		
 		
-		//window.draw(Levels.rVaLevel, &m_TextureTiles);
-		window.draw(buccaneerEnemy.getSprite());
+		// Draw the enemies
+		for (const auto& enemy : currentWave.getActiveEnemies()) {
+			window.draw(enemy->getSprite());
+		}
 
 		// Draw selection boxes for tower positions
 		for (const auto& box : towerSelectionBoxSprites) {

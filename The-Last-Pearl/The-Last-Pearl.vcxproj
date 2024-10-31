@@ -34,7 +34,6 @@
     <ClCompile Include="code\Inputs.cpp" />
     <ClCompile Include="code\TheLastPearl.cpp" />
     <ClCompile Include="code\Tower.cpp" />
-    <ClCompile Include="code\WaveManager.cpp" />
     <ClCompile Include="code\Wave.cpp" />
     <ClCompile Include="code\Update.cpp" />
   </ItemGroup>
@@ -49,7 +48,6 @@
     <ClInclude Include="code\TextureHolder.h" />
     <ClInclude Include="code\TheLastPearl.h" />
     <ClInclude Include="code\Tower.h" />
-    <ClInclude Include="code\WaveManager.h" />
     <ClInclude Include="code\Wave.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

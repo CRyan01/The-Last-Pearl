@@ -4,12 +4,12 @@
 Paths::Paths()
 {
 	//cureently hardocded as no other metho is know
-Level1Pos.push_back(Vector2f(100, 200));
 Level1Pos.push_back(Vector2f(1800, 200));
 Level1Pos.push_back(Vector2f(1800, 450));
 Level1Pos.push_back(Vector2f(120, 450));
 Level1Pos.push_back(Vector2f(120, 740));
-Level1Pos.push_back(Vector2f(1920, 740));
+Level1Pos.push_back(Vector2f(1800, 740));
+// Level1Pos.push_back(Vector2f(1920, 740));
 
 
 }
@@ -51,7 +51,7 @@ void Paths::SetLevel(int levelNumber)
 
 }
 
-Vector2f Paths::nextPos(int currentPos)
+Vector2f Paths::nextPos(int currentPos) const
 {
 	if (!currentPos + 1 > CurrentPath.size())
 	{

@@ -10,6 +10,8 @@
 #include "BuccaneerEnemy.h"
 #include "LevelManager.h"
 #include "Paths.h"
+#include "Wave.h"
+#pragma once
 
 using namespace sf;
 using namespace std;
@@ -65,7 +67,7 @@ private:
 	
 	BuccaneerEnemy buccaneerEnemy;
 	
-	
+	Paths MainPath;
 
 	// Textures
 	Texture textureCursor;
@@ -111,7 +113,7 @@ private:
 	// Store tower positions which are occupied
 	vector<Vector2f> occupiedTowerPositions;
 
-	Paths MainPath;
-
+	Wave currentWave{1};                     // Start with wave 1
+	vector<Enemy*> activeEnemies;             // Store pointers to active enemies
 	
 };

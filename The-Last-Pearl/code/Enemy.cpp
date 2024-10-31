@@ -40,18 +40,9 @@ Sprite Enemy::getSprite()
     return m_Sprite;
 }
 
-
-
-
 //this is important for movement enemy will now move to the set Position
 void Enemy::update(float elapsedTime, Vector2f targetLocation)
 {
-
-    //cout << "Enemy Health: " << m_Health << ", Alive: " << m_Alive << endl;
-
-    
-     
-
         // Move towards the waypoint
         if (m_Position.x < CurrentTarget.x) m_Position.x += m_Speed * elapsedTime;
         if (m_Position.x > CurrentTarget.x) m_Position.x -= m_Speed * elapsedTime;
@@ -77,6 +68,7 @@ bool Enemy::ReachedPos()
 void Enemy::SetNewTarget(Vector2f newTarget)
 {
     CurrentTarget = newTarget;
+    HasReachedPos = false; 
 
 
 }

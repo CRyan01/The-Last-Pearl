@@ -1,94 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="code\BuccaneerEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\CaptainEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\PirateEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\TextureHolder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\TheLastPearl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\Tower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\LevelManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\CannonTower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\MusketTower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\WaveManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\Wave.cpp">
-    <ClCompile Include="code\MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="code\CreateTower.cpp" />
+    <ClCompile Include="code\DetectCollisions.cpp" />
+    <ClCompile Include="code\Draw.cpp" />
+    <ClCompile Include="code\MainMenu.cpp" />
+    <ClCompile Include="code\BuccaneerEnemy.cpp" />
+    <ClCompile Include="code\CaptainEnemy.cpp" />
+    <ClCompile Include="code\Enemy.cpp" />
+    <ClCompile Include="code\LevelManager.cpp" />
+    <ClCompile Include="code\Paths.cpp" />
+    <ClCompile Include="code\PirateEnemy.cpp" />
+    <ClCompile Include="code\Projectile.cpp" />
+    <ClCompile Include="code\TextureHolder.cpp" />
+    <ClCompile Include="code\Inputs.cpp" />
+    <ClCompile Include="code\TheLastPearl.cpp" />
+    <ClCompile Include="code\Tower.cpp" />
+    <ClCompile Include="code\Wave.cpp" />
+    <ClCompile Include="code\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="code\CaptainEnemy.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="code\Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\PirateEnemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\TextureHolder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\TheLastPearl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\Tower.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="code\LevelManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="code\CannonTower.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="code\Paths.h">
+      <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="code\MusketTower.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="code\PirateEnemy.h">
+      <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="code\WaveManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="code\Projectile.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="code\TextureHolder.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="code\TheLastPearl.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Tower.h">
+      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="code\Wave.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{c1bd7f2d-b833-4cec-908f-d9d05914cd2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
