@@ -26,7 +26,7 @@ protected:
 
     Vector2f CurrentTarget;
 
-    bool HasReachedPos;
+    bool HasReachedPos=false;
 public:
     // Virtual function to handle enemy's spawning (to be implemented by derived classes)
     virtual void spawn(float startX, float startY, int seed) = 0;
@@ -44,7 +44,7 @@ public:
     Sprite getSprite();
 
     // Update the enemy's movement based on target's location
-    virtual void update(float elapsedTime, Vector2f targetLocation);
+    virtual void update(float elapsedTime);
 
  
     //has it reached where it needs ot go
@@ -52,5 +52,5 @@ public:
     //setting its new palce to go
     void SetNewTarget(Vector2f newPos);
 
-    int currentPos=0;
+    int currentPos=-1;
 };

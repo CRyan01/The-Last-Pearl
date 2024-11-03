@@ -18,7 +18,7 @@ void PirateEnemy::spawn(float startX, float startY, int seed)
 }
 
 // Update the PirateEnemy using the base class method
-void PirateEnemy::update(float elapsedTime, Vector2f targetLocation)
+void PirateEnemy::update(float elapsedTime)
 {
-    Enemy::update(elapsedTime, targetLocation); // Call the base class update
+    Enemy::update(elapsedTime); // Call the base class update
 }

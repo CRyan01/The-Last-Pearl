@@ -4,7 +4,7 @@
 Paths::Paths()
 {
 	//cureently hardocded as no other metho is know
-Level1Pos.push_back(Vector2f(100, 200));
+	Level1Pos.push_back(Vector2f(100, 200));
 Level1Pos.push_back(Vector2f(1800, 200));
 Level1Pos.push_back(Vector2f(1800, 450));
 Level1Pos.push_back(Vector2f(120, 450));
@@ -28,6 +28,7 @@ Paths::~Paths()
 }
 void Paths::SetLevel(int levelNumber)
 {
+	levelNumber - 1;
 	//setting which vector we using
 	CurrentPath.clear();
 	switch (levelNumber)
@@ -52,15 +53,25 @@ void Paths::SetLevel(int levelNumber)
 
 }
 
-Vector2f Paths::nextPos(int currentPos) const
+Vector2f Paths::nextPos(int currentPos) 
 {
-	if (!currentPos + 1 > CurrentPath.size())
+	currentPos++;
+	std::cout << "\nCurrent position "+currentPos;
+	if (currentPos >= CurrentPath.size())
 	{
-		return CurrentPath.at(currentPos + 1);
+		
+		return CurrentPath.at(CurrentPath.size() - 1);
 	}
 	else
 	{
-		return CurrentPath.at(CurrentPath.size()-1);
+		return CurrentPath.at(currentPos );
 	}
+
+}
+
+int Paths::returnPathsSize()
+{
+
+	return CurrentPath.size();
 
 }

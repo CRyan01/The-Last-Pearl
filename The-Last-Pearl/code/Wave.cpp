@@ -52,8 +52,8 @@ void Wave::initializeEnemies(float dtAsSeconds) {
 		if (enemy) {
 			enemy->spawn(40, 200, 0); // Default spawn position 
 			activeEnemies.push_back(std::move(enemy)); // Move the enemy into the vector
-			cout << "Spawned enemy of type: " << type << endl; // Debugg
-			cout << "Total active enemies: " << activeEnemies.size() << endl; // Debug
+			//cout << "Spawned enemy of type: " << type << endl; // Debugg
+			//cout << "Total active enemies: " << activeEnemies.size() << endl; // Debug
 
 			enemies.pop_back(); // Remove the spawned enemy from the list
 		}
@@ -62,20 +62,27 @@ void Wave::initializeEnemies(float dtAsSeconds) {
 	}
 }
 
-void Wave::updateEnemies(float dtAsSeconds, const Paths& path) {
+void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
+
+	// Get the next target position for this enemy
+	Vector2f targetLocation;
 	for (auto it = activeEnemies.begin(); it != activeEnemies.end(); ) {
 		Enemy* enemy = it->get();
 
-		// Get the next target position for this enemy
-		Vector2f targetLocation = path.nextPos(enemy->currentPos); // Replace with your actual method for getting the next position
+		// Replace with your actual method for getting the next position
 
 		// Call the enemy's update method with the elapsed time and target location
-		enemy->update(dtAsSeconds, targetLocation);
+		enemy->update(dtAsSeconds);
 
 		// Check if the enemy has reached the target
 		if (enemy->ReachedPos()) {
+			targetLocation = path.nextPos(enemy->currentPos);
 			enemy->SetNewTarget(targetLocation); // Set a new target if reached
 			enemy->currentPos++; // Move to the next position in the path
+			if (enemy->currentPos >= path.returnPathsSize())
+			{
+				enemy->hit(200000);
+			}
 		}
 
 		// Remove the enemy if it is not alive anymore
@@ -83,7 +90,7 @@ void Wave::updateEnemies(float dtAsSeconds, const Paths& path) {
 			it = activeEnemies.erase(it); // Remove defeated enemy
 		}
 		else {
-			++it; // Move to the next enemy
+			++it; // Move to the next enemy//need to check this seems useless
 		}
 	}
 }

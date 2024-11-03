@@ -20,5 +20,5 @@ void BuccaneerEnemy::spawn(float startX, float startY, int seed)
 // Update the BuccaneerEnemy using the base class method
 void BuccaneerEnemy::update(float elapsedTime)
 {
-    Enemy::update(elapsedTime, CurrentTarget); 
+    Enemy::update(elapsedTime); 
 }

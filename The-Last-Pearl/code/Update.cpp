@@ -28,7 +28,7 @@ void TheLastPearl::update()
 		//Ensure enemies are initialized only once per wave
 		if (currentWave.isWaveComplete() && currentWave.getActiveEnemies().empty()) {
 			currentWave.initializeEnemies(dtAsSeconds);
-			cout << "Enemies initialized." << endl; // Debug
+			//cout << "Enemies initialized." << endl; // Debug
 		}
 		else {
 			// If the wave isn't complete, try to spawn new enemies
@@ -38,7 +38,7 @@ void TheLastPearl::update()
 		currentWave.updateEnemies(dtAsSeconds, MainPath);
 
 		// Debugging active enemies count
-		cout << "Active enemies count: " << currentWave.getActiveEnemies().size() << endl;
+	//	cout << "Active enemies count: " << currentWave.getActiveEnemies().size() << endl;
 
 
 		// Convert mouse position to world coordinates of mainView

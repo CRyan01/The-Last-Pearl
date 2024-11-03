@@ -22,7 +22,7 @@ public:
     void initializeEnemies(float dtAsSeconds);
 
     // Updates each enemy in the wave
-    void updateEnemies(float dtAsSeconds, const Paths& path);
+    void updateEnemies(float dtAsSeconds,  Paths& path);
 
     // Returns true if all enemies are dead
     bool isWaveComplete() const;

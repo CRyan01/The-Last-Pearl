@@ -17,7 +17,8 @@ bool Enemy::hit(int damage) {
     if (m_Health <= 0) {
         // Set the enemy as dead and change the sprite to destroyed
         m_Alive = false;
-        m_Sprite.setTexture(TextureHolder::GetTexture("graphics/destroyed.png"));
+        //we dont have this texture anymore need to get it again
+       // m_Sprite.setTexture(TextureHolder::GetTexture("graphics/destroyed.png"));
         // Enemy is dead
         return true; 
     }
@@ -41,7 +42,7 @@ Sprite Enemy::getSprite()
 }
 
 //this is important for movement enemy will now move to the set Position
-void Enemy::update(float elapsedTime, Vector2f targetLocation)
+void Enemy::update(float elapsedTime)
 {
         // Move towards the waypoint
         if (m_Position.x < CurrentTarget.x) m_Position.x += m_Speed * elapsedTime;
@@ -49,7 +50,8 @@ void Enemy::update(float elapsedTime, Vector2f targetLocation)
         if (m_Position.y < CurrentTarget.y) m_Position.y += m_Speed * elapsedTime;
         if (m_Position.y > CurrentTarget.y) m_Position.y -= m_Speed * elapsedTime;
         //problem tooo straight
-        const float threshold = 1.0f;
+        //abs= no negtive
+        const float threshold = 100.0f;
         if (abs(m_Position.x - CurrentTarget.x) < threshold && abs(m_Position.y - CurrentTarget.y) < threshold)
         {
             HasReachedPos = true;  // tells game ot move to next piont
