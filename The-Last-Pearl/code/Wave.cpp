@@ -26,13 +26,39 @@ Wave::Wave(int waveNumber)
 		enemies.insert(enemies.end(), waveNumber * 2, PIRATE);
 		enemies.insert(enemies.end(), waveNumber, CAPTAIN);
 	}
+	CurrentWave = waveNumber;
+	std::cout << "Enemy size= " << enemies.size();
+}
+
+void Wave::NextWave()
+{
+	CurrentWave++;
+	enemies.clear(); // Clear any previous enemies.
+	if (CurrentWave <= 5)
+	{
+		// First 5 waves: only Buccaneers
+		enemies = std::vector<EnemyType>(CurrentWave * 5, BUCCANEER);
+	}
+	else if (CurrentWave <= 8) {
+		// Waves 6-8: Pirates alongside Buccaneers
+		enemies = std::vector<EnemyType>(CurrentWave * 3, BUCCANEER);
+		enemies.insert(enemies.end(), CurrentWave * 2, PIRATE);
+	}
+	else {
+		// Last two waves (9-10):  Captains along with Buccaneers and Pirates
+		enemies = std::vector<EnemyType>(CurrentWave * 2, BUCCANEER);
+		enemies.insert(enemies.end(), CurrentWave * 2, PIRATE);
+		enemies.insert(enemies.end(), CurrentWave, CAPTAIN);
+	}
+	std::cout << "Enemy size= " << enemies.size();
+
 }
 
 void Wave::initializeEnemies(float dtAsSeconds) {
 	elapsedTime += dtAsSeconds; 
-
+	
 	// Check if there are enemies left to spawn
-	while (!enemies.empty() && elapsedTime >= spawnDelay) {
+	if (!enemies.empty() && elapsedTime >= spawnDelay) {
 		// Create the next enemy based on the type
 		EnemyType type = enemies.back();
 		std::unique_ptr<Enemy> enemy = nullptr;
@@ -88,6 +114,10 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 		// Remove the enemy if it is not alive anymore
 		if (!enemy->isAlive()) {
 			it = activeEnemies.erase(it); // Remove defeated enemy
+			if (isWaveComplete())
+			{
+				NextWave();
+			}
 		}
 		else {
 			++it; // Move to the next enemy//need to check this seems useless
@@ -95,7 +125,8 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 	}
 }
 
-bool Wave::isWaveComplete() const {
+bool Wave::isWaveComplete()  {
+	//std::cout << "\nhey this works " << activeEnemies.empty();
 	return activeEnemies.empty();
 }
 

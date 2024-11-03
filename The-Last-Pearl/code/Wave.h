@@ -25,15 +25,18 @@ public:
     void updateEnemies(float dtAsSeconds,  Paths& path);
 
     // Returns true if all enemies are dead
-    bool isWaveComplete() const;
+    bool isWaveComplete() ;
 
     // Ability to get active enemies
     const vector<Enemy*>& getActiveEnemies() const;
 
+    void NextWave();
+
 private:
     vector<EnemyType> enemies; // Holds types of enemies in the wave
     vector<unique_ptr<Enemy>> activeEnemies; // Stores unique pointers 
-    float spawnDelay = 0.5f; // Delay of 0.5 seconds between enemy spawns
+    float spawnDelay = 1.5f; // Delay of 0.5 seconds between enemy spawns
     float elapsedTime = 0.0f; 
+    int CurrentWave=0;
     //bool waveComplete = true; // Track wave completion status
 };

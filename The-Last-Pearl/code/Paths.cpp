@@ -56,7 +56,7 @@ void Paths::SetLevel(int levelNumber)
 Vector2f Paths::nextPos(int currentPos) 
 {
 	currentPos++;
-	std::cout << "\nCurrent position "+currentPos;
+	//std::cout << "\nCurrent position "<<currentPos;
 	if (currentPos >= CurrentPath.size())
 	{
 		
