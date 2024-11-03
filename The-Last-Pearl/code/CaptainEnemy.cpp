@@ -17,6 +17,7 @@ void CaptainEnemy::spawn(float startX, float startY, int seed)
     m_Size = m_Sprite.getTexture()->getSize();
     m_Sprite.setOrigin(m_Size.x / 2.0f, m_Size.y / 2.0f);
     m_Sprite.setPosition(m_Position);
+    m_Alive = true;
 }
 
 bool CaptainEnemy::hit(int damage) 

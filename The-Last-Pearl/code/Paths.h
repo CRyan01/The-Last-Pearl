@@ -1,4 +1,5 @@
 //by John Hannon K00281825
+#pragma once
 #include <vector>
 #include <SFML/Audio.hpp>
 using namespace sf;
@@ -8,7 +9,7 @@ public :
 	
 
 	void SetLevel(int level);
-	Vector2f nextPos(int CurrentNumber);
+	Vector2f nextPos(int CurrentNumber) const;
 	Paths();
 	~Paths();
 private:
@@ -19,3 +20,4 @@ private:
 	vector<sf::Vector2f> Level4Pos;
 	vector<sf::Vector2f> Level5Pos;
 };
+

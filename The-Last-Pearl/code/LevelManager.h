@@ -4,7 +4,6 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-#include "WaveManager.h"
 using namespace sf;
 using namespace std;
 //john by
@@ -13,15 +12,6 @@ class LevelManager
 public :
 
 	//this sets position of everything for levellike tower map ect.
-	
-	LevelManager() : waveManager(1) 
-	{  
-		SetLevel(1); // Default to level 1 
-	}
-	LevelManager(int levelNumber) : waveManager(levelNumber) 
-	{
-		SetLevel(levelNumber);
-	}
 
 	//void SetLevel(int levelNumber);
 	std::vector<Vector2f> getWaypoints() const;
@@ -33,8 +23,6 @@ public :
 
 	//these are all the positions for all object in the game
 	Vector2f TowerPos[30];
-
-	WaveManager waveManager; // Manager for waves within the level
 	
     std::ifstream inFile;
 	//may be useful for later this allows reading from a file meaning we can just put the tower positions in a file

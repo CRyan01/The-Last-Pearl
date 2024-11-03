@@ -33,10 +33,6 @@ void LevelManager::SetLevel(int LevelNumber)
     m_LevelSize.x = 0;
     m_LevelSize.y = 0;
 
-
-    // Initialize WaveManager with the current level number
-    waveManager = WaveManager(LevelNumber);
-
     // Create the level filename based on the level number
     string levelToLoad = "Levels/Level" + std::to_string(LevelNumber) + ".txt";
     std::ifstream inputFile(levelToLoad);
