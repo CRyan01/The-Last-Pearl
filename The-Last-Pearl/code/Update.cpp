@@ -26,15 +26,9 @@ void TheLastPearl::update()
 		mouseScreenPosition = Mouse::getPosition();
 
 		//Ensure enemies are initialized only once per wave
-		if (currentWave.isWaveComplete()&& currentWave.getActiveEnemies().empty()) {
-			//currentWave.NextWave();
-			currentWave.initializeEnemies(dtAsSeconds);
-			//cout << "Enemies initialized." << endl; // Debug
-		}
-		else {
-			// If the wave isn't complete, try to spawn new enemies
-			currentWave.initializeEnemies(dtAsSeconds); 
-		}
+	
+		currentWave.initializeEnemies(dtAsSeconds); 
+		
 		// Update wave enemies
 		currentWave.updateEnemies(dtAsSeconds, MainPath);
 

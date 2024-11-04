@@ -56,7 +56,10 @@ void Wave::NextWave()
 
 void Wave::initializeEnemies(float dtAsSeconds) {
 	elapsedTime += dtAsSeconds; 
-	
+	if (isWaveComplete())
+	{
+		//NextWave();
+	}
 	// Check if there are enemies left to spawn
 	if (!enemies.empty() && elapsedTime >= spawnDelay) {
 		// Create the next enemy based on the type
@@ -118,11 +121,13 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 			{
 				NextWave();
 			}
+			
 		}
 		else {
 			++it; // Move to the next enemy//need to check this seems useless
 		}
 	}
+
 }
 
 bool Wave::isWaveComplete()  {
