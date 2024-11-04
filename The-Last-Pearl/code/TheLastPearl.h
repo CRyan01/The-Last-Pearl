@@ -64,9 +64,9 @@ private:
 
 	Vector2f resolution;
 
-	
+
 	BuccaneerEnemy buccaneerEnemy;
-	
+
 	Paths MainPath;
 
 	// Textures
@@ -97,7 +97,7 @@ private:
 
 	// Texture for the background and the level tiles
 	Texture m_TextureTiles;
-	
+
 	// Store the towers predefined positions - CR
 	vector<Vector2f> towerPositions;
 	// Store selection box sprite for tower positions - CR
@@ -113,7 +113,7 @@ private:
 	// Store tower positions which are occupied
 	vector<Vector2f> occupiedTowerPositions;
 
-	Wave currentWave{1};                     // Start with wave 1
+	Wave currentWave{10};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies
 	
 };

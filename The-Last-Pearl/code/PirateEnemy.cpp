@@ -14,6 +14,7 @@ void PirateEnemy::spawn(float startX, float startY, int seed)
     m_Position.x = startX;
     m_Position.y = startY;
     m_Sprite.setPosition(m_Position);
+    m_Sprite.setScale(0.2,0.2);
     m_Alive = true;
 }
 
