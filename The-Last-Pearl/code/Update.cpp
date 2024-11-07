@@ -32,6 +32,8 @@ void TheLastPearl::update()
 		// Update wave enemies
 		currentWave.updateEnemies(dtAsSeconds, MainPath);
 
+		TheGameTowers.update(dtAsSeconds);
+
 		// Debugging active enemies count
 	//	cout << "Active enemies count: " << currentWave.getActiveEnemies().size() << endl;
 

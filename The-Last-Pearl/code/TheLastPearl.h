@@ -5,8 +5,7 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 #include "TextureHolder.h"
-#include "MusketTower.h"
-#include "CannonTower.h"
+#include "TowerManager.h"
 #include "BuccaneerEnemy.h"
 #include "LevelManager.h"
 #include "Paths.h"
@@ -32,8 +31,7 @@ public:
 	void Level1();
 	void MainMenu();
 
-	// A method to spawn a tower at a specified location
-	Tower createTower(Tower::TowerType type, float x, float y);
+	
 
 	// Returns true if a tower is already built in a plot
 	bool isPlotOccupied(Vector2f position);
@@ -115,5 +113,5 @@ private:
 
 	Wave currentWave{10};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies
-	
+	TowerManager TheGameTowers;
 };

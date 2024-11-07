@@ -7,6 +7,9 @@ void TheLastPearl::CheckInputs() {
     bool isPlotSelected = (selectedTowerPosition.x >= 0);
 
     while (window.pollEvent(event)) {
+
+        //tower events
+        TheGameTowers.TowerInputs(event,mouseWorldPosition);
         // Check if lmb was pressed
         if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
 
@@ -27,7 +30,7 @@ void TheLastPearl::CheckInputs() {
             // If a valid tower build icon is clicked
             if (iconClicked && selectedTowerType != Tower::TowerType::None) {
                 // Create and place the tower
-                createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
+                TheGameTowers.createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
 
                 // Mark the plot as occupied
                 occupiedTowerPositions.push_back(selectedTowerPosition);

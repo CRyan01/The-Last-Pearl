@@ -1,23 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="code\CreateTower.cpp" />
-    <ClCompile Include="code\DetectCollisions.cpp" />
-    <ClCompile Include="code\Draw.cpp" />
-    <ClCompile Include="code\MainMenu.cpp" />
-    <ClCompile Include="code\BuccaneerEnemy.cpp" />
-    <ClCompile Include="code\CaptainEnemy.cpp" />
-    <ClCompile Include="code\Enemy.cpp" />
-    <ClCompile Include="code\LevelManager.cpp" />
-    <ClCompile Include="code\Paths.cpp" />
-    <ClCompile Include="code\PirateEnemy.cpp" />
-    <ClCompile Include="code\Projectile.cpp" />
-    <ClCompile Include="code\TextureHolder.cpp" />
-    <ClCompile Include="code\Inputs.cpp" />
-    <ClCompile Include="code\TheLastPearl.cpp" />
-    <ClCompile Include="code\Tower.cpp" />
-    <ClCompile Include="code\Wave.cpp" />
-    <ClCompile Include="code\Update.cpp" />
+    <ClCompile Include="code\BuccaneerEnemy.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\CaptainEnemy.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\CreateTower.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\DetectCollisions.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Enemy.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Draw.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Inputs.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\LevelManager.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MainMenu.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Paths.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\PirateEnemy.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Projectile.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\TextureHolder.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\TheLastPearl.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Tower.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Update.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Wave.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\TowerManager.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h">
@@ -53,10 +90,16 @@
     <ClInclude Include="code\Wave.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="code\TowerManager.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
       <UniqueIdentifier>{c1bd7f2d-b833-4cec-908f-d9d05914cd2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Files">
+      <UniqueIdentifier>{be19ddc4-0e29-466c-9bbf-31910b38c074}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

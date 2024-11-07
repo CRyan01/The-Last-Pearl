@@ -1,8 +1,8 @@
 
-#include "TheLastPearl.h"
+#include "TowerManager.h"
 #include "Tower.h"
 
-Tower TheLastPearl::createTower(Tower::TowerType type, float x, float y) {
+void TowerManager::createTower(Tower::TowerType type, float x, float y) {
     Tower tower;
 
     // Spawn the correct type of tower
@@ -16,8 +16,7 @@ Tower TheLastPearl::createTower(Tower::TowerType type, float x, float y) {
     tower.initialize(x, y);
 
     // Add the tower to the list of towers
-    towers.push_back(tower);
+    AllGameTowers.push_back(tower);
 
-    // Return the created tower
-    return tower;
+
 }

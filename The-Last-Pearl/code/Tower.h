@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+
 using namespace sf;
 
 // By Conor Ryan
@@ -23,7 +24,9 @@ private:
     bool m_Active;
     Vector2f m_Position;
     Sprite m_Sprite;
-
+    int radius = 100;
+  
+    
 public:
     Tower();
 
@@ -50,4 +53,7 @@ public:
 
     // Returns true if the tower is active
     bool isActive() const;
+
+    CircleShape Sight = CircleShape(radius);
+    bool ClickedOn = false;
 };
