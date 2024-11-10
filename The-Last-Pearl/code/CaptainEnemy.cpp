@@ -10,7 +10,7 @@
 void CaptainEnemy::spawn(float startX, float startY, int seed) 
 {
     m_Sprite = Sprite(TextureHolder::GetTexture("graphics/captain.png"));
-    m_Speed = 10;
+    m_Speed = 500;
     m_Health = 100;
     m_Position.x = startX;
     m_Position.y = startY;

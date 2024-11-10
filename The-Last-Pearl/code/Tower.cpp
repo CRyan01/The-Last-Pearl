@@ -1,6 +1,6 @@
 #include "Tower.h"
 #include "TextureHolder.h"
-
+#include <iostream>
 Tower::Tower()
 {
     m_Type = TowerType::None;
@@ -22,6 +22,16 @@ Tower::Tower(TowerType type, float damage, float range, float fireRate, const st
     m_Active = true;
     m_Sprite.setTexture(TextureHolder::GetTexture(textureFile));
     m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
+
+    switch (m_Type)
+    {
+        case TowerType::CannonTower:
+            Bullets = ProjectileHolder(200,100,"graphics/tnt.png");
+        break;
+        case TowerType::MusketTower:
+            Bullets = ProjectileHolder(200, 100, "graphics/tnt.png");
+            break;
+    }
 }
 
 void Tower::initialize(float startX, float startY) {
@@ -41,12 +51,15 @@ bool Tower::canShoot() {
 
 void Tower::shoot() {
     if (canShoot()) {
+        std::cout << "this happening";
+        Bullets.shoot(Vector2f(0,0),m_Position);
         m_TimeSinceLastShot = 0;
     }
 }
 
 void Tower::update(float elapsedTime) {
     m_TimeSinceLastShot += elapsedTime;
+    shoot();
 }
 
 Sprite Tower::getSprite() const {

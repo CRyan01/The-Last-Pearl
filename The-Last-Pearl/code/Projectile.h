@@ -9,10 +9,10 @@ using namespace sf;
 class Projectile {
 public:
     // Constructor
-    Projectile(float damage, float speed, const std::string& textureFile); 
+    void Spawn(float damage, float speed, const std::string& textureFile,Vector2f target,Vector2f spawn); 
 
     // Initialize the projectile
-    void initialize(float startX, float startY);
+    void initialize(Vector2f spawn);
 
     // Updates the projectile
     void update(float elapsedTime);
@@ -21,7 +21,7 @@ public:
     bool isActive() const;
 
     // Returns the projectiles sprite
-    Sprite getSprite() const;
+    Sprite getSprite() ;
 
     // Set the projectiles velocity
     void setVelocity(Vector2f velocity);
@@ -32,4 +32,5 @@ private:
     Vector2f m_Velocity;
     Sprite m_Sprite;
     bool m_Active;
+
 };

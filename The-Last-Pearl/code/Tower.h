@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "ProjectileHolder.h"
 
 
 using namespace sf;
@@ -27,12 +28,14 @@ private:
     int radius = 100;
   
     
+    
 public:
     Tower();
 
     // Parameterized constructor for the tower
     Tower(TowerType type, float damage, float range, float fireRate, const std::string& textureFile);
-
+    //ammo
+    ProjectileHolder Bullets;
     // Initialize the tower with position
     void initialize(float startX, float startY);
 
@@ -56,4 +59,6 @@ public:
 
     CircleShape Sight = CircleShape(radius);
     bool ClickedOn = false;
+
+     void upgrade() ;
 };

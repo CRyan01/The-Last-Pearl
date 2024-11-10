@@ -131,6 +131,10 @@ TheLastPearl::TheLastPearl()
 	MainPath.SetLevel(1);
 	// Start the game in a paused state - CR
 	state = State::PAUSED;
+	//sf::Vector2f same = (500.0f,500.0f);
+	//testing place 
+	
+	bullet.Spawn(19, 19, "graphics/tnt.png", Vector2f(500.0f, 500.0f), Vector2f(500.0f, 500.0f));
 }
 
 void TheLastPearl::run()

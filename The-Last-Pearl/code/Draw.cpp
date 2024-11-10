@@ -32,6 +32,7 @@ void TheLastPearl::draw()
 	//	for (const Tower& tower : towers) {
 		//	window.draw(tower.getSprite());
 		//}
+		//this si all the towers
 		TheGameTowers.draw(window);
 
 		// Draw the tower icons
@@ -44,7 +45,7 @@ void TheLastPearl::draw()
 
 		// Draw the cursor
 		window.draw(spriteCursor);
-	
+	//	window.draw(bullet.getSprite());
 	}
 
 	if (state == State::PAUSED) {

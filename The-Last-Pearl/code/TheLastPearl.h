@@ -82,7 +82,7 @@ private:
 	Sprite spriteCrossbowTowerIcon;
 	Sprite spriteGoldIcon;
 	Sprite spriteBuildMenuBackground;
-
+	Projectile bullet;
 	// Text
 	Font font;
 	Text pausedText;

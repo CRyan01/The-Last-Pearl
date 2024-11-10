@@ -13,9 +13,11 @@ void TowerManager::draw(RenderWindow& window)
 	for (int i = 0; i < AllGameTowers.size()+0; i++)
 	{
 		window.draw(AllGameTowers.at(i).getSprite());
+		AllGameTowers.at(i).Bullets.draw(window);
 		if (AllGameTowers.at(i).ClickedOn)
 		{
 			window.draw(AllGameTowers.at(i).Sight);
+			//dont put the bullets drawing functio here
 		}
 	}
 
