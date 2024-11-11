@@ -1,10 +1,10 @@
 
 #include "TowerManager.h"
-#include "Tower.h"
+
 
 void TowerManager::createTower(Tower::TowerType type, float x, float y) {
     Tower tower;
-
+    
     // Spawn the correct type of tower
     if (type == Tower::TowerType::MusketTower) {
         tower = Tower(type, 15, 120, 1.5f, "graphics/musketTower.png");

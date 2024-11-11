@@ -12,7 +12,7 @@ void Projectile::Spawn(float damage, float speed, const std::string& textureFile
     m_Sprite.setScale(0.1,0.1);
     m_Sprite.setPosition(spawn.x, spawn.y);
     
-    std::cout << "\n TestBullets shootign";
+  
 }
 
 

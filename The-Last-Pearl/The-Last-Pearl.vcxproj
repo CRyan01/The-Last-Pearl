@@ -29,6 +29,7 @@
     <ClCompile Include="code\LevelManager.cpp" />
     <ClCompile Include="code\Paths.cpp" />
     <ClCompile Include="code\PirateEnemy.cpp" />
+    <ClCompile Include="code\Player.cpp" />
     <ClCompile Include="code\Projectile.cpp" />
     <ClCompile Include="code\ProjectileHolder.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="code\MusketTower.h" />
     <ClInclude Include="code\Paths.h" />
     <ClInclude Include="code\PirateEnemy.h" />
+    <ClInclude Include="code\Player.h" />
     <ClInclude Include="code\Projectile.h" />
     <ClInclude Include="code\ProjectileHolder.h" />
     <ClInclude Include="code\TextureHolder.h" />

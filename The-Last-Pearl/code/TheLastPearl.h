@@ -10,6 +10,7 @@
 #include "LevelManager.h"
 #include "Paths.h"
 #include "Wave.h"
+#include "Player.h"
 #pragma once
 
 using namespace sf;
@@ -114,4 +115,7 @@ private:
 	Wave currentWave{10};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies
 	TowerManager TheGameTowers;
+
+	//the player
+	Player CaptainJackSparrow;
 };

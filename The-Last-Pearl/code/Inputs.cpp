@@ -30,8 +30,21 @@ void TheLastPearl::CheckInputs() {
             // If a valid tower build icon is clicked
             if (iconClicked && selectedTowerType != Tower::TowerType::None) {
                 // Create and place the tower
-                TheGameTowers.createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
 
+                int cost;
+                switch (selectedTowerType)
+                {
+                case Tower::TowerType::CannonTower:
+                    cost = 400;
+                    break;
+                case Tower::TowerType::MusketTower:
+                    cost = 200;
+                    break;
+                }
+                if (CaptainJackSparrow.CanBuy(cost))
+                {
+                    TheGameTowers.createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
+                }
                 // Mark the plot as occupied
                 occupiedTowerPositions.push_back(selectedTowerPosition);
                 

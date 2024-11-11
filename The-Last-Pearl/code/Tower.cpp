@@ -51,7 +51,6 @@ bool Tower::canShoot() {
 
 void Tower::shoot() {
     if (canShoot()) {
-        std::cout << "this happening";
         Bullets.shoot(Vector2f(0,0),m_Position);
         m_TimeSinceLastShot = 0;
     }

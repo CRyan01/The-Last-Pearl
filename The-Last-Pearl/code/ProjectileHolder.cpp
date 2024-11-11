@@ -26,7 +26,7 @@ void ProjectileHolder::draw(RenderWindow& window)
 {
 	for (int i = 0; i < bullets.size(); i++)
 	{
-		std::cout << "\n TestPrinting";
+		//std::cout << "\n TestPrinting";
 		window.draw(bullets.at(i).getSprite());
 	}
 }
