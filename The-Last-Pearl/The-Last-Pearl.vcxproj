@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\Bullet.cpp" />
+    <ClCompile Include="code\CannonTower.cpp" />
     <ClCompile Include="code\CreateTower.cpp" />
     <ClCompile Include="code\DetectCollisions.cpp" />
     <ClCompile Include="code\Draw.cpp" />
@@ -27,6 +29,7 @@
     <ClCompile Include="code\CaptainEnemy.cpp" />
     <ClCompile Include="code\Enemy.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />
+    <ClCompile Include="code\MusketTower.cpp" />
     <ClCompile Include="code\Paths.cpp" />
     <ClCompile Include="code\PirateEnemy.cpp" />
     <ClCompile Include="code\Player.cpp" />
@@ -42,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\BuccaneerEnemy.h" />
+    <ClInclude Include="code\Bullet.h" />
     <ClInclude Include="code\CannonTower.h" />
     <ClInclude Include="code\CaptainEnemy.h" />
     <ClInclude Include="code\Enemy.h" />

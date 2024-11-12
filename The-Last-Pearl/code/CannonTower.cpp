@@ -3,13 +3,10 @@
 
 // By Conor Ryan
 CannonTower::CannonTower(float x, float y)
-    : Tower(30, 150, 2.5f, "graphics/cannonTower.png") {  // Initialize with specific attributes
+    : Tower(TowerType::CannonTower, 30, 350, 2.5f, "graphics/cannonTower.png") {  // Initialize with specific attributes
     initialize(x, y);
 }
 
-void CannonTower::shoot() {
-    if (canShoot()) {
-        // Cannon-specific shooting logic
-        m_TimeSinceLastShot = 0;
-    }
+void CannonTower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projectileHolder) {
+    Tower::shoot(targetPosition, projectileHolder);  
 }

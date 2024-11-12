@@ -27,8 +27,8 @@ private:
 public:
     TowerManager();
     void createTower(Tower::TowerType type, float x, float y);
-    void update(float seconds);
-    void draw(RenderWindow& window);
+    void update(float seconds, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
+    void draw(sf::RenderWindow& window, ProjectileHolder& projectileHolder);
     void TowerInputs(Event event,Vector2f mouseWorldPos);
 
 };

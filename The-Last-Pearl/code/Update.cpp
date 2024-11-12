@@ -32,11 +32,37 @@ void TheLastPearl::update()
 		// Update wave enemies
 		currentWave.updateEnemies(dtAsSeconds, MainPath);
 
-		TheGameTowers.update(dtAsSeconds);
+		// Update towers and add projectiles to the holder
+		TheGameTowers.update(dtAsSeconds, currentWave.getActiveEnemies(), projectileHolder);
 
-		// Debugging active enemies count
-	//	cout << "Active enemies count: " << currentWave.getActiveEnemies().size() << endl;
-
+		// Check for projectile-enemy collisions
+		for (auto& projectile : projectileHolder.getProjectiles()) 
+		{
+			if (projectile.isActive()) 
+			{
+				for (auto it = activeEnemies.begin(); it != activeEnemies.end();) 
+				{
+					Enemy* enemy = *it;
+					if (enemy->isAlive() && projectile.checkCollision(enemy->getSprite().getGlobalBounds())) 
+					{
+						if (enemy->hit(projectile.getDamage())) 
+						{
+							it = activeEnemies.erase(it);  // Remove dead enemy
+						}
+						else 
+						{
+							++it;
+						}
+						projectile.setInactive();  // Deactivate projectile after collision
+						break;  // Stop checking other enemies for this projectile
+					}
+					else 
+					{
+						++it;
+					}
+				}
+			}
+		}
 
 		// Convert mouse position to world coordinates of mainView
 		mouseWorldPosition = window.mapPixelToCoords(

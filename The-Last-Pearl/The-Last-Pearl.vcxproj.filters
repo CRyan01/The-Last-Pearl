@@ -4,19 +4,7 @@
     <ClCompile Include="code\TextureHolder.cpp">
       <Filter>Files</Filter>
     </ClCompile>
-    <ClCompile Include="code\BuccaneerEnemy.cpp">
-      <Filter>Files\Items%28base objects%29</Filter>
-    </ClCompile>
-    <ClCompile Include="code\CaptainEnemy.cpp">
-      <Filter>Files\Items%28base objects%29</Filter>
-    </ClCompile>
     <ClCompile Include="code\Projectile.cpp">
-      <Filter>Files\Items%28base objects%29</Filter>
-    </ClCompile>
-    <ClCompile Include="code\PirateEnemy.cpp">
-      <Filter>Files\Items%28base objects%29</Filter>
-    </ClCompile>
-    <ClCompile Include="code\Enemy.cpp">
       <Filter>Files\Items%28base objects%29</Filter>
     </ClCompile>
     <ClCompile Include="code\LevelManager.cpp">
@@ -30,9 +18,6 @@
     </ClCompile>
     <ClCompile Include="code\TowerManager.cpp">
       <Filter>Files\Manages</Filter>
-    </ClCompile>
-    <ClCompile Include="code\Tower.cpp">
-      <Filter>Files\Items%28base objects%29</Filter>
     </ClCompile>
     <ClCompile Include="code\Wave.cpp">
       <Filter>Files\Manages</Filter>
@@ -61,6 +46,30 @@
     <ClCompile Include="code\Player.cpp">
       <Filter>Files\Items%28base objects%29</Filter>
     </ClCompile>
+    <ClCompile Include="code\Bullet.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Enemy.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Tower.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
+    <ClCompile Include="code\PirateEnemy.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
+    <ClCompile Include="code\CaptainEnemy.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
+    <ClCompile Include="code\BuccaneerEnemy.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
+    <ClCompile Include="code\MusketTower.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\CannonTower.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\TextureHolder.h">
@@ -73,12 +82,6 @@
       <Filter>Header\Items%28base objects%29</Filter>
     </ClInclude>
     <ClInclude Include="code\CaptainEnemy.h">
-      <Filter>Header\Items%28base objects%29</Filter>
-    </ClInclude>
-    <ClInclude Include="code\Enemy.h">
-      <Filter>Header\Items%28base objects%29</Filter>
-    </ClInclude>
-    <ClInclude Include="code\Tower.h">
       <Filter>Header\Items%28base objects%29</Filter>
     </ClInclude>
     <ClInclude Include="code\Projectile.h">
@@ -109,6 +112,15 @@
       <Filter>Header\Manages</Filter>
     </ClInclude>
     <ClInclude Include="code\Player.h">
+      <Filter>Header\Items%28base objects%29</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Bullet.h">
+      <Filter>Header\Items%28base objects%29</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Enemy.h">
+      <Filter>Header\Items%28base objects%29</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Tower.h">
       <Filter>Header\Items%28base objects%29</Filter>
     </ClInclude>
   </ItemGroup>

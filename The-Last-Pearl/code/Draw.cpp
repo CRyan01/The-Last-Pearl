@@ -9,12 +9,7 @@ void TheLastPearl::draw()
 	window.draw(spriteBackground);
 	/* Draw the frame */
 	if (state == State::InLevel) {
-		
-		
-		
-
-		
-		
+			
 		// Draw the enemies
 		for (const auto& enemy : currentWave.getActiveEnemies()) {
 			window.draw(enemy->getSprite());
@@ -28,12 +23,10 @@ void TheLastPearl::draw()
 		// Draw the selected tower sprite
 		window.draw(spriteSelectedTower);
 
-		// Draw each tower
-	//	for (const Tower& tower : towers) {
-		//	window.draw(tower.getSprite());
-		//}
-		//this si all the towers
-		TheGameTowers.draw(window);
+		// Draw towers and projectiles via TowerManager
+		TheGameTowers.draw(window, projectileHolder);
+		//std::cout << "Projectiles drawn via TowerManager and ProjectileHolder\n";
+
 
 		// Draw the tower icons
 		window.draw(spriteBuildMenuBackground);
@@ -45,7 +38,7 @@ void TheLastPearl::draw()
 
 		// Draw the cursor
 		window.draw(spriteCursor);
-	//	window.draw(bullet.getSprite());
+	//	window.draw(projectile.getSprite());
 	}
 
 	if (state == State::PAUSED) {
