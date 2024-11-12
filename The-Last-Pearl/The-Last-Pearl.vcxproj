@@ -22,6 +22,7 @@
     <ClCompile Include="code\CreateTower.cpp" />
     <ClCompile Include="code\DetectCollisions.cpp" />
     <ClCompile Include="code\Draw.cpp" />
+    <ClCompile Include="code\Hud.cpp" />
     <ClCompile Include="code\MainMenu.cpp" />
     <ClCompile Include="code\BuccaneerEnemy.cpp" />
     <ClCompile Include="code\CaptainEnemy.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="code\CannonTower.h" />
     <ClInclude Include="code\CaptainEnemy.h" />
     <ClInclude Include="code\Enemy.h" />
+    <ClInclude Include="code\Hud.h" />
     <ClInclude Include="code\LevelManager.h" />
     <ClInclude Include="code\MusketTower.h" />
     <ClInclude Include="code\Paths.h" />

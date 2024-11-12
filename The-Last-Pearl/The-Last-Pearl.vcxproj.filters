@@ -61,6 +61,9 @@
     <ClCompile Include="code\Player.cpp">
       <Filter>Files\Items%28base objects%29</Filter>
     </ClCompile>
+    <ClCompile Include="code\Hud.cpp">
+      <Filter>Files\Items%28base objects%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\TextureHolder.h">
@@ -109,6 +112,9 @@
       <Filter>Header\Manages</Filter>
     </ClInclude>
     <ClInclude Include="code\Player.h">
+      <Filter>Header\Items%28base objects%29</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Hud.h">
       <Filter>Header\Items%28base objects%29</Filter>
     </ClInclude>
   </ItemGroup>
