@@ -44,7 +44,7 @@ private:
 	// A regular RenderWindow //what people see
 	RenderWindow window;
 	TextureHolder holder;
-
+	ProjectileHolder projectileHolder;
 	// The main Views
 	View GameView;
 	View MainMenuView;

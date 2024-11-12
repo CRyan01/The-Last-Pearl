@@ -2,13 +2,11 @@
 #include "TextureHolder.h"
 
 // By Conor Ryan
-MusketTower::MusketTower(float x, float y) : Tower(15, 120, 1.5f, "graphics/musketTower.png") {  // Initialize with specific attributes
+MusketTower::MusketTower(float x, float y) 
+    : Tower(TowerType::MusketTower, 15, 320, 1.5f, "graphics/musketTower.png") {  // Initialize with specific attributes
     initialize(x, y);
 }
 
-void MusketTower::shoot() {
-    if (canShoot()) {
-        // Musket-specific shooting logic
-        m_TimeSinceLastShot = 0;
-    }
+void MusketTower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projectileHolder) {
+    Tower::shoot(targetPosition, projectileHolder);
 }

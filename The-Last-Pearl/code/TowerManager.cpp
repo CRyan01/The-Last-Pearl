@@ -1,38 +1,32 @@
 #include "TowerManager.h"
 #include "TextureHolder.h"
+#include <iostream>
+
 TowerManager::TowerManager()
 {
 	AllGameTowers.clear();
 
-
-
 }
 
-void TowerManager::draw(RenderWindow& window)
+void TowerManager::update(float seconds, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder) 
 {
-	for (int i = 0; i < AllGameTowers.size()+0; i++)
+	for (auto& tower : AllGameTowers) 
 	{
-		window.draw(AllGameTowers.at(i).getSprite());
-		AllGameTowers.at(i).Bullets.draw(window);
-		if (AllGameTowers.at(i).ClickedOn)
-		{
-			window.draw(AllGameTowers.at(i).Sight);
-			//dont put the bullets drawing functio here
-		}
+		tower.update(seconds, enemies, projectileHolder);
 	}
-
-
+	projectileHolder.update(seconds);  // Ensure projectiles are updated
+	//std::cout << "ProjectileHolder updated with current projectiles\n";
 }
-void TowerManager::update(float seconds)
+
+void TowerManager::draw(sf::RenderWindow& window, ProjectileHolder& projectileHolder) 
 {
-	for (int i = 0; i < AllGameTowers.size() + 0; i++)
+	for (const auto& tower : AllGameTowers) 
 	{
-		AllGameTowers.at(i).update(seconds);
-		
+		window.draw(tower.getSprite());
 	}
-
+	projectileHolder.draw(window);  // Draw all projectiles
 }
-void TowerManager::TowerInputs(Event event,Vector2f mouseWorldPos)
+void TowerManager::TowerInputs(Event event, Vector2f mouseWorldPos)
 {
 	if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
 	{
@@ -44,7 +38,7 @@ void TowerManager::TowerInputs(Event event,Vector2f mouseWorldPos)
 				AllGameTowers.at(i).ClickedOn = true;
 			}
 			else
-			{ 
+			{
 				AllGameTowers.at(i).ClickedOn = false;
 			}
 
