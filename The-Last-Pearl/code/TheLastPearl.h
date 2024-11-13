@@ -11,6 +11,7 @@
 #include "Paths.h"
 #include "Wave.h"
 #include "Player.h"
+#include "Hud.h"
 #pragma once
 
 using namespace sf;
@@ -77,12 +78,7 @@ private:
 	Sprite MainMenuSprite;
 	Sprite spriteCursor;
 	Sprite spriteBackground;
-	Sprite spriteMusketTowerIcon;
-	Sprite spriteCannonTowerIcon;
-	Sprite spriteMortarTowerIcon;
-	Sprite spriteCrossbowTowerIcon;
-	Sprite spriteGoldIcon;
-	Sprite spriteBuildMenuBackground;
+	
 	Projectile bullet;
 	// Text
 	Font font;
@@ -118,4 +114,6 @@ private:
 
 	//the player
 	Player CaptainJackSparrow;
+
+	Hud PlayerHud;
 };

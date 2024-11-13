@@ -27,7 +27,7 @@ Wave::Wave(int waveNumber)
 		enemies.insert(enemies.end(), waveNumber, CAPTAIN);
 	}
 	CurrentWave = waveNumber;
-	std::cout << "Enemy size= " << enemies.size();
+	//std::cout << "Enemy size= " << enemies.size();
 }
 
 void Wave::NextWave()
@@ -50,7 +50,7 @@ void Wave::NextWave()
 		enemies.insert(enemies.end(), CurrentWave * 2, PIRATE);
 		enemies.insert(enemies.end(), CurrentWave, CAPTAIN);
 	}
-	std::cout << "Enemy size= " << enemies.size();
+	//std::cout << "Enemy size= " << enemies.size();
 
 }
 
@@ -119,6 +119,7 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 			it = activeEnemies.erase(it); // Remove defeated enemy
 			if (isWaveComplete())
 			{
+				activeEnemies.clear();
 				NextWave();
 			}
 			
@@ -131,7 +132,8 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 }
 
 bool Wave::isWaveComplete()  {
-	//std::cout << "\nhey this works " << activeEnemies.empty();
+	//std::
+	// << "\nhey this works " << activeEnemies.empty();
 	return activeEnemies.empty();
 }
 

@@ -20,7 +20,7 @@ void ProjectileHolder::update(float elapsedTime)
 		bullet.update(elapsedTime);
 	}
 	clearInactive();
-	std::cout << "Updating projectiles in ProjectileHolder. Total projectiles: " << bullets.size() << "\n";
+	//std::cout << "Updating projectiles in ProjectileHolder. Total projectiles: " << bullets.size() << "\n";
 }
 
 void ProjectileHolder::draw(RenderWindow& window) 
@@ -38,7 +38,7 @@ void ProjectileHolder::shoot(sf::Vector2f target, sf::Vector2f spawn, const std:
 {
 	TheBullet.Spawn(damage, speed, texturePath, target, spawn);
 	bullets.push_back(TheBullet);
-	std::cout << "Projectile added with texture " << texturePath << ". Total projectiles: " << bullets.size() << "\n";
+//	std::cout << "Projectile added with texture " << texturePath << ". Total projectiles: " << bullets.size() << "\n";
 }
 
 void ProjectileHolder::clearInactive()
@@ -49,8 +49,8 @@ void ProjectileHolder::clearInactive()
 		bullets.end());
 
 	// Debug output to show number of projectiles cleared
-	std::cout << "Inactive projectiles cleared. Initial count: " << initialSize
-		<< ", New count: " << bullets.size() << "\n";
+	//std::cout << "Inactive projectiles cleared. Initial count: " << initialSize
+	//	<< ", New count: " << bullets.size() << "\n";
 }
 
 std::vector<Projectile>& ProjectileHolder::getProjectiles() 

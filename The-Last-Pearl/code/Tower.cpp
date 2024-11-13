@@ -64,7 +64,7 @@ void Tower::update(float elapsedTime, const std::vector<Enemy*>& enemies, Projec
 
     if (!foundEnemy) 
     {
-        std::cout << "No enemies within range for tower at (" << m_Position.x << ", " << m_Position.y << ")\n";
+        //std::cout << "No enemies within range for tower at (" << m_Position.x << ", " << m_Position.y << ")\n";
     }
 }
 // Shoot method to create a projectile aimed at the target position
@@ -84,8 +84,8 @@ void Tower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projecti
 
     projectileHolder.shoot(targetPosition, m_Position, texturePath);
     m_TimeSinceLastShot = 0;  // Reset cooldown after shooting
-    std::cout << "Shot a projectile from tower at (" << m_Position.x << ", " << m_Position.y << ") targeting ("
-        << targetPosition.x << ", " << targetPosition.y << ")\n";
+   // std::cout << "Shot a projectile from tower at (" << m_Position.x << ", " << m_Position.y << ") targeting ("
+        //<< targetPosition.x << ", " << targetPosition.y << ")\n";
 }
 // Accessor for projectiles vector
 std::vector<Projectile>& Tower::getProjectiles() 

@@ -26,15 +26,15 @@ void Projectile::Spawn(float damage, float speed, const std::string& textureFile
         // Set a default fallback direction to the right if target is too close
         m_Velocity = { m_Speed, 0 };
   
-        std::cout << "Projectile spawned with fallback velocity";
+       // std::cout << "Projectile spawned with fallback velocity";
     }
 
     // Debug output
-    std::cout << "Projectile spawned at (" << spawn.x << ", " << spawn.y
-        << ") with target (" << target.x << ", " << target.y
-        << "), direction (" << direction.x << ", " << direction.y
-        << "), length " << length
-        << ", and velocity (" << m_Velocity.x << ", " << m_Velocity.y << ")\n";
+   // std::cout << "Projectile spawned at (" << spawn.x << ", " << spawn.y
+     //   << ") with target (" << target.x << ", " << target.y
+     //   << "), direction (" << direction.x << ", " << direction.y
+      //  << "), length " << length
+      //  << ", and velocity (" << m_Velocity.x << ", " << m_Velocity.y << ")\n";
 }
 
 
@@ -43,15 +43,15 @@ void Projectile::update(float elapsedTime)
 {
     if (m_Active) {
         // Debug output for current position
-        std::cout << "Projectile initial position: (" << m_Sprite.getPosition().x
-            << ", " << m_Sprite.getPosition().y << ")\n";
+       // std::cout << "Projectile initial position: (" << m_Sprite.getPosition().x
+          //  << ", " << m_Sprite.getPosition().y << ")\n";
 
         // Move the projectile based on velocity and elapsed time
         m_Sprite.move(m_Velocity * elapsedTime);
 
         // Debug output for new position
-        std::cout << "Projectile updated position: (" << m_Sprite.getPosition().x
-            << ", " << m_Sprite.getPosition().y << ")\n";
+      //  std::cout << "Projectile updated position: (" << m_Sprite.getPosition().x
+           // << ", " << m_Sprite.getPosition().y << ")\n";
     }
 }
 
@@ -63,7 +63,7 @@ bool Projectile::checkCollision(const FloatRect& enemyBounds) const
 void Projectile::setInactive()
 {
     m_Active = false;
-    std::cout << "Projectile set to inactive.\n";
+  //  std::cout << "Projectile set to inactive.\n";
 }
 
 // Return true if the projectile is active

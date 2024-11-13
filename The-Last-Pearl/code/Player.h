@@ -13,7 +13,7 @@ public:
 
 private:
     int money = 1000;
-    int health = 1000;
-
+    int MaxHp = 1000;
+    int health = MaxHp;
     int currentLevel;
 };

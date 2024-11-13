@@ -15,16 +15,11 @@ void TheLastPearl::CheckInputs() {
 
             // Boolean to indicate if a tower build icon was clicked
             bool iconClicked = false;
-
+            
             // Check if a tower build icon was clicked if a valid plot is selected
             if (isPlotSelected) {
-                if (spriteMusketTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
-                    selectedTowerType = Tower::TowerType::MusketTower;
-                    iconClicked = true;
-                } else if (spriteCannonTowerIcon.getGlobalBounds().contains(mouseWorldPosition)) {
-                    selectedTowerType = Tower::TowerType::CannonTower;
-                    iconClicked = true;
-                }
+               // selectedTowerType
+                iconClicked=PlayerHud.input(selectedTowerType, mouseWorldPosition);
             }
 
             // If a valid tower build icon is clicked

@@ -14,13 +14,13 @@ Bullet::Bullet(sf::Vector2f position, sf::Vector2f target, float speed) : speed(
 
 void Bullet::update(float deltaTime) {
     shape.move(velocity * deltaTime);
-    std::cout << "Bullet at position (" << shape.getPosition().x << ", " << shape.getPosition().y << ")";
+   // std::cout << "Bullet at position (" << shape.getPosition().x << ", " << shape.getPosition().y << ")";
 }
 
 bool Bullet::checkCollision(const sf::FloatRect& enemyBounds) const {
     bool collision = shape.getGlobalBounds().intersects(enemyBounds);
     if (collision) {
-        std::cout << "Bullet collided with enemy!";
+       // std::cout << "Bullet collided with enemy!";
     }
     return collision;
 }
