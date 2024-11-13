@@ -1,8 +1,6 @@
+//test
 // Libraries
 #include "TheLastPearl.h"
-
-
-
 
 using namespace sf;
 
