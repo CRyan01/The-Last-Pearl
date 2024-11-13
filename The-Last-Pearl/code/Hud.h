@@ -14,6 +14,7 @@ public:
 	void draw(RenderWindow& window);
 	bool input(Tower::TowerType& selectedTowerType,Vector2f mousePos);
 	Hud(Player& player);
+	Hud();
 private:
 	String playerMoney_Health;
 	Text Playermoney_HealthText;

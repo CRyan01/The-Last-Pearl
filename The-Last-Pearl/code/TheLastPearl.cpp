@@ -110,6 +110,7 @@ TheLastPearl::TheLastPearl()
 	//testing place 
 	
 	bullet.Spawn(19, 19, "graphics/tnt.png", Vector2f(500.0f, 500.0f), Vector2f(500.0f, 500.0f));
+	PlayerHud = Hud(CaptainJackSparrow);
 }
 
 void TheLastPearl::run()

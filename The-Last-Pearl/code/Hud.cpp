@@ -4,7 +4,11 @@
 //This is ll for display all things related to player
 #include "Hud.h"
 //test fix?
+Hud::Hud()
+{
 
+
+}
 Hud::Hud(Player& player)
 {
 	*thePlayer = player;
