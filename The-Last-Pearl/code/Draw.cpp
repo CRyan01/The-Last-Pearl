@@ -31,7 +31,7 @@ void TheLastPearl::draw()
 		PlayerHud.draw(window);
 		window.draw(HealthText);
 		// Draw the cursor
-		window.draw(spriteCursor);
+		
 	//	window.draw(projectile.getSprite());
 	}
 
@@ -43,7 +43,13 @@ void TheLastPearl::draw()
 	}
 
 	if (state == State::MAIN_MENU) {
-
+		window.draw(Level1Sprite);
+		window.draw(Level2Sprite);
+		window.draw(Level3Sprite);
+		window.draw(MainMenuTitle);
+		window.draw(Level1text);
+		window.draw(Level2text);
+		window.draw(Level3text);
 	}
 
 	window.draw(spriteCursor);

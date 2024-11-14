@@ -15,11 +15,11 @@ void TheLastPearl::CheckInputs() {
 
             // Boolean to indicate if a tower build icon was clicked
             bool iconClicked = false;
-            
+
             // Check if a tower build icon was clicked if a valid plot is selected
             if (isPlotSelected) {
-               // selectedTowerType
-                iconClicked=PlayerHud.input(selectedTowerType, mouseWorldPosition);
+                // selectedTowerType
+                iconClicked = PlayerHud.input(selectedTowerType, mouseWorldPosition);
             }
 
             // If a valid tower build icon is clicked
@@ -42,7 +42,7 @@ void TheLastPearl::CheckInputs() {
                 }
                 // Mark the plot as occupied
                 occupiedTowerPositions.push_back(selectedTowerPosition);
-                
+
                 // Reset selection variables
                 selectedTowerType = Tower::TowerType::None;
                 selectedTowerPosition = Vector2f(-1, -1);
@@ -72,7 +72,8 @@ void TheLastPearl::CheckInputs() {
                     if (!isPlotOccupied(towerPositions[i])) {
                         selectedTowerPosition = towerPositions[i];
                         isPlotSelected = true;
-                    } else {
+                    }
+                    else {
                         selectedTowerPosition = Vector2f(-1, -1);
                         isPlotSelected = false;
                     }
@@ -91,16 +92,51 @@ void TheLastPearl::CheckInputs() {
                 selectedTowerPosition = Vector2f(-1, -1);
                 isPlotSelected = false;
             }
+            if (state == State::MAIN_MENU)
+            {
+                if (Level1Sprite.getGlobalBounds().contains(mouseWorldPosition))
+                {
+                    StartLevel(1);
+                    state = State::InLevel;
+                }
+                else if (Level2Sprite.getGlobalBounds().contains(mouseWorldPosition))
+                {
+                    StartLevel(2);
+                    state = State::InLevel;
+                }
+                else if (Level3Sprite.getGlobalBounds().contains(mouseWorldPosition))
+                {
+                    StartLevel(3);
+                    state = State::InLevel;
+                }
+
+
+            }
         }
 
         // Handle key events for exiting and pausing
         if (event.type == Event::KeyPressed) {
-            if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+            if (Keyboard::isKeyPressed(Keyboard::Escape)) 
+            {
                 window.close();
             }
-            if (event.key.code == Keyboard::P) {
+            if (event.key.code == Keyboard::P)
+            {
                 state = (state == State::PAUSED) ? State::InLevel : State::PAUSED;
-                if (state == State::InLevel) clock.restart(); // Reset delta time to avoid frame jump
+
+                if (state == State::InLevel)
+                {
+                    clock.restart(); // Reset delta time to avoid frame jump
+
+                }
+            }
+            if (state == State::MAIN_MENU)
+            {
+                if (Keyboard::isKeyPressed(Keyboard::Enter))
+                {
+                    state = State::InLevel;
+                    StartLevel(1);
+                }
             }
         }
     }

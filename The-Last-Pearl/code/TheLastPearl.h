@@ -30,7 +30,9 @@ public:
 	void Initialize();
 	//may or may not be used more for just level start up extra
 	void CheckInputs();
-	void Level1();
+	//sets up the new Level
+	void StartLevel(int LevelNumber);
+	//SetUps the main Menu
 	void MainMenu();
 
 	
@@ -78,12 +80,21 @@ private:
 	Sprite MainMenuSprite;
 	Sprite spriteCursor;
 	Sprite spriteBackground;
+
+	//main Menu Sprites
+	Sprite Level1Sprite;
+	Sprite Level2Sprite;
+	Sprite Level3Sprite;
 	
 	Projectile bullet;
 	// Text
 	Font font;
 	Text pausedText;
 	Text HealthText;
+	Text MainMenuTitle;
+	Text Level1text;
+	Text Level2text;
+	Text Level3text;
 	stringstream playertext;
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };

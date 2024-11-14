@@ -22,8 +22,7 @@ void TheLastPearl::update()
 		// Get a decimal fraction of 1 from the delta time
 		float dtAsSeconds = dt.asSeconds();
 
-		// Store the cursors position on the screen
-		mouseScreenPosition = Mouse::getPosition();
+
 
 		//Ensure enemies are initialized only once per wave
 	
@@ -64,17 +63,29 @@ void TheLastPearl::update()
 			}
 		}
 
-		// Convert mouse position to world coordinates of mainView
-		mouseWorldPosition = window.mapPixelToCoords(
-			Mouse::getPosition(), GameView);
+		
 
-		// Set the cursor to the mouse world location
-		spriteCursor.setPosition(mouseWorldPosition);
+
+		CaptainJackSparrow.Hit(currentWave.GetDamage());
+		std::stringstream newText;
+		newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
+		HealthText.setString(newText.str());
+
+		if (CaptainJackSparrow.GameOver())
+		{
+			exit(0);
+		}
 	}
-	CaptainJackSparrow.Hit(currentWave.GetDamage());
-	std::stringstream newText;
-	newText<< "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
-	HealthText.setString(newText.str());
+	// Store the cursors position on the screen
+	//mouse stuff
+	mouseScreenPosition = Mouse::getPosition();
+
+	// Convert mouse position to world coordinates of mainView
+	mouseWorldPosition = window.mapPixelToCoords(
+		Mouse::getPosition(), GameView);
+
+	// Set the cursor to the mouse world location
+	spriteCursor.setPosition(mouseWorldPosition);
 	// Set the cursor to the mouse world location
 	spriteCursor.setPosition(mouseWorldPosition);
 	/* Update the frame */
@@ -82,14 +93,13 @@ void TheLastPearl::update()
 	//	Level1();
 
 	//} // End updating the frame
-	if (CaptainJackSparrow.GameOver())
-	{
-		exit(0);
-	}
+	
 	if (state == State::MAIN_MENU)
 	{
-		MainMenu();
+		//MainMenu();
 
 		CheckInputs();
 	}
+
+	
 }
