@@ -71,6 +71,7 @@ void TheLastPearl::update()
 		// Set the cursor to the mouse world location
 		spriteCursor.setPosition(mouseWorldPosition);
 	}
+	CaptainJackSparrow.Hit(currentWave.GetDamage());
 	std::stringstream newText;
 	newText<< "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
 	HealthText.setString(newText.str());
@@ -81,7 +82,10 @@ void TheLastPearl::update()
 	//	Level1();
 
 	//} // End updating the frame
-
+	if (CaptainJackSparrow.GameOver())
+	{
+		exit(0);
+	}
 	if (state == State::MAIN_MENU)
 	{
 		MainMenu();

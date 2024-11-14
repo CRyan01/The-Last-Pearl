@@ -110,6 +110,7 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 			enemy->currentPos++; // Move to the next position in the path
 			if (enemy->currentPos >= path.returnPathsSize())
 			{
+				CollectedDamage+=enemy->Damage();
 				enemy->hit(200000);
 			}
 		}
@@ -144,4 +145,14 @@ const vector<Enemy*>& Wave::getActiveEnemies() const {
 		rawEnemies.push_back(enemy.get());
 	}
 	return rawEnemies;
+}
+
+int Wave::GetDamage()
+{
+	
+	int newint = CollectedDamage;
+	CollectedDamage = 0;
+
+	return newint;
+
 }

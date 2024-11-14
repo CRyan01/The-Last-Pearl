@@ -17,7 +17,8 @@ protected:
     float m_Speed;
     int m_Health;
     bool m_Alive = true;
-
+    //damage to pearl
+    int Enemydamage = 20;
     // Constants to control speed variance
     const int MAX_SPEED = 30;  // Maximum speed variance
     const int OFFSET = 70;        // Minimum speed multiplier (70%)
@@ -51,6 +52,9 @@ public:
     bool ReachedPos();
     //setting its new palce to go
     void SetNewTarget(Vector2f newPos);
+
+    //for when enemy makes it to the ending damage to pearl
+    int Damage();
 
     int currentPos=-1;
 };

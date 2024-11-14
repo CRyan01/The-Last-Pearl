@@ -74,3 +74,9 @@ void Enemy::SetNewTarget(Vector2f newTarget)
 
 
 }
+
+int Enemy::Damage()
+{
+    return Enemydamage;
+
+}

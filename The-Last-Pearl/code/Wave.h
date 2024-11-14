@@ -32,11 +32,18 @@ public:
 
     void NextWave();
 
+    int GetDamage();
+ 
+
 private:
     vector<EnemyType> enemies; // Holds types of enemies in the wave
     vector<unique_ptr<Enemy>> activeEnemies; // Stores unique pointers 
     float spawnDelay = 1.5f; // Delay of 0.5 seconds between enemy spawns
     float elapsedTime = 0.0f; 
     int CurrentWave=0;
+    int Damage = 0;
     //bool waveComplete = true; // Track wave completion status
+
+       //all damage collected
+    int CollectedDamage = 0;
 };

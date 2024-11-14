@@ -12,7 +12,7 @@ public:
     bool GameOver();
 
     int money = 1000;
-    int MaxHp = 1000;
+    int MaxHp = 100;
     int health = MaxHp;
 private:
     
