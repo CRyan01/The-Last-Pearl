@@ -29,7 +29,7 @@ void TheLastPearl::draw()
 
 
 		PlayerHud.draw(window);
-
+		window.draw(HealthText);
 		// Draw the cursor
 		window.draw(spriteCursor);
 	//	window.draw(projectile.getSprite());
@@ -39,6 +39,7 @@ void TheLastPearl::draw()
 		// Draw pause text in the center of the screen - CR
 		window.setView(window.getDefaultView()); // Use the default view to avoid scaling
 		window.draw(pausedText);
+		
 	}
 
 	if (state == State::MAIN_MENU) {

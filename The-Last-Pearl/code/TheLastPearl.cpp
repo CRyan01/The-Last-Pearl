@@ -12,7 +12,7 @@ TheLastPearl::TheLastPearl()
 	resolution.x = 1920;
 	resolution.y = 1080;
 	
-	buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
+	//buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
 
 	// Preset positions for towers - CR
 	towerPositions.push_back(Vector2f(200, 60));
@@ -101,7 +101,13 @@ TheLastPearl::TheLastPearl()
 	pausedText.setOrigin(pausedText.getLocalBounds().width / 2, pausedText.getLocalBounds().height / 2);
 	pausedText.setPosition(resolution.x / 2, resolution.y / 2);
 
-
+	HealthText.setFont(font);
+	HealthText.setCharacterSize(50);
+	HealthText.setFillColor(Color::White);
+	playertext << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
+	HealthText.setString(playertext.str());
+	HealthText.setOrigin(HealthText.getLocalBounds().width / 2, HealthText.getLocalBounds().height / 2);
+	HealthText.setPosition(1000, 1000);
 	//pathing
 	MainPath.SetLevel(1);
 	// Start the game in a paused state - CR
@@ -109,8 +115,8 @@ TheLastPearl::TheLastPearl()
 	//sf::Vector2f same = (500.0f,500.0f);
 	//testing place 
 	
-	bullet.Spawn(19, 19, "graphics/tnt.png", Vector2f(500.0f, 500.0f), Vector2f(500.0f, 500.0f));
-	PlayerHud = Hud(CaptainJackSparrow);
+	//bullet.Spawn(19, 19, "graphics/tnt.png", Vector2f(500.0f, 500.0f), Vector2f(500.0f, 500.0f));
+	PlayerHud=Hud(CaptainJackSparrow);
 }
 
 void TheLastPearl::run()

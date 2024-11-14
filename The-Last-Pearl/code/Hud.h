@@ -2,10 +2,10 @@
 //This will manage what the player sees so the icons and th money/health
 #pragma once
 #include <iostream>
-#include "TextureHolder.h"
-#include <SFML/Graphics.hpp>
 #include "Tower.h"
 #include "Player.h"
+#include <string>
+#include <sstream>
 
 using namespace sf;
 class Hud 
@@ -15,14 +15,23 @@ public:
 	bool input(Tower::TowerType& selectedTowerType,Vector2f mousePos);
 	Hud(Player& player);
 	Hud();
+	void update(float seconds);
+	~Hud();
 private:
-	String playerMoney_Health;
-	Text Playermoney_HealthText;
+	sf::Font chracterlook;
+	sf::Text HealthText;
 	Sprite spriteMusketTowerIcon;
 	Sprite spriteCannonTowerIcon;
 	Sprite spriteMortarTowerIcon;
 	Sprite spriteCrossbowTowerIcon;
 	Sprite spriteGoldIcon;
 	Sprite spriteBuildMenuBackground;
-	Player* thePlayer;
+	Player* thePlayer=nullptr;
+
+	
+	//timers for update
+	float reset = 0.5f;
+	float UpdateTimer =reset;
+	bool firstTime = true;
+	
 };

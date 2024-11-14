@@ -11,9 +11,10 @@ public:
     bool CanBuy(int cost);
     bool GameOver();
 
-private:
     int money = 1000;
     int MaxHp = 1000;
     int health = MaxHp;
+private:
+    
     int currentLevel;
 };

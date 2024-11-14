@@ -71,7 +71,9 @@ void TheLastPearl::update()
 		// Set the cursor to the mouse world location
 		spriteCursor.setPosition(mouseWorldPosition);
 	}
-
+	std::stringstream newText;
+	newText<< "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
+	HealthText.setString(newText.str());
 	// Set the cursor to the mouse world location
 	spriteCursor.setPosition(mouseWorldPosition);
 	/* Update the frame */

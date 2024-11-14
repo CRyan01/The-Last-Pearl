@@ -83,6 +83,8 @@ private:
 	// Text
 	Font font;
 	Text pausedText;
+	Text HealthText;
+	stringstream playertext;
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };
 	State state;
