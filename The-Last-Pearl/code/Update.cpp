@@ -34,7 +34,9 @@ void TheLastPearl::update()
 		// Update towers and add projectiles to the holder
 		TheGameTowers.update(dtAsSeconds, currentWave.getActiveEnemies(), projectileHolder);
 
-		// Check for projectile-enemy collisions
+		auto activeEnemies = currentWave.getActiveEnemies();
+		//std::cout << "Active enemies count in update: " << activeEnemies.size() << std::endl;
+
 		for (auto& projectile : projectileHolder.getProjectiles())
 		{
 			if (projectile.isActive())
@@ -42,18 +44,27 @@ void TheLastPearl::update()
 				for (auto it = activeEnemies.begin(); it != activeEnemies.end();)
 				{
 					Enemy* enemy = *it;
-					if (enemy->isAlive() && projectile.checkCollision(enemy->getSprite().getGlobalBounds()))
+
+					if (projectile.getSprite().getGlobalBounds().intersects(enemy->getSprite().getGlobalBounds()))
 					{
-						if (enemy->hit(projectile.getDamage()))
+						std::cout << "Collision detected!" << std::endl;
+
+						// Log the damage dealt and remaining health of the enemy
+						float damage = projectile.getDamage();
+						bool enemyDied = enemy->hit(damage);
+						std::cout << "Enemy took " << damage << " damage. " << "Remaining health: " << enemy->getHealth() << std::endl;
+
+						if (enemyDied)
 						{
-							it = activeEnemies.erase(it);  // Remove dead enemy
+							std::cout << "Enemy defeated and removed from active list." << std::endl;
+							it = activeEnemies.erase(it);
 						}
 						else
 						{
 							++it;
 						}
-						projectile.setInactive();  // Deactivate projectile after collision
-						break;  // Stop checking other enemies for this projectile
+						projectile.setInactive();
+						break;
 					}
 					else
 					{

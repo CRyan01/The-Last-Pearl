@@ -3,60 +3,68 @@
 // By Conor Ryan
 
 // Constructor
-void Projectile::Spawn(float damage, float speed, const std::string& textureFile, sf::Vector2f target, sf::Vector2f spawn) 
+void Projectile::Spawn(float damage, float speed, const std::string& textureFile, sf::Vector2f spawn, Enemy* target, float maxRange)
 {
     m_Damage = damage;
     m_Speed = speed;
-    m_Speed = 600;
     m_Active = true;
+    m_StartPosition = spawn;
+    m_TargetEnemy = target;
+    m_MaxRange = maxRange;
+
     m_Sprite.setTexture(TextureHolder::GetTexture(textureFile));
     m_Sprite.setPosition(spawn);
 
-    // Calculate direction and velocity
-    sf::Vector2f direction = target - spawn;
-    float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-
-    // Ensure length is not too small to avoid zero velocity
-    if (length > 0.1f) 
-    {
-        direction /= length; // direction vector
-        m_Velocity = direction * m_Speed;
+    // Calculate initial direction towards the target enemy
+    if (m_TargetEnemy) {
+        Vector2f direction = m_TargetEnemy->getSprite().getPosition() - spawn;
+        float length = sqrt(direction.x * direction.x + direction.y * direction.y);
+        if (length > 0.1f) {
+            direction /= length;
+            m_Velocity = direction * m_Speed;
+        }
     }
-    else 
-    {
-        // Set a default fallback direction to the right if target is too close
-        m_Velocity = { m_Speed, 0 };
-  
-       // std::cout << "Projectile spawned with fallback velocity";
-    }
-
-    // Debug output
-   // std::cout << "Projectile spawned at (" << spawn.x << ", " << spawn.y
-     //   << ") with target (" << target.x << ", " << target.y
-     //   << "), direction (" << direction.x << ", " << direction.y
-      //  << "), length " << length
-      //  << ", and velocity (" << m_Velocity.x << ", " << m_Velocity.y << ")\n";
 }
 
 
 // Update the projectiles position based on velocity
-void Projectile::update(float elapsedTime) 
+void Projectile::update(float elapsedTime)
 {
-    if (m_Active) {
-        // Debug output for current position
-       // std::cout << "Projectile initial position: (" << m_Sprite.getPosition().x
-          //  << ", " << m_Sprite.getPosition().y << ")\n";
+    if (m_Active && m_TargetEnemy && m_TargetEnemy->isAlive())
+    {
+        // Calculate the distance traveled from the starting position
+        sf::Vector2f currentPos = m_Sprite.getPosition();
+        float distanceTraveled = std::sqrt(
+            (currentPos.x - m_StartPosition.x) * (currentPos.x - m_StartPosition.x) +
+            (currentPos.y - m_StartPosition.y) * (currentPos.y - m_StartPosition.y)
+        );
 
-        // Move the projectile based on velocity and elapsed time
+        // Check if the projectile has exceeded its maximum range
+        if (distanceTraveled > m_MaxRange)
+        {
+            setInactive();
+            return;
+        }
+
+        // Update direction toward the moving target
+        sf::Vector2f direction = m_TargetEnemy->getSprite().getPosition() - currentPos;
+        float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+        if (length > 0.1f)
+        {
+            direction /= length;
+            m_Velocity = direction * m_Speed;
+        }
+
+        // Move the projectile toward the enemy
         m_Sprite.move(m_Velocity * elapsedTime);
-
-        // Debug output for new position
-      //  std::cout << "Projectile updated position: (" << m_Sprite.getPosition().x
-           // << ", " << m_Sprite.getPosition().y << ")\n";
+    }
+    else
+    {
+        setInactive();  // Deactivate if theres no target or the target is dead
     }
 }
-
-bool Projectile::checkCollision(const FloatRect& enemyBounds) const 
+// Checks if the projectile collides with an enemy's bounds
+bool Projectile::checkCollision(const sf::FloatRect& enemyBounds)
 {
     return m_Sprite.getGlobalBounds().intersects(enemyBounds);
 }

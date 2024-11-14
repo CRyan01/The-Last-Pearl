@@ -80,3 +80,8 @@ int Enemy::Damage()
     return Enemydamage;
 
 }
+
+int Enemy::getHealth()
+{
+    return m_Health;
+}

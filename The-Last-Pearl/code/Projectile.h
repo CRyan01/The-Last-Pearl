@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Enemy.h"
 #include "TextureHolder.h"
 
 using namespace sf;
@@ -9,7 +10,8 @@ using namespace sf;
 class Projectile {
 public:
     // Constructor
-    void Spawn(float damage, float speed, const std::string& textureFile, Vector2f target, Vector2f spawn);
+    void Spawn(float damage, float speed, const std::string& textureFile, sf::Vector2f spawn, Enemy* target, float maxRange);
+
 
     // Initialize the projectile
     void initialize(Vector2f spawn);
@@ -22,6 +24,8 @@ public:
     // Returns true if the projectile is active
     bool isActive() const;
 
+    bool checkCollision(const FloatRect& enemyBounds);
+
     void setInactive();
 
     float getDamage() const;
@@ -33,6 +37,10 @@ public:
     void setVelocity(Vector2f velocity);
 
 private:
+    Enemy* m_TargetEnemy = nullptr;    
+    sf::Vector2f m_StartPosition;      
+    float m_MaxRange = 0.0f;           
+    sf::Vector2f m_PreviousPosition;
     float m_Damage;
     float m_Speed;
     Vector2f m_Velocity;

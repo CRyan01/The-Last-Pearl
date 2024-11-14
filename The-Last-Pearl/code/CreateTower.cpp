@@ -1,6 +1,7 @@
 
 #include "TowerManager.h"
-
+// Here is where the base values for the towers can be changed:
+// Like damage, range and fire rate. -Jakub
 
 void TowerManager::createTower(Tower::TowerType type, float x, float y) {
     Tower tower;

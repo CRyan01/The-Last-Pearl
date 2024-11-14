@@ -3,7 +3,7 @@
 
 ProjectileHolder::ProjectileHolder() 
 {
-	damage = 1000;
+	damage = 0; // For now all towers deal the 
 	speed = 0;
 	TextureName = "";
 }
@@ -20,7 +20,6 @@ void ProjectileHolder::update(float elapsedTime)
 		bullet.update(elapsedTime);
 	}
 	clearInactive();
-	//std::cout << "Updating projectiles in ProjectileHolder. Total projectiles: " << bullets.size() << "\n";
 }
 
 void ProjectileHolder::draw(RenderWindow& window) 
@@ -34,11 +33,10 @@ void ProjectileHolder::draw(RenderWindow& window)
 	}
 }
 
-void ProjectileHolder::shoot(sf::Vector2f target, sf::Vector2f spawn, const std::string& texturePath) 
+void ProjectileHolder::shoot(sf::Vector2f spawn, Enemy* target, const std::string& texturePath, float damage, float maxRange)
 {
-	TheBullet.Spawn(damage, speed, texturePath, target, spawn);
+	TheBullet.Spawn(damage, 600, texturePath, spawn, target, maxRange); // Here is where the bullet speed can be changed 
 	bullets.push_back(TheBullet);
-//	std::cout << "Projectile added with texture " << texturePath << ". Total projectiles: " << bullets.size() << "\n";
 }
 
 void ProjectileHolder::clearInactive()

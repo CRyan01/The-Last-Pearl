@@ -27,8 +27,8 @@ public:
     // Returns true if all enemies are dead
     bool isWaveComplete() ;
 
-    // Ability to get active enemies
-    const vector<Enemy*>& getActiveEnemies() const;
+    // get active enemies
+    vector<Enemy*> getActiveEnemies() const;
 
     void NextWave();
 
@@ -37,7 +37,7 @@ public:
 
 private:
     vector<EnemyType> enemies; // Holds types of enemies in the wave
-    vector<unique_ptr<Enemy>> activeEnemies; // Stores unique pointers 
+    vector<std::unique_ptr<Enemy>> activeEnemies;  // Active enemies in the wave
     float spawnDelay = 1.5f; // Delay of 0.5 seconds between enemy spawns
     float elapsedTime = 0.0f; 
     int CurrentWave=0;

@@ -15,7 +15,7 @@ public:
 
     void update(float seconds);
     void draw(RenderWindow& window);
-    void shoot(sf::Vector2f target, sf::Vector2f spawn, const std::string& texturePath);
+    void shoot(sf::Vector2f spawn, Enemy* target, const std::string& texturePath, float damage, float maxRange);
     void clearInactive();
 
     // New getter for accessing projectiles

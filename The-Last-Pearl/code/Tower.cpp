@@ -3,6 +3,7 @@
 #include <iostream>
 Tower::Tower()
 {
+    // Default constructor for Tower
     m_Type = TowerType::None;
     m_Damage = 0;
     m_Range = 0;
@@ -12,7 +13,7 @@ Tower::Tower()
     m_Sprite.setTexture(TextureHolder::GetTexture("graphics/crossbowTower.png"));
     m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
 }
-
+// Parameterized constructor to create a tower with specific attributes
 Tower::Tower(TowerType type, float damage, float range, float fireRate, const std::string& textureFile) 
 {
     m_Type = type;
@@ -39,36 +40,39 @@ bool Tower::canShoot()
 {
     return m_TimeSinceLastShot >= (1.0f / m_FireRate);  // Check if cooldown has passed
 }
-
-void Tower::update(float elapsedTime, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder) 
+// Updates the tower's state each frame, including checking for enemies in range and firing when possible
+void Tower::update(float elapsedTime, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder)
 {
     m_TimeSinceLastShot += elapsedTime;
 
-    bool foundEnemy = false;
-    for (const auto& enemy : enemies) 
+    if (canShoot())
     {
-        if (enemy->isAlive()) 
-        {
-            float distance = std::hypot(enemy->getPosition().left - m_Position.x,
-                enemy->getPosition().top - m_Position.y);
+        Enemy* targetEnemy = nullptr; // Pointer to the closest target enemy
+        float closestDistance = m_Range; // Initial distance set to towers range
 
-            if (distance <= m_Range && canShoot()) 
+        for (const auto& enemy : enemies)
+        {
+            if (enemy->isAlive())
             {
-                foundEnemy = true;
-                shoot(enemy->getPosition().getPosition(), projectileHolder);
-                m_TimeSinceLastShot = 0;  // Reset after shooting
-                break;  // Stop after firing at one enemy to respect fire rate
+                // Update closest target if another enemy is within range and closer than the previous one
+                float distance = std::hypot(enemy->getPosition().left - m_Position.x, enemy->getPosition().top - m_Position.y);
+                if (distance <= m_Range && distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    targetEnemy = enemy;
+                }
             }
         }
-    }
 
-    if (!foundEnemy) 
-    {
-        //std::cout << "No enemies within range for tower at (" << m_Position.x << ", " << m_Position.y << ")\n";
+        if (targetEnemy)
+        {
+            shoot(targetEnemy, projectileHolder);
+            m_TimeSinceLastShot = 0;  // Reset cooldown after shooting
+        }
     }
 }
 // Shoot method to create a projectile aimed at the target position
-void Tower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projectileHolder) 
+void Tower::shoot(Enemy* target, ProjectileHolder& projectileHolder)
 {
     std::string texturePath;
 
@@ -82,10 +86,7 @@ void Tower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projecti
         break;
     }
 
-    projectileHolder.shoot(targetPosition, m_Position, texturePath);
-    m_TimeSinceLastShot = 0;  // Reset cooldown after shooting
-   // std::cout << "Shot a projectile from tower at (" << m_Position.x << ", " << m_Position.y << ") targeting ("
-        //<< targetPosition.x << ", " << targetPosition.y << ")\n";
+    projectileHolder.shoot(m_Position, target, texturePath, m_Damage, m_Range);
 }
 // Accessor for projectiles vector
 std::vector<Projectile>& Tower::getProjectiles() 

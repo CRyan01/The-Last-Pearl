@@ -6,7 +6,7 @@ MusketTower::MusketTower(float x, float y)
     : Tower(TowerType::MusketTower, 15, 320, 1.5f, "graphics/musketTower.png") {  // Initialize with specific attributes
     initialize(x, y);
 }
-
-void MusketTower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projectileHolder) {
-    Tower::shoot(targetPosition, projectileHolder);
+// Shoots a projectile at a specified enemy target
+void MusketTower::shoot(Enemy* targetEnemy, ProjectileHolder& projectileHolder) {
+    Tower::shoot(targetEnemy, projectileHolder);  // Calls base class shoot function
 }

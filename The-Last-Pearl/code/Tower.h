@@ -48,10 +48,11 @@ public:
     float getDamage() const;
 
     // Shoot method to create a projectile aimed at the target position
-    void shoot(const Vector2f& targetPosition, ProjectileHolder& projectileHolder);
+    void shoot(Enemy* targetEnemy, ProjectileHolder& projectileHolder);
 
     // Update the tower
-    void update(float elapsedTime, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
+     void update(float elapsedTime, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
+
 
     // Returns the tower's sprite
     Sprite getSprite() const;

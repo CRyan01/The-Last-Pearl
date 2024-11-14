@@ -55,7 +55,8 @@ void Wave::NextWave()
 }
 
 void Wave::initializeEnemies(float dtAsSeconds) {
-	elapsedTime += dtAsSeconds; 
+	elapsedTime += dtAsSeconds;
+	std::cout << "Active enemies count: " << activeEnemies.size() << std::endl;
 	if (isWaveComplete())
 	{
 		//NextWave();
@@ -87,30 +88,29 @@ void Wave::initializeEnemies(float dtAsSeconds) {
 			enemies.pop_back(); // Remove the spawned enemy from the list
 		}
 
-		elapsedTime -= spawnDelay; 
+		elapsedTime -= spawnDelay;
 	}
 }
-
-void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
+// Spawns enemies based on time and adds them to activeEnemies
+void Wave::updateEnemies(float dtAsSeconds, Paths& path) {
 
 	// Get the next target position for this enemy
 	Vector2f targetLocation;
 	for (auto it = activeEnemies.begin(); it != activeEnemies.end(); ) {
 		Enemy* enemy = it->get();
 
-		// Replace with your actual method for getting the next position
-
-		// Call the enemy's update method with the elapsed time and target location
+		// Call the enemy's update method 
 		enemy->update(dtAsSeconds);
 
 		// Check if the enemy has reached the target
 		if (enemy->ReachedPos()) {
+
 			targetLocation = path.nextPos(enemy->currentPos);
 			enemy->SetNewTarget(targetLocation); // Set a new target if reached
 			enemy->currentPos++; // Move to the next position in the path
 			if (enemy->currentPos >= path.returnPathsSize())
 			{
-				CollectedDamage+=enemy->Damage();
+				CollectedDamage += enemy->Damage();
 				enemy->hit(200000);
 			}
 		}
@@ -123,7 +123,7 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 				activeEnemies.clear();
 				NextWave();
 			}
-			
+
 		}
 		else {
 			++it; // Move to the next enemy//need to check this seems useless
@@ -132,24 +132,25 @@ void Wave::updateEnemies(float dtAsSeconds,  Paths& path) {
 
 }
 
-bool Wave::isWaveComplete()  {
-	//std::
+bool Wave::isWaveComplete() {
+
 	// << "\nhey this works " << activeEnemies.empty();
 	return activeEnemies.empty();
 }
 
-const vector<Enemy*>& Wave::getActiveEnemies() const {
-	static vector<Enemy*> rawEnemies; // Convert unique_ptr to raw pointer for access
-	rawEnemies.clear();
+vector<Enemy*> Wave::getActiveEnemies() const
+{
+	vector<Enemy*> rawEnemies;
+	rawEnemies.reserve(activeEnemies.size());  // Reserve space for efficiency
 	for (const auto& enemy : activeEnemies) {
-		rawEnemies.push_back(enemy.get());
+		rawEnemies.push_back(enemy.get());  // Convert unique_ptr to raw pointer
 	}
 	return rawEnemies;
 }
 
 int Wave::GetDamage()
 {
-	
+
 	int newint = CollectedDamage;
 	CollectedDamage = 0;
 

@@ -56,5 +56,7 @@ public:
     //for when enemy makes it to the ending damage to pearl
     int Damage();
 
+    int getHealth();
+
     int currentPos=-1;
 };
