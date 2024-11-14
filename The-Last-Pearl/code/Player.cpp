@@ -17,7 +17,6 @@ bool Player::CanBuy(int cost)
 	if (cost < money)
 	{
 		money -= cost;
-	//	std::cout << "\n Current money= " << money<<" Current cost= "<<cost;
 		return true;
 	}
 	else 

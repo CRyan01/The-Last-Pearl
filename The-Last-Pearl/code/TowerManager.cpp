@@ -15,7 +15,6 @@ void TowerManager::update(float seconds, const std::vector<Enemy*>& enemies, Pro
 		tower.update(seconds, enemies, projectileHolder);
 	}
 	projectileHolder.update(seconds);  // Ensure projectiles are updated
-	//std::cout << "ProjectileHolder updated with current projectiles\n";
 }
 
 void TowerManager::draw(sf::RenderWindow& window, ProjectileHolder& projectileHolder) 

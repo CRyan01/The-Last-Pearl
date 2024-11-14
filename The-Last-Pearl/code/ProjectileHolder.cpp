@@ -46,9 +46,7 @@ void ProjectileHolder::clearInactive()
 		[](const Projectile& bullet) { return !bullet.isActive(); }),
 		bullets.end());
 
-	// Debug output to show number of projectiles cleared
-	//std::cout << "Inactive projectiles cleared. Initial count: " << initialSize
-	//	<< ", New count: " << bullets.size() << "\n";
+
 }
 
 std::vector<Projectile>& ProjectileHolder::getProjectiles() 

@@ -27,7 +27,6 @@ Wave::Wave(int waveNumber)
 		enemies.insert(enemies.end(), waveNumber, CAPTAIN);
 	}
 	CurrentWave = waveNumber;
-	//std::cout << "Enemy size= " << enemies.size();
 }
 
 void Wave::NextWave()
@@ -50,13 +49,11 @@ void Wave::NextWave()
 		enemies.insert(enemies.end(), CurrentWave * 2, PIRATE);
 		enemies.insert(enemies.end(), CurrentWave, CAPTAIN);
 	}
-	//std::cout << "Enemy size= " << enemies.size();
 
 }
 
 void Wave::initializeEnemies(float dtAsSeconds) {
 	elapsedTime += dtAsSeconds;
-	std::cout << "Active enemies count: " << activeEnemies.size() << std::endl;
 	if (isWaveComplete())
 	{
 		//NextWave();
@@ -82,8 +79,6 @@ void Wave::initializeEnemies(float dtAsSeconds) {
 		if (enemy) {
 			enemy->spawn(40, 200, 0); // Default spawn position 
 			activeEnemies.push_back(std::move(enemy)); // Move the enemy into the vector
-			//cout << "Spawned enemy of type: " << type << endl; // Debugg
-			//cout << "Total active enemies: " << activeEnemies.size() << endl; // Debug
 
 			enemies.pop_back(); // Remove the spawned enemy from the list
 		}

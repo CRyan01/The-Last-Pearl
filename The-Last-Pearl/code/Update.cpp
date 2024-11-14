@@ -35,7 +35,6 @@ void TheLastPearl::update()
 		TheGameTowers.update(dtAsSeconds, currentWave.getActiveEnemies(), projectileHolder);
 
 		auto activeEnemies = currentWave.getActiveEnemies();
-		//std::cout << "Active enemies count in update: " << activeEnemies.size() << std::endl;
 
 		for (auto& projectile : projectileHolder.getProjectiles())
 		{
@@ -47,16 +46,14 @@ void TheLastPearl::update()
 
 					if (projectile.getSprite().getGlobalBounds().intersects(enemy->getSprite().getGlobalBounds()))
 					{
-						std::cout << "Collision detected!" << std::endl;
+						
 
 						// Log the damage dealt and remaining health of the enemy
 						float damage = projectile.getDamage();
 						bool enemyDied = enemy->hit(damage);
-						std::cout << "Enemy took " << damage << " damage. " << "Remaining health: " << enemy->getHealth() << std::endl;
-
+						
 						if (enemyDied)
 						{
-							std::cout << "Enemy defeated and removed from active list." << std::endl;
 							it = activeEnemies.erase(it);
 						}
 						else

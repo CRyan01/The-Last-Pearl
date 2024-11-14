@@ -68,8 +68,7 @@ void LevelManager::SetLevel(int LevelNumber)
     //this is done since the towers will be restarted
     towerIndex = 0;
 
-    //std::cout << "hey " << ScreenxWidth << " / " << m_LevelSize.x << " = " << Tile_SizeX << " \n";
-    //::cout << "hey " << ScreenYHeight << " / " << m_LevelSize.y << " = " << Tile_SizeY << " \n";
+    
     
     // Start at the beginning of the vertex array
     int currentVertex = 0;

@@ -48,42 +48,19 @@ Hud::Hud(Player& player)
 	///needs to not be here due to error with read access voilations
 	//by John
 	// Load the font - John
-	//if (!chracterlook.loadFromFile("fonts/2font.ttf"))
-	///{
-	//	std::cout<<"I hate fonts ";
-	//	return;
-	//}
-	//else
-	//{
-	//	std::cout << "wow we have a font";
-	//}
 	
-	/*/if (thePlayer != nullptr) {
-		Playermoney_HealthText.setFont(font);
-		Playermoney_HealthText.setCharacterSize(15);
-		//std::cout << "test 1 " << thePlayer->money;
-		//std::cout << "test 2 " << thePlayer->health;
-		//std::stringstream ss;
-		//ss << "Money = " << player.money;
-		//std::string Money = ss.str();// " Pearl Health " + std::to_string(thePlayer->health) + "\\" + std::to_string(thePlayer->MaxHp));
-		Playermoney_HealthText.setString("Money = ");
-		Playermoney_HealthText.setFillColor(Color::Black);
-		Playermoney_HealthText.setPosition(1000, 200);
-	}*/
-
 
 }
 void Hud::draw(RenderWindow& window)
 {
 	// Draw the tower icons
-	////////window.draw(HealthText);
 	window.draw(spriteBuildMenuBackground);
 	window.draw(spriteMusketTowerIcon);
 	window.draw(spriteCannonTowerIcon);
 	window.draw(spriteMortarTowerIcon);
 	window.draw(spriteCrossbowTowerIcon);
 	window.draw(spriteGoldIcon);
-	//std::cout << "drawing the thing";
+	
 		
 	
 }

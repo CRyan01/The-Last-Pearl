@@ -61,7 +61,7 @@ void TheLastPearl::MainMenu()
 
 void TheLastPearl::StartLevel(int level)
 {
-	std::cout << level;
+	
 	textureBackground.loadFromFile("graphics/background.png");
 	spriteBackground.setTexture(textureBackground);
 	spriteBackground.setPosition(0, 0);

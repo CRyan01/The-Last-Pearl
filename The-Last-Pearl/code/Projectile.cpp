@@ -72,7 +72,6 @@ bool Projectile::checkCollision(const sf::FloatRect& enemyBounds)
 void Projectile::setInactive()
 {
     m_Active = false;
-  //  std::cout << "Projectile set to inactive.\n";
 }
 
 // Return true if the projectile is active

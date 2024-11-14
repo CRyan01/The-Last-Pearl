@@ -25,14 +25,11 @@ void TheLastPearl::draw()
 
 		// Draw towers and projectiles via TowerManager
 		TheGameTowers.draw(window, projectileHolder);
-		//std::cout << "Projectiles drawn via TowerManager and ProjectileHolder\n";
 
 
 		PlayerHud.draw(window);
 		window.draw(HealthText);
-		// Draw the cursor
-		
-	//	window.draw(projectile.getSprite());
+	
 	}
 
 	if (state == State::PAUSED) {
