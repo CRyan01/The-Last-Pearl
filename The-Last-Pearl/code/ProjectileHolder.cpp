@@ -3,7 +3,7 @@
 
 ProjectileHolder::ProjectileHolder() 
 {
-	damage = 0;
+	damage = 1000;
 	speed = 0;
 	TextureName = "";
 }

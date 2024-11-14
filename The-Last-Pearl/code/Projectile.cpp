@@ -7,6 +7,7 @@ void Projectile::Spawn(float damage, float speed, const std::string& textureFile
 {
     m_Damage = damage;
     m_Speed = speed;
+    m_Speed = 600;
     m_Active = true;
     m_Sprite.setTexture(TextureHolder::GetTexture(textureFile));
     m_Sprite.setPosition(spawn);

@@ -78,7 +78,7 @@ void Tower::shoot(const sf::Vector2f& targetPosition, ProjectileHolder& projecti
         texturePath = "graphics/cannonBall.png";
         break;
     case TowerType::MusketTower:
-        texturePath = "graphics/arrow.png";
+        texturePath = "graphics/cannonBall2.png";
         break;
     }
 

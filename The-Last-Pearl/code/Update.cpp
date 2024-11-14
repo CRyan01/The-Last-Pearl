@@ -35,27 +35,27 @@ void TheLastPearl::update()
 		TheGameTowers.update(dtAsSeconds, currentWave.getActiveEnemies(), projectileHolder);
 
 		// Check for projectile-enemy collisions
-		for (auto& projectile : projectileHolder.getProjectiles()) 
+		for (auto& projectile : projectileHolder.getProjectiles())
 		{
-			if (projectile.isActive()) 
+			if (projectile.isActive())
 			{
-				for (auto it = activeEnemies.begin(); it != activeEnemies.end();) 
+				for (auto it = activeEnemies.begin(); it != activeEnemies.end();)
 				{
 					Enemy* enemy = *it;
-					if (enemy->isAlive() && projectile.checkCollision(enemy->getSprite().getGlobalBounds())) 
+					if (enemy->isAlive() && projectile.checkCollision(enemy->getSprite().getGlobalBounds()))
 					{
-						if (enemy->hit(projectile.getDamage())) 
+						if (enemy->hit(projectile.getDamage()))
 						{
 							it = activeEnemies.erase(it);  // Remove dead enemy
 						}
-						else 
+						else
 						{
 							++it;
 						}
 						projectile.setInactive();  // Deactivate projectile after collision
 						break;  // Stop checking other enemies for this projectile
 					}
-					else 
+					else
 					{
 						++it;
 					}
