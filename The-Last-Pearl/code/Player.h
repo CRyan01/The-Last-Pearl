@@ -10,6 +10,7 @@ public:
     void Hit(int damage);
     bool CanBuy(int cost);
     bool GameOver();
+    void GetPirateGold(int Gold);
 
     int money = 1000;
     int MaxHp = 100;

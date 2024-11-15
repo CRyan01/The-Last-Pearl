@@ -112,6 +112,8 @@ void Wave::updateEnemies(float dtAsSeconds, Paths& path) {
 
 		// Remove the enemy if it is not alive anymore
 		if (!enemy->isAlive()) {
+			//enemy.
+			MoneyTotal += enemy->DeathMoney;
 			it = activeEnemies.erase(it); // Remove defeated enemy
 			if (isWaveComplete())
 			{
@@ -150,5 +152,14 @@ int Wave::GetDamage()
 	CollectedDamage = 0;
 
 	return newint;
+
+}
+
+int Wave::GetMoney()
+{
+	int newMoney= MoneyTotal;
+
+	MoneyTotal = 0;
+	return newMoney;
 
 }

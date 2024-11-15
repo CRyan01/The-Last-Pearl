@@ -37,3 +37,10 @@ bool Player::GameOver()
 	}
 
 }
+
+void Player::GetPirateGold(int Gold)
+{
+
+	money += Gold;
+
+}

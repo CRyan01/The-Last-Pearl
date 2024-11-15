@@ -33,7 +33,7 @@ public:
     void NextWave();
 
     int GetDamage();
- 
+    int GetMoney();
 
 private:
     vector<EnemyType> enemies; // Holds types of enemies in the wave
@@ -46,4 +46,7 @@ private:
 
        //all damage collected
     int CollectedDamage = 0;
+    //Money Collection for player
+
+    int MoneyTotal = 0;
 };

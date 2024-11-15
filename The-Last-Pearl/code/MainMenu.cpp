@@ -19,18 +19,18 @@ void TheLastPearl::MainMenu()
 	MainMenuTitle.setFont(font);
 	MainMenuTitle.setString("The Last Pearl");
 	MainMenuTitle.setFillColor(sf::Color::Red);
-	MainMenuTitle.setCharacterSize(150);
+	MainMenuTitle.setCharacterSize(160);
 	MainMenuTitle.setPosition(400,300);
 
 
 	Level1Sprite.setTexture(TextureHolder::GetTexture("graphics/Level1.png"));
-	Level1Sprite.setPosition(550,600);
+	Level1Sprite.setPosition(575,600);
 	
 	Level2Sprite.setTexture(TextureHolder::GetTexture("graphics/Level2.png"));
-	Level2Sprite.setPosition(800, 600);
+	Level2Sprite.setPosition(820, 600);
 
 	Level3Sprite.setTexture(TextureHolder::GetTexture("graphics/Level3.png"));
-	Level3Sprite.setPosition(1050, 600);
+	Level3Sprite.setPosition(1055, 600);
 
 
 

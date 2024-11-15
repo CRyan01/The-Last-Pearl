@@ -73,8 +73,10 @@ void TheLastPearl::update()
 
 		
 
-
+		//gets the damage he will suffer
 		CaptainJackSparrow.Hit(currentWave.GetDamage());
+		//gets the money hes gotten
+		CaptainJackSparrow.GetPirateGold(currentWave.GetMoney());
 		std::stringstream newText;
 		newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
 		HealthText.setString(newText.str());

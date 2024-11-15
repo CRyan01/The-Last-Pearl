@@ -59,4 +59,6 @@ public:
     int getHealth();
 
     int currentPos=-1;
+
+    int DeathMoney;
 };
