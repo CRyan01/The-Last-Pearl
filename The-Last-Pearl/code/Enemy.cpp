@@ -44,6 +44,7 @@ Sprite Enemy::getSprite()
 //this is important for movement enemy will now move to the set Position
 void Enemy::update(float elapsedTime)
 {
+   
         // Move towards the waypoint
         if (m_Position.x < CurrentTarget.x) m_Position.x += m_Speed * elapsedTime;
         if (m_Position.x > CurrentTarget.x) m_Position.x -= m_Speed * elapsedTime;

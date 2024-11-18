@@ -7,6 +7,7 @@
 
 void TheLastPearl::update()
 {
+
 	/* Update the frame */
 	if (state == State::InLevel)
 	{
@@ -23,7 +24,13 @@ void TheLastPearl::update()
 		float dtAsSeconds = dt.asSeconds();
 
 
-
+		if (currentWave.IsLevelOver())
+		{
+			state = State::MAIN_MENU;
+			MainMenu();
+			//Reset();
+			//std::cout << "This getting called?";
+		}
 		//Ensure enemies are initialized only once per wave
 	
 		currentWave.initializeEnemies(dtAsSeconds); 
@@ -35,7 +42,7 @@ void TheLastPearl::update()
 		TheGameTowers.update(dtAsSeconds, currentWave.getActiveEnemies(), projectileHolder);
 
 		auto activeEnemies = currentWave.getActiveEnemies();
-
+		//projectiles
 		for (auto& projectile : projectileHolder.getProjectiles())
 		{
 			if (projectile.isActive())
@@ -83,7 +90,8 @@ void TheLastPearl::update()
 		//end game
 		if (CaptainJackSparrow.GameOver())
 		{
-			exit(0);
+			state = State::MAIN_MENU;
+			MainMenu();
 		}
 	}
 	// Store the cursors position on the screen

@@ -14,39 +14,10 @@ TheLastPearl::TheLastPearl()
 	
 	//buccaneerEnemy.spawn(-100.f, 200.f, 1); // Spawn the enemy at the starting point
 
-	// Preset positions for towers - CR
-	towerPositions.push_back(Vector2f(200, 60));
-	towerPositions.push_back(Vector2f(600, 60));
-	towerPositions.push_back(Vector2f(1000, 60));
-	towerPositions.push_back(Vector2f(1400, 60));
-	towerPositions.push_back(Vector2f(1800, 60));
+	//now we use a method for this
+	
 
-	towerPositions.push_back(Vector2f(400, 330));
-	towerPositions.push_back(Vector2f(800, 330));
-	towerPositions.push_back(Vector2f(1200, 330));
-	towerPositions.push_back(Vector2f(1600, 330));
 
-	towerPositions.push_back(Vector2f(400, 600));
-	towerPositions.push_back(Vector2f(800, 600));
-	towerPositions.push_back(Vector2f(1200, 600));
-	towerPositions.push_back(Vector2f(1600, 600));
-
-	towerPositions.push_back(Vector2f(200, 870));
-	towerPositions.push_back(Vector2f(600, 870));
-	towerPositions.push_back(Vector2f(1000, 870));
-	towerPositions.push_back(Vector2f(1400, 870));
-	towerPositions.push_back(Vector2f(1800, 870));
-
-	// Initialize unselected tower boxes - CR
-	for (const auto& position : towerPositions) {
-		// Create the sprite and load the selection box texture, center its point of origin, set its position
-		Sprite selectionBox(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
-		selectionBox.setScale(0.8f, 0.8f);
-		selectionBox.setOrigin(selectionBox.getTexture()->getSize().x / 2.0f, selectionBox.getTexture()->getSize().y / 2.0f);
-		selectionBox.setPosition(position);
-		selectionBox.setColor(Color(255, 255, 255, 128));
-		towerSelectionBoxSprites.push_back(selectionBox);
-	}
 
 	// Load texture for the selected tower - CR
 	spriteSelectedTower.setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));

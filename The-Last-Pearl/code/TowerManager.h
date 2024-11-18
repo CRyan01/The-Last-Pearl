@@ -30,5 +30,6 @@ public:
     void update(float seconds, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
     void draw(sf::RenderWindow& window, ProjectileHolder& projectileHolder);
     void TowerInputs(Event event,Vector2f mouseWorldPos);
+    void Reset();
 
 };

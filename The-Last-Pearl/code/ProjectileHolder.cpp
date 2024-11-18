@@ -53,3 +53,9 @@ std::vector<Projectile>& ProjectileHolder::getProjectiles()
 {
 	return bullets;
 }
+
+void ProjectileHolder::Reset()
+{
+	bullets.clear();
+
+}

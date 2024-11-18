@@ -12,6 +12,14 @@ Level1Pos.push_back(Vector2f(120, 740));
 Level1Pos.push_back(Vector2f(1800, 740));
 // Level1Pos.push_back(Vector2f(1920, 740));
 
+Level2Pos.push_back(Vector2f(150, 520));
+Level2Pos.push_back(Vector2f(1238, 500));
+Level2Pos.push_back(Vector2f(1220, 130));
+Level2Pos.push_back(Vector2f(680, 130));
+Level2Pos.push_back(Vector2f(680, 500));
+Level2Pos.push_back(Vector2f(1755, 500));
+Level2Pos.push_back(Vector2f(1755, 1000));
+
 
 }
 Paths::~Paths()
@@ -28,7 +36,7 @@ Paths::~Paths()
 }
 void Paths::SetLevel(int levelNumber)
 {
-	levelNumber - 1;
+	
 	//setting which vector we using
 	CurrentPath.clear();
 	switch (levelNumber)

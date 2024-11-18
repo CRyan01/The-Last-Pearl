@@ -47,3 +47,9 @@ void TowerManager::TowerInputs(Event event, Vector2f mouseWorldPos)
 
 
 }
+
+void TowerManager::Reset()
+{
+	AllGameTowers.clear();
+
+}

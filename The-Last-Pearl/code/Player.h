@@ -11,6 +11,8 @@ public:
     bool CanBuy(int cost);
     bool GameOver();
     void GetPirateGold(int Gold);
+    void Reset();
+    void SetLevel(int level);
 
     int money = 1000;
     int MaxHp = 100;

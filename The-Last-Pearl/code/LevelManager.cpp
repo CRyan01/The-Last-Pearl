@@ -21,7 +21,7 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
     return waypoints;
 }
 
-
+//this is abaandoned code
 //By John
 void LevelManager::SetLevel(int LevelNumber)
 {

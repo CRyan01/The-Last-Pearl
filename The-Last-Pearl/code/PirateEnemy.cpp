@@ -17,6 +17,7 @@ void PirateEnemy::spawn(float startX, float startY, int seed)
     m_Sprite.setScale(0.1, 0.1);
     m_Alive = true;
     DeathMoney = 30;
+    CurrentTarget = m_Sprite.getPosition();
 }
 
 // Update the PirateEnemy using the base class method

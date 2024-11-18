@@ -119,7 +119,16 @@ void TheLastPearl::CheckInputs() {
         if (event.type == Event::KeyPressed) {
             if (Keyboard::isKeyPressed(Keyboard::Escape)) 
             {
-                window.close();
+                if (state == State::MAIN_MENU)
+                {
+                    exit(0);
+                }
+                else if (state == State::InLevel)
+                {
+                    state = State::MAIN_MENU;
+                    MainMenu();
+                   // Reset();
+                }
             }
             if (event.key.code == Keyboard::P)
             {

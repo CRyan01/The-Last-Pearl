@@ -17,6 +17,7 @@ void BuccaneerEnemy::spawn(float startX, float startY, int seed)
     m_Sprite.setPosition(m_Position);
     m_Alive = true;
     DeathMoney = 5;
+    CurrentTarget = m_Sprite.getPosition();
 }
 // Update the BuccaneerEnemy using the base class method
 void BuccaneerEnemy::update(float elapsedTime)

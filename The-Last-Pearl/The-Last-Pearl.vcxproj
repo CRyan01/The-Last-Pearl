@@ -36,6 +36,7 @@
     <ClCompile Include="code\Player.cpp" />
     <ClCompile Include="code\Projectile.cpp" />
     <ClCompile Include="code\ProjectileHolder.cpp" />
+    <ClCompile Include="code\Reset.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
     <ClCompile Include="code\Inputs.cpp" />
     <ClCompile Include="code\TheLastPearl.cpp" />

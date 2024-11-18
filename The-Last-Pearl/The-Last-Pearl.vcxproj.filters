@@ -73,6 +73,9 @@
     <ClCompile Include="code\Wave.cpp">
       <Filter>cpp\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="code\Reset.cpp">
+      <Filter>cpp\MAIN</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\TheLastPearl.h">

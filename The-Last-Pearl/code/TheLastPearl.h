@@ -42,6 +42,17 @@ public:
 
 	// A function to detect collisions
 	void detectCollisions();
+
+/// <summary>
+/// used for tower position
+/// 
+/// </summary>
+/// 	sets up the towers
+	void GetTowerPos(int levelNumber);
+
+	//closes everything
+	void Reset();
+
 private:
 
 	// A regular RenderWindow //what people see
@@ -121,7 +132,7 @@ private:
 	// Store tower positions which are occupied
 	vector<Vector2f> occupiedTowerPositions;
 
-	Wave currentWave{10};                     // Start with wave 1
+	Wave currentWave{9};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies
 	TowerManager TheGameTowers;
 

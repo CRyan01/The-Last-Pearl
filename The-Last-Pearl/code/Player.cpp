@@ -44,3 +44,29 @@ void Player::GetPirateGold(int Gold)
 	money += Gold;
 
 }
+
+void Player::SetLevel(int level)
+{
+	switch (level)
+	{
+	case 1:
+		 money = 1000;
+		 MaxHp = 100;
+		 health = MaxHp;
+		break;
+	case 2:
+		money = 800;
+		MaxHp = 100;
+		health = MaxHp;
+		break;
+	case 3:
+		money = 1500;
+		MaxHp = 50;
+		health = MaxHp;
+		break;
+	default:
+		std::cout << "\nHow did we get here";
+	}
+
+
+}

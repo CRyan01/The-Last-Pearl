@@ -20,6 +20,7 @@ void CaptainEnemy::spawn(float startX, float startY, int seed)
     m_Sprite.setPosition(m_Position);
     m_Alive = true;
     DeathMoney = 50;
+    CurrentTarget = m_Sprite.getPosition();
 }
 
 bool CaptainEnemy::hit(int damage) 
