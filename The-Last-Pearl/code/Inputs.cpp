@@ -39,9 +39,10 @@ void TheLastPearl::CheckInputs() {
                 if (CaptainJackSparrow.CanBuy(cost))
                 {
                     TheGameTowers.createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
+                    // Mark the plot as occupied
+                    occupiedTowerPositions.push_back(selectedTowerPosition);
                 }
-                // Mark the plot as occupied
-                occupiedTowerPositions.push_back(selectedTowerPosition);
+               
 
                 // Reset selection variables
                 selectedTowerType = Tower::TowerType::None;

@@ -80,7 +80,7 @@ void TheLastPearl::update()
 		std::stringstream newText;
 		newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
 		HealthText.setString(newText.str());
-
+		//end game
 		if (CaptainJackSparrow.GameOver())
 		{
 			exit(0);
