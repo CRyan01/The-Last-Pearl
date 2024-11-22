@@ -52,7 +52,7 @@ void Enemy::update(float elapsedTime)
         if (m_Position.y > CurrentTarget.y) m_Position.y -= m_Speed * elapsedTime;
         //problem tooo straight
         //abs= no negtive
-        const float threshold = 100.0f;
+        const float threshold = 10;
         if (abs(m_Position.x - CurrentTarget.x) < threshold && abs(m_Position.y - CurrentTarget.y) < threshold)
         {
             HasReachedPos = true;  // tells game ot move to next piont

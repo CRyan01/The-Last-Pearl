@@ -4,21 +4,21 @@
 Paths::Paths()
 {
 	//cureently hardocded as no other metho is know
-	Level1Pos.push_back(Vector2f(100, 200));
-Level1Pos.push_back(Vector2f(1800, 200));
-Level1Pos.push_back(Vector2f(1800, 450));
-Level1Pos.push_back(Vector2f(120, 450));
-Level1Pos.push_back(Vector2f(120, 740));
-Level1Pos.push_back(Vector2f(1800, 740));
-// Level1Pos.push_back(Vector2f(1920, 740));
+	//Level1Pos.push_back(Vector2f(100, 200));
+	Level1Pos.push_back(Vector2f(1800, 200));
+	Level1Pos.push_back(Vector2f(1800, 450));
+	Level1Pos.push_back(Vector2f(120, 450));
+	Level1Pos.push_back(Vector2f(120, 740));
+	Level1Pos.push_back(Vector2f(1800, 740));
+	// Level1Pos.push_back(Vector2f(1920, 740));
 
-Level2Pos.push_back(Vector2f(150, 520));
-Level2Pos.push_back(Vector2f(1238, 500));
-Level2Pos.push_back(Vector2f(1220, 130));
-Level2Pos.push_back(Vector2f(680, 130));
-Level2Pos.push_back(Vector2f(680, 500));
-Level2Pos.push_back(Vector2f(1755, 500));
-Level2Pos.push_back(Vector2f(1755, 1000));
+	Level2Pos.push_back(Vector2f(150, 600));
+	Level2Pos.push_back(Vector2f(1238, 600));
+	Level2Pos.push_back(Vector2f(1220, 130));
+	Level2Pos.push_back(Vector2f(680, 130));
+	Level2Pos.push_back(Vector2f(680, 600));
+	Level2Pos.push_back(Vector2f(1755, 600));
+	Level2Pos.push_back(Vector2f(1755, 1000));
 
 
 }

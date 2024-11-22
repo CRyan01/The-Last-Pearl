@@ -9,7 +9,7 @@ void BuccaneerEnemy::spawn(float startX, float startY, int seed)
 {
     m_Sprite.setTexture(TextureHolder::GetTexture("graphics/buccaneer.png")); 
     m_Speed = 500;
-    m_Health = 20;
+    m_Health = 100;
     m_Position.x = startX;
     m_Position.y = startY;
     m_Size = m_Sprite.getTexture()->getSize();

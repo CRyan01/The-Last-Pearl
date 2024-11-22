@@ -106,6 +106,8 @@ private:
 	Text Level1text;
 	Text Level2text;
 	Text Level3text;
+
+	Text waveText; // Text to display the wave number
 	stringstream playertext;
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };
