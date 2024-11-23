@@ -8,6 +8,7 @@
 #include "TowerManager.h"
 #include "BuccaneerEnemy.h"
 #include "LevelManager.h"
+#include "SoundManager.h"
 #include "Paths.h"
 #include "Wave.h"
 #include "Player.h"
@@ -115,6 +116,9 @@ private:
 
 	//for the levels
 	LevelManager Levels;
+
+	// To handle sounds
+	SoundManager soundManager;
 
 	// Texture for the background and the level tiles
 	Texture m_TextureTiles;

@@ -88,6 +88,10 @@ TheLastPearl::TheLastPearl()
 	waveText.setOrigin(waveText.getLocalBounds().width / 2, waveText.getLocalBounds().height / 2);
 	waveText.setString("Wave 1 / 10"); // Initial text*/
 
+	// Play background music & load a click sound - CR
+	soundManager.playBackgroundMusic("sound/music.ogg");
+	soundManager.loadSound("click", "sound/click.wav");
+
 	//pathing
 	MainPath.SetLevel(1);
 	// Start the game in a paused state - CR

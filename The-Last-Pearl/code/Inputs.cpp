@@ -20,6 +20,8 @@ void TheLastPearl::CheckInputs() {
             if (isPlotSelected) {
                 // selectedTowerType
                 iconClicked = PlayerHud.input(selectedTowerType, mouseWorldPosition);
+                // Play a click sound
+                soundManager.playSound("click");
             }
 
             // If a valid tower build icon is clicked
@@ -42,7 +44,9 @@ void TheLastPearl::CheckInputs() {
                     // Mark the plot as occupied
                     occupiedTowerPositions.push_back(selectedTowerPosition);
                 }
-               
+
+                // Play a click sound
+                soundManager.playSound("click");
 
                 // Reset selection variables
                 selectedTowerType = Tower::TowerType::None;
