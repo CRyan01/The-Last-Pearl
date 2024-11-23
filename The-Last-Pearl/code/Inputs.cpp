@@ -8,150 +8,177 @@ void TheLastPearl::CheckInputs() {
 
     while (window.pollEvent(event)) {
 
-        //tower events
-        TheGameTowers.TowerInputs(event,mouseWorldPosition);
+        // Handle tower input events
+        TheGameTowers.TowerInputs(event, mouseWorldPosition);
+
         // Check if lmb was pressed
         if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
 
-            // Boolean to indicate if a tower build icon was clicked
-            bool iconClicked = false;
+            // Check if the upgrade button was clicked
+            if (spriteUpgradeButton.getGlobalBounds().contains(mouseWorldPosition)) {
+                handleUpgrade(); // upgrade the tower
+                return;
+            }
 
-            // Check if a tower build icon was clicked if a valid plot is selected
+            // Check if a tower build icon was clicked
             if (isPlotSelected) {
-                // selectedTowerType
-                iconClicked = PlayerHud.input(selectedTowerType, mouseWorldPosition);
-                // Play a click sound
-                soundManager.playSound("click");
-            }
-
-            // If a valid tower build icon is clicked
-            if (iconClicked && selectedTowerType != Tower::TowerType::None) {
-                // Create and place the tower
-
-                int cost;
-                switch (selectedTowerType)
-                {
-                case Tower::TowerType::CannonTower:
-                    cost = 400;
-                    break;
-                case Tower::TowerType::MusketTower:
-                    cost = 200;
-                    break;
-                }
-                if (CaptainJackSparrow.CanBuy(cost))
-                {
-                    TheGameTowers.createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
-                    // Mark the plot as occupied
-                    occupiedTowerPositions.push_back(selectedTowerPosition);
-                }
-
-                // Play a click sound
-                soundManager.playSound("click");
-
-                // Reset selection variables
-                selectedTowerType = Tower::TowerType::None;
-                selectedTowerPosition = Vector2f(-1, -1);
-                isPlotSelected = false;
-
-                // Reset selection box colors
-                for (auto& selectionBox : towerSelectionBoxSprites) {
-                    selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
-                }
-
-                continue; // Skip plot selection since an icon was clicked
-            }
-
-            // If no icon was clicked check if a plot was selected
-            bool boxSelected = false;
-            for (int i = 0; i < towerSelectionBoxSprites.size(); ++i) {
-                if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
-                    // Reset all selection boxes to unselected texture
-                    for (auto& selectionBox : towerSelectionBoxSprites) {
-                        selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
-                    }
-
-                    // Set the selected box to the highlighted texture
-                    towerSelectionBoxSprites[i].setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
-
-                    // Only set the position the plot is unoccupied
-                    if (!isPlotOccupied(towerPositions[i])) {
-                        selectedTowerPosition = towerPositions[i];
-                        isPlotSelected = true;
-                    }
-                    else {
-                        selectedTowerPosition = Vector2f(-1, -1);
-                        isPlotSelected = false;
-                    }
-
-                    boxSelected = true;
-                    break;
+                if (handleBuildIconClick()) {
+                    return;
                 }
             }
 
-            // Reset selection if no plot box was clicked
-            if (!boxSelected) {
-                // Reset selection box color
-                for (auto& selectionBox : towerSelectionBoxSprites) {
-                    selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
-                }
-                selectedTowerPosition = Vector2f(-1, -1);
-                isPlotSelected = false;
+            // Check if a plot was selected
+            if (handlePlotSelection()) {
+                return;
             }
-            if (state == State::MAIN_MENU)
-            {
-                if (Level1Sprite.getGlobalBounds().contains(mouseWorldPosition))
-                {
-                    StartLevel(1);
-                    state = State::InLevel;
-                }
-                else if (Level2Sprite.getGlobalBounds().contains(mouseWorldPosition))
-                {
-                    StartLevel(2);
-                    state = State::InLevel;
-                }
-                else if (Level3Sprite.getGlobalBounds().contains(mouseWorldPosition))
-                {
-                    StartLevel(3);
-                    state = State::InLevel;
-                }
 
+            // Reset selection if no valid plot was clicked
+            resetSelectionIfNoClick();
+        }
 
+        // Handle main menu inputs
+        if (state == State::MAIN_MENU)
+        {
+            if (Level1Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
+                StartLevel(1); // Start Level 1
+                state = State::InLevel;
+            } else if (Level2Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
+                StartLevel(2); // Start Level 2
+                state = State::InLevel;
+            } else if (Level3Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
+                StartLevel(3); // Start Level 3
+                state = State::InLevel;
             }
         }
 
-        // Handle key events for exiting and pausing
+        // Handle key exiting and pausing
         if (event.type == Event::KeyPressed) {
-            if (Keyboard::isKeyPressed(Keyboard::Escape)) 
-            {
-                if (state == State::MAIN_MENU)
-                {
-                    exit(0);
-                }
-                else if (state == State::InLevel)
-                {
-                    state = State::MAIN_MENU;
+            if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+                if (state == State::MAIN_MENU) {
+                    exit(0); // exit the game
+                } else if (state == State::InLevel) {
+                    state = State::MAIN_MENU; // return to main menu
                     MainMenu();
-                   // Reset();
                 }
             }
-            if (event.key.code == Keyboard::P)
-            {
+            if (event.key.code == Keyboard::P) {
+                // Pause the game
                 state = (state == State::PAUSED) ? State::InLevel : State::PAUSED;
 
-                if (state == State::InLevel)
-                {
-                    clock.restart(); // Reset delta time to avoid frame jump
-
+                // Reset delta time when unpaused
+                if (state == State::InLevel) {
+                    clock.restart();
                 }
             }
-            if (state == State::MAIN_MENU)
-            {
-                if (Keyboard::isKeyPressed(Keyboard::Enter))
-                {
-                    state = State::InLevel;
+            if (state == State::MAIN_MENU) {
+                if (Keyboard::isKeyPressed(Keyboard::Enter)) {
+                    state = State::InLevel; // Start at Level 1
                     StartLevel(1);
                 }
             }
         }
     }
+}
+
+// Handle tower upgrades
+void TheLastPearl::handleUpgrade() {
+    // Make sure a valid position is selected
+    if (selectedTowerPosition.x < 0 || selectedTowerPosition.y < 0) {
+        return;
+    }
+
+    // Get the tower at the selected position
+    Tower* selectedTower = TheGameTowers.getTowerAtPosition(selectedTowerPosition);
+
+    // Check if the tower can be upgraded
+    if (selectedTower && selectedTower->canUpgrade()) {
+        int upgradeCost = selectedTower->getUpgradeCost();
+
+        // Check if the player has enough gold
+        if (CaptainJackSparrow.CanBuy(upgradeCost)) {
+            CaptainJackSparrow.decreaseBalance(upgradeCost); // decrease the players balance
+            selectedTower->upgrade(); // upgrade the tower
+            soundManager.playSound("build"); // play a build sound
+        } else {
+            soundManager.playSound("click"); // play an error sound
+        }
+    } else {
+        std::cout << "Cannot Upgrade Tower" << std::endl;
+    }
+}
+
+// Handle building a tower when an icon is clicked
+bool TheLastPearl::handleBuildIconClick() {
+    // Check if a build icon was clicked
+    bool iconClicked = PlayerHud.input(selectedTowerType, mouseWorldPosition);
+
+    if (iconClicked && selectedTowerType != Tower::TowerType::None) {
+        int cost = (selectedTowerType == Tower::TowerType::CannonTower) ? 400 : 200;
+
+        // Check if the player has enough gold
+        if (CaptainJackSparrow.CanBuy(cost)) {
+            // Build the tower
+            TheGameTowers.createTower(selectedTowerType, selectedTowerPosition.x, selectedTowerPosition.y);
+            occupiedTowerPositions.push_back(selectedTowerPosition); // mark the plot as occupied
+            soundManager.playSound("build"); // play a build sound
+
+            // Reset selection boxes
+            resetSelection();
+        } else {
+            std::cout << "Cannot Build Tower" << std::endl;
+        }
+        return true; // A build icon was clicked
+    }
+
+    return false; // No build icon was clicked
+}
+
+// Handles plot selection
+bool TheLastPearl::handlePlotSelection() {
+    for (size_t i = 0; i < towerSelectionBoxSprites.size(); ++i) {
+        if (towerSelectionBoxSprites[i].getGlobalBounds().contains(mouseWorldPosition)) {
+            resetSelectionBoxTextures(); // Reset all boxes to the unselected box texture
+
+            // Highlight the selected box
+            towerSelectionBoxSprites[i].setTexture(TextureHolder::GetTexture("graphics/selectedBox.png"));
+
+            // Check if the plot is occupied
+            if (isPlotOccupied(towerPositions[i])) {
+                selectedTowerPosition = towerPositions[i]; // update selected position
+                isPlotSelected = true; // mark plot as selected
+            } else {
+                selectedTowerPosition = towerPositions[i]; // update selected position for a free plot
+                isPlotSelected = true; // mark plot as selected
+            }
+            return true; // A plot was successfully selected
+        }
+    }
+    return false; // No plot was selected
+}
+
+// Resets the plot selection when no plot is clicked
+void TheLastPearl::resetSelectionIfNoClick() {
+    if (spriteUpgradeButton.getGlobalBounds().contains(mouseWorldPosition)) {
+        return; // avoid resetting when upgrade button is clicked
+    }
+
+    // Reset selection box visuals
+    resetSelectionBoxTextures();
+    selectedTowerPosition = Vector2f(-1, -1); // clear selection
+    isPlotSelected = false; // mark no plot as selected
+}
+
+// Resets all selection box textures
+void TheLastPearl::resetSelectionBoxTextures() {
+    for (auto& selectionBox : towerSelectionBoxSprites) {
+        selectionBox.setTexture(TextureHolder::GetTexture("graphics/notSelectedBox.png"));
+    }
+}
+
+// Resets selection variables
+void TheLastPearl::resetSelection() {
+    selectedTowerType = Tower::TowerType::None; // clear tower type selection
+    selectedTowerPosition = Vector2f(-1, -1); // reset selected position
+    isPlotSelected = false; // mark no plot as selected
+    resetSelectionBoxTextures(); // reset selection box visuals
 }

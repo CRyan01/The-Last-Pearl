@@ -13,6 +13,7 @@ public:
     void GetPirateGold(int Gold);
     void Reset();
     void SetLevel(int level);
+    void decreaseBalance(int cost);
 
     int money = 1000;
     int MaxHp = 100;

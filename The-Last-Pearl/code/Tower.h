@@ -29,6 +29,10 @@ private:
     Vector2f m_Position;
     Sprite m_Sprite;
 
+    int m_UpgradeLevel;
+    int m_MaxUpgradeLevel;
+    int m_UpgradeCost;
+
     // Track active projectiles for this tower (replaced bullets with projectiles)
     std::vector<Projectile> projectiles;
 
@@ -51,8 +55,16 @@ public:
     void shoot(Enemy* targetEnemy, ProjectileHolder& projectileHolder);
 
     // Update the tower
-     void update(float elapsedTime, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
+    void update(float elapsedTime, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
 
+    // Upgrade the tower attributes
+    void upgrade();
+
+    // Check if the tower can be upgraded
+    bool canUpgrade() const;
+
+    // Get upgrade level
+    int getUpgradeLevel() const;
 
     // Returns the tower's sprite
     Sprite getSprite() const;
@@ -65,12 +77,12 @@ public:
 
     bool ClickedOn = false;
 
-    // Upgrade the tower attributes (if applicable)
-    void upgrade();
-
     // Non-const version for modifying projectiles
     std::vector<Projectile>& getProjectiles();
 
     // Const version for read-only access, such as in drawing
     const std::vector<Projectile>& getProjectiles() const;
+
+    // Returns upgrade cost
+    int getUpgradeCost() const;
 };

@@ -18,6 +18,4 @@ void TowerManager::createTower(Tower::TowerType type, float x, float y) {
 
     // Add the tower to the list of towers
     AllGameTowers.push_back(tower);
-
-
 }

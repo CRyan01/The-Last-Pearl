@@ -36,6 +36,13 @@ public:
 	//SetUps the main Menu
 	void MainMenu();
 
+	void handleUpgrade();                   // Handles tower upgrade logic
+	bool handleBuildIconClick();            // Handles clicking tower build icons
+	bool handlePlotSelection();             // Handles selecting plots for building
+	void resetSelectionIfNoClick();         // Resets selection when no valid element is clicked
+	void resetSelection();                  // Resets all selection variables
+	void resetSelectionBoxTextures();       // Resets selection box textures
+
 	
 
 	// Returns true if a tower is already built in a plot
@@ -63,6 +70,9 @@ private:
 	// The main Views
 	View GameView;
 	View MainMenuView;
+
+	// Is a build plot selected?
+	bool isPlotSelected;
 
 	// Create a cock for timing
 	Clock clock;
@@ -137,6 +147,9 @@ private:
 	vector<Tower> towers;
 	// Store tower positions which are occupied
 	vector<Vector2f> occupiedTowerPositions;
+
+	// A sprite for the upgrade button
+	Sprite spriteUpgradeButton;
 
 	Wave currentWave{9};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies

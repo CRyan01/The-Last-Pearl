@@ -53,6 +53,9 @@ TheLastPearl::TheLastPearl()
 	spriteBackground.setScale(scale, scale);
 	spriteBackground.setPosition(0, 0);
 
+	spriteUpgradeButton.setTexture(TextureHolder::GetTexture("graphics/upgrade.png"));
+	spriteUpgradeButton.setPosition(1800, 960);
+
 	// Load the texture for the background vertex array
 	m_TextureTiles = TextureHolder::GetTexture(
 		"graphics/tiles_sheet.png");
@@ -91,6 +94,7 @@ TheLastPearl::TheLastPearl()
 	// Play background music & load a click sound - CR
 	soundManager.playBackgroundMusic("sound/music.ogg");
 	soundManager.loadSound("click", "sound/click.wav");
+	soundManager.loadSound("build", "sound/build.ogg");
 
 	//pathing
 	MainPath.SetLevel(1);

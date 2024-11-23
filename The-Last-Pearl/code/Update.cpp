@@ -101,7 +101,7 @@ void TheLastPearl::update()
 
 	// Convert mouse position to world coordinates of mainView
 	mouseWorldPosition = window.mapPixelToCoords(
-		Mouse::getPosition(), GameView);
+		Mouse::getPosition(window), GameView);
 
 	// Set the cursor to the mouse world location
 	spriteCursor.setPosition(mouseWorldPosition);

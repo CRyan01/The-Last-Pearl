@@ -1,31 +1,35 @@
 #include "Tower.h"
 #include "TextureHolder.h"
 #include <iostream>
-Tower::Tower()
-{
-    // Default constructor for Tower
+
+// Default constructor for Tower
+Tower::Tower() {
     m_Type = TowerType::None;
     m_Damage = 0;
     m_Range = 0;
     m_FireRate = 0;
     m_TimeSinceLastShot = 0;
     m_Active = false;
+    m_UpgradeLevel = 0;
+    m_MaxUpgradeLevel = 3;
+    m_UpgradeCost = 50;
     m_Sprite.setTexture(TextureHolder::GetTexture("graphics/crossbowTower.png"));
     m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
 }
+
 // Parameterized constructor to create a tower with specific attributes
-Tower::Tower(TowerType type, float damage, float range, float fireRate, const std::string& textureFile) 
-{
+Tower::Tower(TowerType type, float damage, float range, float fireRate, const std::string& textureFile) {
     m_Type = type;
     m_Damage = damage;
     m_Range = range;
     m_FireRate = fireRate;
     m_TimeSinceLastShot = 0;
     m_Active = true;
-
+    m_UpgradeLevel = 0;
+    m_MaxUpgradeLevel = 3;
+    m_UpgradeCost = 50;
     m_Sprite.setTexture(TextureHolder::GetTexture(textureFile));
     m_Sprite.setOrigin(m_Sprite.getTexture()->getSize().x / 2.0f, m_Sprite.getTexture()->getSize().y / 2.0f);
-
 }
 
 // Initialize the tower's position on the grid
@@ -88,13 +92,35 @@ void Tower::shoot(Enemy* target, ProjectileHolder& projectileHolder)
 
     projectileHolder.shoot(m_Position, target, texturePath, m_Damage, m_Range);
 }
+
+// Upgrade a tower if possible
+void Tower::upgrade() {
+    if (canUpgrade()) {
+        m_UpgradeLevel++;
+        m_Damage += 5;
+        m_Range += 20.0f;
+        m_UpgradeCost += 25;
+        std::cout << "Tower upgraded" << std::endl;
+    } else {
+        std::cout << "Max upgrade level reached" << std::endl;
+    }
+}
+
+// Check if a tower can be upgraded
+bool Tower::canUpgrade() const {
+    return m_UpgradeLevel < m_MaxUpgradeLevel;
+}
+
+// Get the upgrade level of a tower
+int Tower::getUpgradeLevel() const {
+    return m_UpgradeLevel;
+}
+
 // Accessor for projectiles vector
 std::vector<Projectile>& Tower::getProjectiles() 
 {
     return projectiles;
 }
-
-
 
 // Returns the tower's sprite 
 Sprite Tower::getSprite() const 
@@ -118,4 +144,9 @@ bool Tower::isActive() const
 float Tower::getDamage() const 
 {
     return m_Damage;
+}
+
+// Returns upgrade cost
+int Tower::getUpgradeCost() const {
+    return m_UpgradeCost;
 }
