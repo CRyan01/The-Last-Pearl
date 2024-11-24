@@ -58,15 +58,22 @@ void Wave::NextWave()
 	}
 	else
 	{
-		if (CurrentWave <= 5)
+		if (CurrentWave <= 3)
 		{
 			spawnDelay = 1.0;
 			// First 5 waves: only Buccaneers
 			enemies = std::vector<EnemyType>(CurrentWave * 5, BUCCANEER);
 
 		}
-		else if (CurrentWave <= 7) {
+		else if (CurrentWave <= 5)
+		{
 			spawnDelay = 0.8;
+			// First 5 waves: only Buccaneers
+			enemies = std::vector<EnemyType>(CurrentWave * 5, BUCCANEER);
+
+		}
+		else if (CurrentWave <= 7) {
+			spawnDelay = 0.7;
 			// Waves 6-8: Pirates alongside Buccaneers
 			enemies = std::vector<EnemyType>(CurrentWave * 10, BUCCANEER);
 			enemies.insert(enemies.end(), CurrentWave * 5, PIRATE);

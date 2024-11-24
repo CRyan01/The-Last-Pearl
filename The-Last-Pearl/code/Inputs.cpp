@@ -116,7 +116,7 @@ bool TheLastPearl::handleBuildIconClick() {
     bool iconClicked = PlayerHud.input(selectedTowerType, mouseWorldPosition);
 
     if (iconClicked && selectedTowerType != Tower::TowerType::None) {
-        int cost = (selectedTowerType == Tower::TowerType::CannonTower) ? 200 : 300;
+        int cost = (selectedTowerType == Tower::TowerType::CannonTower) ? 300 : 200;
 
         // Check if the player has enough gold
         if (CaptainJackSparrow.CanBuy(cost)) {
