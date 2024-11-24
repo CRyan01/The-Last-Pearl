@@ -31,25 +31,28 @@ void TheLastPearl::CheckInputs() {
             if (handlePlotSelection()) {
                 return;
             }
+            // Handle main menu inputs
+            if (state == State::MAIN_MENU)
+            {
+                if (Level1Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
+                    StartLevel(1); // Start Level 1
+                    state = State::InLevel;
+                }
+                else if (Level2Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
+                    StartLevel(2); // Start Level 2
+                    state = State::InLevel;
+                }
+                else if (Level3Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
+                    StartLevel(3); // Start Level 3
+                    state = State::InLevel;
+                }
+            }
 
             // Reset selection if no valid plot was clicked
             resetSelectionIfNoClick();
         }
 
-        // Handle main menu inputs
-        if (state == State::MAIN_MENU)
-        {
-            if (Level1Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
-                StartLevel(1); // Start Level 1
-                state = State::InLevel;
-            } else if (Level2Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
-                StartLevel(2); // Start Level 2
-                state = State::InLevel;
-            } else if (Level3Sprite.getGlobalBounds().contains(mouseWorldPosition)) {
-                StartLevel(3); // Start Level 3
-                state = State::InLevel;
-            }
-        }
+       
 
         // Handle key exiting and pausing
         if (event.type == Event::KeyPressed) {

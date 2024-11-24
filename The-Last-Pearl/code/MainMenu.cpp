@@ -69,6 +69,7 @@ void TheLastPearl::StartLevel(int level)
 		textureBackground.loadFromFile("graphics/background.png");
 		spriteBackground.setTexture(textureBackground);
 		spriteBackground.setPosition(0, 0);
+		spriteBackground.setScale(1, 1);
 
 		//Levels.SetLevel(1);
 		break;

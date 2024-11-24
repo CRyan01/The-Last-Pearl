@@ -76,6 +76,9 @@
     <ClCompile Include="code\Reset.cpp">
       <Filter>cpp\MAIN</Filter>
     </ClCompile>
+    <ClCompile Include="code\SoundManager.cpp">
+      <Filter>cpp\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\TheLastPearl.h">
@@ -130,6 +133,9 @@
       <Filter>header\Manager</Filter>
     </ClInclude>
     <ClInclude Include="code\Wave.h">
+      <Filter>header\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="code\SoundManager.h">
       <Filter>header\Manager</Filter>
     </ClInclude>
   </ItemGroup>
