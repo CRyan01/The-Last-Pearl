@@ -85,7 +85,7 @@ void TheLastPearl::StartLevel(int level)
 		spriteBackground.setTexture(textureBackground);
 		spriteBackground.setPosition(0, 0);
 
-		Levels.SetLevel(3);
+		//Levels.SetLevel(3);
 		break;
 	}
 	MainPath.SetLevel(level);
