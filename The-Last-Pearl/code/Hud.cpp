@@ -59,7 +59,7 @@ void Hud::draw(RenderWindow& window)
 	window.draw(spriteCannonTowerIcon);
 	window.draw(spriteMortarTowerIcon);
 	window.draw(spriteCrossbowTowerIcon);
-	window.draw(spriteGoldIcon);
+	//window.draw(spriteGoldIcon);
 	
 		
 	

@@ -12,12 +12,12 @@ std::vector<Vector2f> LevelManager::getWaypoints() const {
     // Vector to store waypoints
     std::vector<Vector2f> waypoints;
     // Set waypoints
-    waypoints.push_back(Vector2f(100, 200));
-    waypoints.push_back(Vector2f(1800, 200));
-    waypoints.push_back(Vector2f(1800, 450));
-    waypoints.push_back(Vector2f(120, 450));
-    waypoints.push_back(Vector2f(120, 740));
-    waypoints.push_back(Vector2f(1920, 740));
+    waypoints.push_back(Vector2f(0, 0));
+   // waypoints.push_back(Vector2f(1800, 200));
+   // waypoints.push_back(Vector2f(1800, 450));
+   // waypoints.push_back(Vector2f(120, 450));
+   // waypoints.push_back(Vector2f(120, 740));
+   // waypoints.push_back(Vector2f(1920, 740));
     return waypoints;
 }
 

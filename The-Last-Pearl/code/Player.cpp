@@ -70,3 +70,9 @@ void Player::SetLevel(int level)
 
 
 }
+
+void Player::decreaseBalance(int cost) {
+	if (money >= cost) {
+		money -= cost;
+	}
+}

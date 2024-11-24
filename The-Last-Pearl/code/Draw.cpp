@@ -22,6 +22,7 @@ void TheLastPearl::draw()
 
 		// Draw the selected tower sprite
 		window.draw(spriteSelectedTower);
+;
 
 		// Draw towers and projectiles via TowerManager
 		TheGameTowers.draw(window, projectileHolder);
@@ -29,7 +30,9 @@ void TheLastPearl::draw()
 
 		PlayerHud.draw(window);
 		window.draw(HealthText);
-	
+		
+		// Draw the upgrade button
+		window.draw(spriteUpgradeButton);
 	}
 
 	if (state == State::PAUSED) {

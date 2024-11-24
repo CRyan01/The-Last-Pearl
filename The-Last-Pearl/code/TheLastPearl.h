@@ -8,6 +8,7 @@
 #include "TowerManager.h"
 #include "BuccaneerEnemy.h"
 #include "LevelManager.h"
+#include "SoundManager.h"
 #include "Paths.h"
 #include "Wave.h"
 #include "Player.h"
@@ -34,6 +35,13 @@ public:
 	void StartLevel(int LevelNumber);
 	//SetUps the main Menu
 	void MainMenu();
+
+	void handleUpgrade();                   // Handles tower upgrade logic
+	bool handleBuildIconClick();            // Handles clicking tower build icons
+	bool handlePlotSelection();             // Handles selecting plots for building
+	void resetSelectionIfNoClick();         // Resets selection when no valid element is clicked
+	void resetSelection();                  // Resets all selection variables
+	void resetSelectionBoxTextures();       // Resets selection box textures
 
 	
 
@@ -62,6 +70,9 @@ private:
 	// The main Views
 	View GameView;
 	View MainMenuView;
+
+	// Is a build plot selected?
+	bool isPlotSelected;
 
 	// Create a cock for timing
 	Clock clock;
@@ -106,6 +117,8 @@ private:
 	Text Level1text;
 	Text Level2text;
 	Text Level3text;
+
+	Text waveText; // Text to display the wave number
 	stringstream playertext;
 
 	enum class State { PAUSED, Betweeen_Levels, InLevel, MAIN_MENU };
@@ -113,6 +126,9 @@ private:
 
 	//for the levels
 	LevelManager Levels;
+
+	// To handle sounds
+	SoundManager soundManager;
 
 	// Texture for the background and the level tiles
 	Texture m_TextureTiles;
@@ -131,6 +147,9 @@ private:
 	vector<Tower> towers;
 	// Store tower positions which are occupied
 	vector<Vector2f> occupiedTowerPositions;
+
+	// A sprite for the upgrade button
+	Sprite spriteUpgradeButton;
 
 	Wave currentWave{9};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies

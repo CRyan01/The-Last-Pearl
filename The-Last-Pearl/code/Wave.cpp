@@ -66,14 +66,14 @@ void Wave::NextWave()
 		}
 		else if (CurrentWave <= 8) {
 			// Waves 6-8: Pirates alongside Buccaneers
-			enemies = std::vector<EnemyType>(CurrentWave * 3, BUCCANEER);
-			enemies.insert(enemies.end(), CurrentWave * 2, PIRATE);
+			enemies = std::vector<EnemyType>(CurrentWave * 10, BUCCANEER);
+			enemies.insert(enemies.end(), CurrentWave * 5, PIRATE);
 		}
 		else {
 			// Last two waves (9-10):  Captains along with Buccaneers and Pirates
-			enemies = std::vector<EnemyType>(CurrentWave * 2, BUCCANEER);
-			enemies.insert(enemies.end(), CurrentWave * 2, PIRATE);
-			enemies.insert(enemies.end(), CurrentWave, CAPTAIN);
+			enemies = std::vector<EnemyType>(CurrentWave * 20, BUCCANEER);
+			enemies.insert(enemies.end(), CurrentWave * 10, PIRATE);
+			enemies.insert(enemies.end(), CurrentWave * 5, CAPTAIN);
 		}
 		LevelComplete = false;
 	}
@@ -81,7 +81,7 @@ void Wave::NextWave()
 }
 
 void Wave::initializeEnemies(float dtAsSeconds) {
-	elapsedTime += dtAsSeconds;
+	elapsedTime += dtAsSeconds; 
 	if (isWaveComplete())
 	{
 		//NextWave();
@@ -104,8 +104,12 @@ void Wave::initializeEnemies(float dtAsSeconds) {
 			break;
 		}
 
-		if (enemy) {
+		if (enemy && elapsedTime >= spawnDelay) {
+
 			enemy->spawn(enemySpawnPos.x, enemySpawnPos.y, 0); // Default spawn position 
+
+			//enemy->spawn(0, 200, 0); // Default spawn position 
+
 			activeEnemies.push_back(std::move(enemy)); // Move the enemy into the vector
 
 			enemies.pop_back(); // Remove the spawned enemy from the list
@@ -192,4 +196,8 @@ int Wave::GetMoney()
 	MoneyTotal = 0;
 	return newMoney;
 
+}
+
+int Wave::GetCurrentWave() const {
+	return CurrentWave;
 }

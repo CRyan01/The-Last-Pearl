@@ -78,14 +78,15 @@ void TheLastPearl::update()
 			}
 		}
 
-		
+		int currentWaveNum = currentWave.GetCurrentWave();
+
 
 		//gets the damage he will suffer
 		CaptainJackSparrow.Hit(currentWave.GetDamage());
 		//gets the money hes gotten
 		CaptainJackSparrow.GetPirateGold(currentWave.GetMoney());
 		std::stringstream newText;
-		newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp);
+		newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp) << "  Wave " << currentWaveNum << " / 10";
 		HealthText.setString(newText.str());
 		//end game
 		if (CaptainJackSparrow.GameOver())
@@ -100,7 +101,7 @@ void TheLastPearl::update()
 
 	// Convert mouse position to world coordinates of mainView
 	mouseWorldPosition = window.mapPixelToCoords(
-		Mouse::getPosition(), GameView);
+		Mouse::getPosition(window), GameView);
 
 	// Set the cursor to the mouse world location
 	spriteCursor.setPosition(mouseWorldPosition);

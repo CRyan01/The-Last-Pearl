@@ -25,11 +25,18 @@ private:
     vector<Tower> AllGameTowers;
 
 public:
+    // Constructor
     TowerManager();
+    // Create a tower of a specific type at a position
     void createTower(Tower::TowerType type, float x, float y);
+    // Update the towers
     void update(float seconds, const std::vector<Enemy*>& enemies, ProjectileHolder& projectileHolder);
+    // Draw the towers
     void draw(sf::RenderWindow& window, ProjectileHolder& projectileHolder);
+    // Handle tower inputs
     void TowerInputs(Event event,Vector2f mouseWorldPos);
+    // Reutrns the tower at a specified position
+    Tower* getTowerAtPosition(const Vector2f& position);
+    // Resets the towers
     void Reset();
-
 };

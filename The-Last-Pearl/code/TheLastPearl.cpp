@@ -53,6 +53,9 @@ TheLastPearl::TheLastPearl()
 	spriteBackground.setScale(scale, scale);
 	spriteBackground.setPosition(0, 0);
 
+	spriteUpgradeButton.setTexture(TextureHolder::GetTexture("graphics/upgrade.png"));
+	spriteUpgradeButton.setPosition(1800, 960);
+
 	// Load the texture for the background vertex array
 	m_TextureTiles = TextureHolder::GetTexture(
 		"graphics/tiles_sheet.png");
@@ -79,6 +82,20 @@ TheLastPearl::TheLastPearl()
 	HealthText.setString(playertext.str());
 	HealthText.setOrigin(HealthText.getLocalBounds().width / 2, HealthText.getLocalBounds().height / 2);
 	HealthText.setPosition(1000, 1000);
+
+
+	/*waveText.setFont(font);
+	waveText.setCharacterSize(50);  // If we want to place the wave text somewhere else by itself, we can use this code
+	waveText.setFillColor(Color::White);
+	waveText.setPosition(resolution.x / 2.0f, 50.0f); 
+	waveText.setOrigin(waveText.getLocalBounds().width / 2, waveText.getLocalBounds().height / 2);
+	waveText.setString("Wave 1 / 10"); // Initial text*/
+
+	// Play background music & load a click sound - CR
+	soundManager.playBackgroundMusic("sound/music.ogg");
+	soundManager.loadSound("click", "sound/click.wav");
+	soundManager.loadSound("build", "sound/build.ogg");
+
 	//pathing
 	MainPath.SetLevel(1);
 	// Start the game in a paused state - CR
