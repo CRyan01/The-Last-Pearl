@@ -106,7 +106,7 @@ void TheLastPearl::handleUpgrade() {
             soundManager.playSound("click"); // play an error sound
         }
     } else {
-        std::cout << "Cannot Upgrade Tower" << std::endl;
+       // std::cout << "Cannot Upgrade Tower" << std::endl;
     }
 }
 
@@ -116,7 +116,7 @@ bool TheLastPearl::handleBuildIconClick() {
     bool iconClicked = PlayerHud.input(selectedTowerType, mouseWorldPosition);
 
     if (iconClicked && selectedTowerType != Tower::TowerType::None) {
-        int cost = (selectedTowerType == Tower::TowerType::CannonTower) ? 400 : 200;
+        int cost = (selectedTowerType == Tower::TowerType::CannonTower) ? 200 : 300;
 
         // Check if the player has enough gold
         if (CaptainJackSparrow.CanBuy(cost)) {
@@ -128,7 +128,7 @@ bool TheLastPearl::handleBuildIconClick() {
             // Reset selection boxes
             resetSelection();
         } else {
-            std::cout << "Cannot Build Tower" << std::endl;
+           // std::cout << "Cannot Build Tower" << std::endl;
         }
         return true; // A build icon was clicked
     }

@@ -40,7 +40,7 @@ public:
 private:
     vector<EnemyType> enemies; // Holds types of enemies in the wave
     vector<std::unique_ptr<Enemy>> activeEnemies;  // Active enemies in the wave
-    float spawnDelay = 0.8f; // Delay of 0.5 seconds between enemy spawns
+    float spawnDelay = 1.0f; // Delay of 0.5 seconds between enemy spawns
     float elapsedTime = 0.0f; 
     int CurrentWave=0;
     int Damage = 0;

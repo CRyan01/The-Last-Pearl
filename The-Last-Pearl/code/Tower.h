@@ -85,4 +85,6 @@ public:
 
     // Returns upgrade cost
     int getUpgradeCost() const;
+
+    CircleShape Sight = CircleShape(m_Range);
 };

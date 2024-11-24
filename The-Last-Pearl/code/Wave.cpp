@@ -60,16 +60,19 @@ void Wave::NextWave()
 	{
 		if (CurrentWave <= 5)
 		{
+			spawnDelay = 1.0;
 			// First 5 waves: only Buccaneers
 			enemies = std::vector<EnemyType>(CurrentWave * 5, BUCCANEER);
 
 		}
-		else if (CurrentWave <= 8) {
+		else if (CurrentWave <= 7) {
+			spawnDelay = 0.8;
 			// Waves 6-8: Pirates alongside Buccaneers
 			enemies = std::vector<EnemyType>(CurrentWave * 10, BUCCANEER);
 			enemies.insert(enemies.end(), CurrentWave * 5, PIRATE);
 		}
 		else {
+			spawnDelay = 0.5;
 			// Last two waves (9-10):  Captains along with Buccaneers and Pirates
 			enemies = std::vector<EnemyType>(CurrentWave * 20, BUCCANEER);
 			enemies.insert(enemies.end(), CurrentWave * 10, PIRATE);
@@ -164,9 +167,11 @@ void Wave::updateEnemies(float dtAsSeconds, Paths& path) {
 }
 
 bool Wave::isWaveComplete() {
-
+	if ((activeEnemies.empty()) && (enemies.empty()))
+		return true;
 	// << "\nhey this works " << activeEnemies.empty();
-	return activeEnemies.empty();
+	else
+		return false;
 }
 
 vector<Enemy*> Wave::getActiveEnemies() const

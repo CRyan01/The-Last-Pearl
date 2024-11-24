@@ -36,6 +36,12 @@ Tower::Tower(TowerType type, float damage, float range, float fireRate, const st
 void Tower::initialize(float startX, float startY) 
 {
     m_Position = { startX, startY };
+    Sight.setFillColor(Color::Transparent);
+    Sight.setOutlineThickness(15);
+    Sight.setOutlineColor(Color::Black);
+    Sight.setRadius(m_Range);
+    Sight.setOrigin(m_Range, m_Range);
+    Sight.setPosition(startX, startY);
     m_Sprite.setPosition(m_Position);
 }
 

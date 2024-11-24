@@ -19,9 +19,13 @@ void TowerManager::update(float seconds, const std::vector<Enemy*>& enemies, Pro
 
 void TowerManager::draw(sf::RenderWindow& window, ProjectileHolder& projectileHolder) 
 {
-	for (const auto& tower : AllGameTowers) 
+	for (int i = 0; i < AllGameTowers.size() + 0; i++)
 	{
-		window.draw(tower.getSprite());
+		window.draw(AllGameTowers.at(i).getSprite());
+		if (AllGameTowers.at(i).ClickedOn)
+		{
+			window.draw(AllGameTowers.at(i).Sight);
+		}
 	}
 	projectileHolder.draw(window);  // Draw all projectiles
 }
@@ -57,10 +61,10 @@ void TowerManager::Reset()
 Tower* TowerManager::getTowerAtPosition(const Vector2f& position) {
 	for (auto& tower : AllGameTowers) {
 		if (tower.getSprite().getGlobalBounds().contains(position.x, position.y)) {
-			std::cout << "here" << std::endl;
+			//std::cout << "here" << std::endl;
 			return &tower;
 		}
-		std::cout << "there" << std::endl;
+		//std::cout << "there" << std::endl;
 	}
 	return nullptr; // No tower found at the position
 }
