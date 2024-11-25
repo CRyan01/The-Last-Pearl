@@ -7,8 +7,9 @@
 #include <iostream>
 
 // Constructor that initializes enemies based on the wave number
-Wave::Wave(int LevelNumber)
+Wave::Wave(int LevelNumber,bool isInfinite)
 {
+	infinite = isInfinite;
 	switch (LevelNumber)
 	{
 	case 1:
@@ -19,7 +20,7 @@ Wave::Wave(int LevelNumber)
 		enemySpawnPos = Vector2f(180, 1040);
 		break;
 	case 3:
-		enemySpawnPos = Vector2f(10, 20);
+		enemySpawnPos = Vector2f(0, 600);
 		break;
 	}
 	
@@ -52,7 +53,7 @@ void Wave::NextWave()
 {
 	enemies.clear(); // Clear any previous enemies.
 	CurrentWave++;
-	if (CurrentWave >= CurrentMaxWave)
+	if ((CurrentWave >= CurrentMaxWave)&&(infinite==false))
 	{
 		LevelComplete = true;
 	}
@@ -83,12 +84,15 @@ void Wave::NextWave()
 
 }
 
+bool Wave::returnInfinite()
+{
+	return infinite;
+
+}
+
 void Wave::initializeEnemies(float dtAsSeconds) {
 	elapsedTime += dtAsSeconds; 
-	if (isWaveComplete())
-	{
-		//NextWave();
-	}
+	
 	// Check if there are enemies left to spawn
 	if (!enemies.empty() && elapsedTime >= spawnDelay) {
 		// Create the next enemy based on the type

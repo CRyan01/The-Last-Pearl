@@ -55,12 +55,12 @@ void Player::SetLevel(int level)
 		 health = MaxHp;
 		break;
 	case 2:
-		money = 800;
+		money = 1000;
 		MaxHp = 100;
 		health = MaxHp;
 		break;
 	case 3:
-		money = 1500;
+		money = 1000;
 		MaxHp = 50;
 		health = MaxHp;
 		break;

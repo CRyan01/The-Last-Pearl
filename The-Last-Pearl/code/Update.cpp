@@ -86,7 +86,15 @@ void TheLastPearl::update()
 		//gets the money hes gotten
 		CaptainJackSparrow.GetPirateGold(currentWave.GetMoney());
 		std::stringstream newText;
-		newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp) << "  Wave " << currentWaveNum << " / 10";
+		if (currentWave.infinite==true)
+		{
+			newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp) << "  Wave " << currentWaveNum << " Infinite";
+		}
+		else
+		{
+			newText << "Money = " << CaptainJackSparrow.money << " Pearl Health " << std::to_string(CaptainJackSparrow.health) << "\\" << std::to_string(CaptainJackSparrow.MaxHp) << "  Wave " << currentWaveNum << " / 10";
+
+		}
 		HealthText.setString(newText.str());
 		//end game
 		if (CaptainJackSparrow.GameOver())

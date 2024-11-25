@@ -21,17 +21,27 @@ void TheLastPearl::MainMenu()
 	MainMenuTitle.setString("The Last Pearl");
 	MainMenuTitle.setFillColor(sf::Color::Red);
 	MainMenuTitle.setCharacterSize(160);
-	MainMenuTitle.setPosition(400,300);
+	MainMenuTitle.setPosition(400, 300);
 
 
 	Level1Sprite.setTexture(TextureHolder::GetTexture("graphics/Level1.png"));
-	Level1Sprite.setPosition(575,600);
-	
+	Level1Sprite.setPosition(575, 600);
+
 	Level2Sprite.setTexture(TextureHolder::GetTexture("graphics/Level2.png"));
 	Level2Sprite.setPosition(820, 600);
 
 	Level3Sprite.setTexture(TextureHolder::GetTexture("graphics/Level3.png"));
 	Level3Sprite.setPosition(1055, 600);
+	
+	if (currentWave.returnInfinite())
+	{
+		OnOrOff.setTexture(TextureHolder::GetTexture("graphics/On.png"));
+	}
+	else
+	{
+		OnOrOff.setTexture(TextureHolder::GetTexture("graphics/Off.png"));
+	}
+	OnOrOff.setPosition(900, 700);
 
 
 
@@ -54,6 +64,12 @@ void TheLastPearl::MainMenu()
 	Level3text.setFillColor(sf::Color::Black);
 	Level3text.setCharacterSize(50);
 	Level3text.setPosition(1050, 500);
+
+	IniniteWave.setFont(font);
+	IniniteWave.setString("Infinite Wave");
+	IniniteWave.setFillColor(sf::Color::Black);
+	IniniteWave.setCharacterSize(50);
+	IniniteWave.setPosition(600, 700);
 
 	
 
@@ -82,16 +98,17 @@ void TheLastPearl::StartLevel(int level)
 		//Levels.SetLevel(2);
 		break;
 	case 3:
-		textureBackground.loadFromFile("graphics/background.png");
+		textureBackground.loadFromFile("graphics/LastMap2.png");
 		spriteBackground.setTexture(textureBackground);
 		spriteBackground.setPosition(0, 0);
+		spriteBackground.setScale(2, 2);
 
 		//Levels.SetLevel(3);
 		break;
 	}
 	MainPath.SetLevel(level);
 	CaptainJackSparrow.SetLevel(level);
-	currentWave = Wave(level);
+	currentWave = Wave(level,currentWave.infinite);
 	GetTowerPos(level);
 }
 
@@ -140,6 +157,14 @@ void TheLastPearl::GetTowerPos(int level)
 		
 		break;
 	case 3:
+		towerPositions.push_back(Vector2f(350, 350));
+		towerPositions.push_back(Vector2f(750, 450));
+		towerPositions.push_back(Vector2f(1150, 350));
+		towerPositions.push_back(Vector2f(1600, 350));
+		towerPositions.push_back(Vector2f(700, 80));
+		towerPositions.push_back(Vector2f(1150, 630));
+
+
 		break;
 	}
 

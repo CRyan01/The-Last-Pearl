@@ -107,6 +107,7 @@ private:
 	Sprite Level1Sprite;
 	Sprite Level2Sprite;
 	Sprite Level3Sprite;
+	Sprite OnOrOff;
 	
 	Projectile bullet;
 	// Text
@@ -117,6 +118,7 @@ private:
 	Text Level1text;
 	Text Level2text;
 	Text Level3text;
+	Text IniniteWave;
 
 	Text waveText; // Text to display the wave number
 	stringstream playertext;
@@ -151,7 +153,7 @@ private:
 	// A sprite for the upgrade button
 	Sprite spriteUpgradeButton;
 
-	Wave currentWave{9};                     // Start with wave 1
+	Wave currentWave{9,false};                     // Start with wave 1
 	vector<Enemy*> activeEnemies;             // Store pointers to active enemies
 	TowerManager TheGameTowers;
 

@@ -50,6 +50,8 @@ void TheLastPearl::draw()
 		window.draw(Level1text);
 		window.draw(Level2text);
 		window.draw(Level3text);
+		window.draw(OnOrOff);
+		window.draw(IniniteWave);
 	}
 
 	window.draw(spriteCursor);

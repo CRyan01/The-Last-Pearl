@@ -46,6 +46,20 @@ void TheLastPearl::CheckInputs() {
                     StartLevel(3); // Start Level 3
                     state = State::InLevel;
                 }
+                else if (OnOrOff.getGlobalBounds().contains(mouseWorldPosition))
+                {
+                    if (currentWave.returnInfinite())
+                    {
+                        currentWave.infinite = false;
+                        OnOrOff.setTexture(TextureHolder::GetTexture("graphics/Off.png"));
+                    }
+                    else
+                    {
+                        currentWave.infinite = true;
+                        OnOrOff.setTexture(TextureHolder::GetTexture("graphics/On.png"));
+                    }
+
+                }
             }
 
             // Reset selection if no valid plot was clicked

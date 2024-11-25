@@ -20,6 +20,14 @@ Paths::Paths()
 	Level2Pos.push_back(Vector2f(1755, 600));
 	Level2Pos.push_back(Vector2f(1755, 1000));
 
+	Level3Pos.push_back(Vector2f(200, 600));//fturn
+	Level3Pos.push_back(Vector2f(200, 80));//up
+	Level3Pos.push_back(Vector2f(500, 80));//right
+	Level3Pos.push_back(Vector2f(500, 600));//down
+	Level3Pos.push_back(Vector2f(1000, 600));//right
+	Level3Pos.push_back(Vector2f(1000, 80));//up
+	Level3Pos.push_back(Vector2f(1800, 80));//right
+	Level3Pos.push_back(Vector2f(1800, 600));//down
 
 }
 Paths::~Paths()
