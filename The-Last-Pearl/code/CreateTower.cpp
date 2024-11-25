@@ -8,9 +8,9 @@ void TowerManager::createTower(Tower::TowerType type, float x, float y) {
     
     // Spawn the correct type of tower
     if (type == Tower::TowerType::MusketTower) {
-        tower = Tower(type, 100, 400, 1.5, "graphics/musketTower.png");
+        tower = Tower(type, 25, 400, 6.5, "graphics/musketTower.png");
     } else if (type == Tower::TowerType::CannonTower) {
-        tower = Tower(type, 30, 250, 8.0, "graphics/cannonTower.png");
+        tower = Tower(type, 100, 250, 1.5, "graphics/cannonTower.png");
     }
 
     // Set the towers position
